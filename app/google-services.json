@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "962457066347",
+    "firebase_url": "https://shoppingprojcet.firebaseio.com",
+    "project_id": "shoppingprojcet",
+    "storage_bucket": "shoppingprojcet.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:962457066347:android:6f9470b90d3ee0e2",
+        "android_client_info": {
+          "package_name": "com.example.shoppingproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "962457066347-vcq4g8hls80i6eimujoeetr476bau05q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.shoppingproject",
+            "certificate_hash": "95fb6e579d3ee404b03c020189732b56dad94a31"
+          }
+        },
+        {
+          "client_id": "962457066347-c1r2vbnedq9q3iog565l5mf6prglb1ck.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDM8UKem8fBvlLbQY8_RHZKFPNqIOmO3fQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "962457066347-c1r2vbnedq9q3iog565l5mf6prglb1ck.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
