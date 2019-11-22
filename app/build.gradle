@@ -47,6 +47,8 @@ dependencies {
 
     implementation 'io.paperdb:paperdb:2.6'
 
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
     //CircleImageView
     implementation 'de.hdodenhof:circleimageview:3.0.1'
 
@@ -56,4 +58,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:17.2.1'
     implementation 'com.google.firebase:firebase-storage:19.1.0'
     implementation 'com.google.firebase:firebase-messaging:20.0.0'
+    implementation 'com.firebaseui:firebase-ui-database:6.1.0'
 }
