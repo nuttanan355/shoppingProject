@@ -52,6 +52,8 @@ dependencies {
     //CircleImageView
     implementation 'de.hdodenhof:circleimageview:3.0.1'
 
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
+
     //ไลเบอรี่ Firebase
     implementation 'com.google.firebase:firebase-auth:19.1.0'
     implementation 'com.google.firebase:firebase-database:19.2.0'

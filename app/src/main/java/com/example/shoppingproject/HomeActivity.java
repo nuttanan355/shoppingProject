@@ -112,7 +112,9 @@ public class HomeActivity extends AppCompatActivity {
                     Toast.makeText(HomeActivity.this, "nav_categories", Toast.LENGTH_LONG).show();
                 }
                 if (destination.getId() == R.id.nav_settings) {
-                    Toast.makeText(HomeActivity.this, "nav_settings", Toast.LENGTH_LONG).show();
+                    Intent intent=new Intent(HomeActivity.this,SettingsActivity.class);
+                    startActivity(intent);
+//                    Toast.makeText(HomeActivity.this, "nav_settings", Toast.LENGTH_LONG).show();
                 }
                 if (destination.getId() == R.id.nav_logout) {
                     Toast.makeText(HomeActivity.this, "Logout", Toast.LENGTH_LONG).show();
@@ -136,6 +138,7 @@ public class HomeActivity extends AppCompatActivity {
         CircleImageView profileImageView =headerView.findViewById(R.id.user_profile_image);
 
         userNameTextView.setText(Prevalent.currentOnlineUser.getName());
+        Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
 
         recyclerView=findViewById(R.id.recycler_menu);
         recyclerView.setHasFixedSize(true);

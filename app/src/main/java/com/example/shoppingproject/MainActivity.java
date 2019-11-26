@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button login_btn,register_btn;
+    private Button login_btn, register_btn;
     private ProgressDialog loadingBar;
 
     @Override
@@ -32,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         login_btn = (Button) findViewById(R.id.btn_welcome_login);
-        register_btn=(Button)findViewById(R.id.btn_account);
+        register_btn = (Button) findViewById(R.id.btn_account);
 
-        loadingBar=new ProgressDialog(this);
+        loadingBar = new ProgressDialog(this);
 
         Paper.init(this);
 
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(MainActivity.this,LoginActivity.class);
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -50,20 +50,18 @@ public class MainActivity extends AppCompatActivity {
         register_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,RegisterActivity.class);
+                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
                 startActivity(intent);
             }
         });
 
         String UserPhoneKey = Paper.book().read(Prevalent.UserPhoneKey);
-        String UserPasswordKey =Paper.book().read(Prevalent.UserPasswordKey);
+        String UserPasswordKey = Paper.book().read(Prevalent.UserPasswordKey);
 
 
-        if(UserPhoneKey != "" && UserPasswordKey != "")
-        {
-            if (!TextUtils.isEmpty(UserPhoneKey) && !TextUtils.isEmpty(UserPasswordKey))
-            {
-                AllowAccess(UserPhoneKey,UserPasswordKey);
+        if (UserPhoneKey != "" && UserPasswordKey != "") {
+            if (!TextUtils.isEmpty(UserPhoneKey) && !TextUtils.isEmpty(UserPasswordKey)) {
+                AllowAccess(UserPhoneKey, UserPasswordKey);
 
                 loadingBar.setTitle("Already Logged in");
                 loadingBar.setMessage("Please wait......");
@@ -77,31 +75,29 @@ public class MainActivity extends AppCompatActivity {
 
     private void AllowAccess(final String phone, final String password) {
         final DatabaseReference RootRef;
-        RootRef= FirebaseDatabase.getInstance().getReference();
+        RootRef = FirebaseDatabase.getInstance().getReference();
 
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
-                if(dataSnapshot.child("Users").child(phone).exists())
-                {
-                    Users usersData =dataSnapshot.child("Users").child(phone).getValue(Users.class);
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.child("Users").child(phone).exists()) {
+                    Users usersData = dataSnapshot.child("Users").child(phone).getValue(Users.class);
 
-                    if(usersData.getPhone().equals(phone) && usersData.getPassword().equals(password))
-                    {
-                        Toast.makeText(MainActivity.this,"Please wait, you are already logged in...",Toast.LENGTH_SHORT).show();
+                    if (usersData.getPhone().equals(phone) && usersData.getPassword().equals(password)) {
+                        Toast.makeText(MainActivity.this, "Please wait, you are already logged in...", Toast.LENGTH_SHORT).show();
                         loadingBar.dismiss();
 
-                        Intent intent=new Intent(MainActivity.this,HomeActivity.class);
+                        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                        Prevalent.currentOnlineUser= usersData;
                         startActivity(intent);
-                    }else {
+                    } else {
 
                         loadingBar.dismiss();
-                        Toast.makeText(MainActivity.this,"Password is incorrect.",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Password is incorrect.", Toast.LENGTH_SHORT).show();
                     }
 
-                }else {
-                    Toast.makeText(MainActivity.this,"Accout with this " +phone+"number do not exists.",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "Accout with this " + phone + "number do not exists.", Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
 
                 }
