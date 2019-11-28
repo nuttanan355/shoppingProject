@@ -51,7 +51,7 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        storageProfilePrictureRef= FirebaseStorage.getInstance().getReference().child("Profile pictures");
+        storageProfilePrictureRef= FirebaseStorage.getInstance().getReference().child("Profile Pictures");
 
         profileImageView = (CircleImageView) findViewById(R.id.settings_profile_image);
 
@@ -103,7 +103,7 @@ public class SettingsActivity extends AppCompatActivity {
         userMap.put("phoneOrder",userPhoneEditText.getText().toString());
         ref.child(Prevalent.currentOnlineUser.getPhone()).updateChildren(userMap);
 
-        startActivity(new Intent(SettingsActivity.this,MainActivity.class));
+        startActivity(new Intent(SettingsActivity.this,HomeActivity.class));
         Toast.makeText(SettingsActivity.this,"ProFile Info update successfully.",Toast.LENGTH_SHORT).show();
         finish();
 
@@ -178,7 +178,7 @@ public class SettingsActivity extends AppCompatActivity {
                                 ref.child(Prevalent.currentOnlineUser.getPhone()).updateChildren(userMap);
 
                                 progressDialog.dismiss();
-                                startActivity(new Intent(SettingsActivity.this,MainActivity.class));
+                                startActivity(new Intent(SettingsActivity.this,HomeActivity.class));
                                 Toast.makeText(SettingsActivity.this,"ProFile Info update successfully.",Toast.LENGTH_SHORT).show();
                                 finish();
                             }

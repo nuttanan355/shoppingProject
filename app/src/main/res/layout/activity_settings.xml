@@ -81,6 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_profile_image_change"
         android:hint="Phone Number....."
+        android:inputType="phone"
         android:layout_margin="15dp"
         android:padding="10dp"
         />

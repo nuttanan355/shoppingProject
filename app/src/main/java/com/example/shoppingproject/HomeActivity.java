@@ -57,7 +57,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        ProductsRef= FirebaseDatabase.getInstance().getReference().child("Products");
+        ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
 
 //MenuItem =(MenuItem)findViewById(R.id.recycler_menu);
 
@@ -112,7 +112,7 @@ public class HomeActivity extends AppCompatActivity {
                     Toast.makeText(HomeActivity.this, "nav_categories", Toast.LENGTH_LONG).show();
                 }
                 if (destination.getId() == R.id.nav_settings) {
-                    Intent intent=new Intent(HomeActivity.this,SettingsActivity.class);
+                    Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
                     startActivity(intent);
 //                    Toast.makeText(HomeActivity.this, "nav_settings", Toast.LENGTH_LONG).show();
                 }
@@ -124,8 +124,7 @@ public class HomeActivity extends AppCompatActivity {
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                     finish();
-                }
-                else {
+                } else {
 
                 }
             }
@@ -133,45 +132,54 @@ public class HomeActivity extends AppCompatActivity {
 
         //-------END------set For Menu Items Clickable-----------------
 
-        View headerView =navigationView.getHeaderView(0);
+        View headerView = navigationView.getHeaderView(0);
         TextView userNameTextView = headerView.findViewById(R.id.user_profile_name);
-        CircleImageView profileImageView =headerView.findViewById(R.id.user_profile_image);
+        CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
 
         userNameTextView.setText(Prevalent.currentOnlineUser.getName());
         Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
 
-        recyclerView=findViewById(R.id.recycler_menu);
+        recyclerView = findViewById(R.id.recycler_menu);
         recyclerView.setHasFixedSize(true);
-        layoutManager =new LinearLayoutManager(this);
+        layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
     }
 
     @Override
-    protected void onStart(){
+    protected void onStart() {
 
         super.onStart();
-        FirebaseRecyclerOptions<Products>options=
+        FirebaseRecyclerOptions<Products> options =
                 new FirebaseRecyclerOptions.Builder<Products>()
-                .setQuery(ProductsRef,Products.class)
-                .build();
-        FirebaseRecyclerAdapter<Products, ProductViewHolder>adapter=
+                        .setQuery(ProductsRef, Products.class)
+                        .build();
+        FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
                 new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
                     @Override
-                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model)
-                    {
+                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model) {
                         holder.txtProductName.setText(model.getPname());
-                        holder.txtProductPrice.setText("Price = "+model.getPrice()+" ฿");
+                        holder.txtProductPrice.setText("Price = " + model.getPrice() + " ฿");
                         holder.txtProductDescription.setText(model.getDescription());
                         Picasso.get().load(model.getImage()).into(holder.imageView);
+
+                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                Intent intent = new Intent(HomeActivity.this, ProductDetailsActivity.class);
+                                intent.putExtra("pid", model.getPid());
+                                startActivity(intent);
+                            }
+                        });
 
                     }
 
                     @NonNull
                     @Override
                     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.product_items_layout,parent,false);
-                        ProductViewHolder holder =new ProductViewHolder(view);
+                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_items_layout, parent, false);
+                        ProductViewHolder holder = new ProductViewHolder(view);
                         return holder;
                     }
                 };
