@@ -193,7 +193,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
 
     private void SaveProductInfoToDatabase() {
         HashMap<String, Object> productMap = new HashMap<>();
-        productMap.put("pin", productRandomKay);
+        productMap.put("pid", productRandomKay);
         productMap.put("date", saveCurrentDate);
         productMap.put("time", saveCurrentTime);
         productMap.put("description", Description);

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.example.shoppingproject.Model.Products;
@@ -25,7 +26,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private TextView productPrice, productDescription, productName;
     private String productID = "";
 
-    private DatabaseReference productsRef;
+//    private DatabaseReference productsRef;
 
 
 
@@ -34,7 +35,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_details);
 
-        productsRef = FirebaseDatabase.getInstance().getReference().child("Products");
+
 
         productID = getIntent().getStringExtra("pid");
 
@@ -47,15 +48,14 @@ public class ProductDetailsActivity extends AppCompatActivity {
         productDescription = (TextView) findViewById(R.id.product_description_details);
         productPrice = (TextView) findViewById(R.id.product_price_details);
 
-        getProductDetails(productID);
+        getProductDetails();
 
     }
 
-    private void getProductDetails(String productID) {
+    private void getProductDetails() {
 
-//        DatabaseReference
-
-        productsRef.child(productID).addValueEventListener(new ValueEventListener() {
+        DatabaseReference productsRef = FirebaseDatabase.getInstance().getReference().child("Products").child(productID);
+        productsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             {
@@ -63,7 +63,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
                     Products products = dataSnapshot.getValue(Products.class);
                     productName.setText(products.getPname());
-                    productPrice.setText(products.getPrice());
+                    productPrice.setText(products.getPrice()+"฿");
                     productDescription.setText(products.getDescription());
                     Picasso.get().load(products.getImage()).into(productImage);
 
@@ -73,7 +73,12 @@ public class ProductDetailsActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+                Toast.makeText(ProductDetailsActivity.this,"ERROR",Toast.LENGTH_SHORT).show();
+
+
             }
         });
+
+
     }
 }

@@ -168,7 +168,7 @@ public class HomeActivity extends AppCompatActivity {
                             public void onClick(View v) {
 
                                 Intent intent = new Intent(HomeActivity.this, ProductDetailsActivity.class);
-                                intent.putExtra("pid", model.getPid());
+                                intent.putExtra("pid",model.getPid());
                                 startActivity(intent);
                             }
                         });
