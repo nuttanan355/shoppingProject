@@ -70,8 +70,13 @@ public class HomeActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+                Intent intent =new Intent(HomeActivity.this,CartActivity.class);
+                startActivity(intent);
+
+
+
             }
         });
         //---------END-btn cart--ล่างจอ--------------
@@ -103,7 +108,11 @@ public class HomeActivity extends AppCompatActivity {
 //                    Toast.makeText(HomeActivity.this, "home", Toast.LENGTH_LONG).show();
 //                }
                 if (destination.getId() == R.id.nav_cart) {
-                    Toast.makeText(HomeActivity.this, "nav_cart", Toast.LENGTH_LONG).show();
+//                    Toast.makeText(HomeActivity.this, "nav_cart", Toast.LENGTH_LONG).show();
+
+                    Intent intent =new Intent(HomeActivity.this,CartActivity.class);
+                    startActivity(intent);
+
                 }
                 if (destination.getId() == R.id.nav_orders) {
                     Toast.makeText(HomeActivity.this, "nav_orders", Toast.LENGTH_LONG).show();

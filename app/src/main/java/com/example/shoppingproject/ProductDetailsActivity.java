@@ -105,7 +105,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
                                       @Override
                                       public void onComplete(@NonNull Task<Void> task) {
                                           if (task.isSuccessful()){
-                                              Toast.makeText(ProductDetailsActivity.this,"Added to CArt List.",Toast.LENGTH_SHORT).show();
+                                              Toast.makeText(ProductDetailsActivity.this,"Added to Cart List.",Toast.LENGTH_SHORT).show();
 
                                               Intent intent=new Intent(ProductDetailsActivity.this,HomeActivity.class);
                                               startActivity(intent);
@@ -128,7 +128,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
                     Products products = dataSnapshot.getValue(Products.class);
                     productName.setText(products.getPname());
-                    productPrice.setText(products.getPrice()+"฿");
+                    productPrice.setText(products.getPrice());
                     productDescription.setText(products.getDescription());
                     Picasso.get().load(products.getImage()).into(productImage);
 
