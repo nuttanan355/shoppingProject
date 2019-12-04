@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,13 +49,26 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
         FirebaseRecyclerAdapter<AdminOrders,AdminOrdersViewHolder>
                 adapter= new FirebaseRecyclerAdapter<AdminOrders, AdminOrdersViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull AdminOrdersViewHolder holder, int position, @NonNull AdminOrders model)
+            protected void onBindViewHolder(@NonNull AdminOrdersViewHolder holder, final int position, @NonNull final AdminOrders model)
             {
                 holder.userName.setText("Name: "+model.getName());
                 holder.userPhoneNumber.setText("Phone: "+model.getPhone());
                 holder.userTotalPrice.setText("Total: "+model.getTotalAmount());
                 holder.userDateTime.setText("Order at: "+model.getDate()+", "+model.getTime());
                 holder.userShippingAddress.setText("Shipping Address: "+model.getAddress()+", "+model.getCity());
+
+                holder.btnShowOrder.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        String uID=getRef(position).getKey();
+
+                        Intent intent =new Intent(AdminNewOrdersActivity.this,AdminUserProductActivity.class);
+                        intent.putExtra("uid",uID);
+                        startActivity(intent);
+                    }
+                });
+
             }
 
             @NonNull
@@ -65,22 +79,6 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
                return new AdminOrdersViewHolder(view);
             }
         };
-
-//                adapter = new FirebaseRecyclerAdapter<AdminOrders, AdminAddNewProductActivity>() {
-//            @Override
-//            protected void onBindViewHolder(@NonNull AdminAddNewProductActivity holder, int position, @NonNull AdminOrders model)
-//            {
-//
-//            }
-//
-//            @NonNull
-//            @Override
-//            public AdminAddNewProductActivity onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
-//            {
-//               View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.orders_layout,parent,false);
-//               return new AdminOrdersViewHolder(view);
-//            }
-//        };
         ordersList.setAdapter(adapter);
         adapter.startListening();
     }
