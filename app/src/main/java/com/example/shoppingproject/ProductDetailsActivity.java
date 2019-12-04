@@ -90,7 +90,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         String saveCurrentDate,saveCurrentTime;
 
         Calendar calForDate = Calendar.getInstance();
-        SimpleDateFormat currentDate =new SimpleDateFormat("MMM dd, yyyy");
+        SimpleDateFormat currentDate =new SimpleDateFormat("dd MMM yyyy");
         saveCurrentDate =currentDate.format(calForDate.getTime());
 
         SimpleDateFormat currentTime =new SimpleDateFormat("HH:mm:ss a");
