@@ -4,6 +4,10 @@
     <color name="colorPrimaryDark">#FF9900</color>
     <color name="colorAccent">#FFCC00</color>
 
+    <color name="AdmincolorPrimary">#27aa80</color>
+    <color name="AdmincolorPrimaryDark">#32ff6a</color>
+    <color name="AdmincolorAccent">#a8ff3e</color>
+
     <color name="colorBlack">#000000</color>
     <color name="colorGrey">#393A3A</color>
     <color name="gray_500">#9E9E9E</color>

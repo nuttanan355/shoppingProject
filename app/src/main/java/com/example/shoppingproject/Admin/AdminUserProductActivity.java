@@ -1,4 +1,4 @@
-package com.example.shoppingproject;
+package com.example.shoppingproject.Admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.shoppingproject.Model.Cart;
+import com.example.shoppingproject.R;
 import com.example.shoppingproject.ViewHolder.CartViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -40,7 +41,7 @@ public class AdminUserProductActivity extends AppCompatActivity {
         productsList.setLayoutManager(layoutManager);
 
         cartListRef= FirebaseDatabase.getInstance().getReference()
-                .child("Cart View").child("Admin View").child(userID).child("Products");
+                .child("Cart List").child("Admin View").child(userID).child("Products");
 
     }
 

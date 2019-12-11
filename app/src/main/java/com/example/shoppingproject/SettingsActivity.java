@@ -38,6 +38,7 @@ public class SettingsActivity extends AppCompatActivity {
     private EditText fullNameEditText, userPhoneEditText, addressEditText;
     private CircleImageView profileImageView;
     private TextView profileChangeTextBTN, closeTextBTN, updateTextBTN;
+    private Button btnSecuityQuestion;
 
     private Uri imageUri;
     private String myUri = "", checker = "";
@@ -59,6 +60,8 @@ public class SettingsActivity extends AppCompatActivity {
         userPhoneEditText = (EditText) findViewById(R.id.settings_phone_number);
         addressEditText = (EditText) findViewById(R.id.settings_address);
 
+        btnSecuityQuestion=(Button)findViewById(R.id.btn_security_questions);
+
         profileChangeTextBTN = (TextView) findViewById(R.id.btn_profile_image_change);
         closeTextBTN = (TextView) findViewById(R.id.btn_close_settings);
         updateTextBTN = (TextView) findViewById(R.id.btn_update_settings);
@@ -69,6 +72,16 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        btnSecuityQuestion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(SettingsActivity.this,ResetPasswordActivity.class);
+                intent.putExtra("settings","check");
+                startActivity(intent);
+
             }
         });
 

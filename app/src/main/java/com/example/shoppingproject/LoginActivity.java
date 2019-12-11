@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.shoppingproject.Admin.AdminCategoryActivity;
 import com.example.shoppingproject.Model.Users;
 import com.example.shoppingproject.Prevalent.Prevalent;
 import com.google.firebase.database.DataSnapshot;
@@ -32,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     private String parentDbName = "Users";
     private CheckBox chbRememberMe;
 
-    private TextView AdminLink, NotAdminLink;
+    private TextView AdminLink, NotAdminLink,ForgetPasswordLink;
 
 
     @Override
@@ -46,12 +47,22 @@ public class LoginActivity extends AppCompatActivity {
 
         AdminLink = (TextView) findViewById(R.id.admin_panel_link);
         NotAdminLink = (TextView) findViewById(R.id.not_admin_panel_link);
+        ForgetPasswordLink=(TextView)findViewById(R.id.forget_password_link);
 
 
         chbRememberMe = (CheckBox) findViewById(R.id.remember_me_chkb);
         Paper.init(this);
 
         loadingBar = new ProgressDialog(this);
+
+        ForgetPasswordLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(LoginActivity.this,ResetPasswordActivity.class);
+                intent.putExtra("Login","check");
+                startActivity(intent);
+            }
+        });
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,4 +1,4 @@
-package com.example.shoppingproject;
+package com.example.shoppingproject.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,13 +8,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.example.shoppingproject.HomeActivity;
+import com.example.shoppingproject.MainActivity;
+import com.example.shoppingproject.R;
+
 public class AdminCategoryActivity extends AppCompatActivity {
 
     private ImageView tShirts,sportsTShirts,female,sweather;
     private ImageView glasses,pursesBags,hats,shoess;
     private ImageView headPhone,laptops,watches,mobiles;
 
-    private Button LogoutBtn,CheckOrdersBtn;
+    private Button LogoutBtn,CheckOrdersBtn,btnMaintainProducts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +27,21 @@ public class AdminCategoryActivity extends AppCompatActivity {
 
         LogoutBtn=(Button)findViewById(R.id.btn_admin_logout);
         CheckOrdersBtn=(Button)findViewById(R.id.btn_check_orders);
+        btnMaintainProducts=(Button)findViewById(R.id.btn_maintain);
+
+        btnMaintainProducts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(AdminCategoryActivity.this, HomeActivity.class);
+                intent.putExtra("Admin","Admin");
+                startActivity(intent);
+            }
+        });
 
         LogoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(AdminCategoryActivity.this,MainActivity.class);
+                Intent intent =new Intent(AdminCategoryActivity.this, MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();

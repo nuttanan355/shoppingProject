@@ -17,9 +17,9 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_orders"
+        android:id="@+id/nav_search"
         android:name="com.example.shoppingproject.ui.gallery.GalleryFragment"
-        android:label="Orders"
+        android:label="Search"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
