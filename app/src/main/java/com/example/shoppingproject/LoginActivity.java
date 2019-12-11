@@ -6,6 +6,7 @@ import io.paperdb.Paper;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -50,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
         ForgetPasswordLink=(TextView)findViewById(R.id.forget_password_link);
 
 
+
         chbRememberMe = (CheckBox) findViewById(R.id.remember_me_chkb);
         Paper.init(this);
 
@@ -59,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent =new Intent(LoginActivity.this,ResetPasswordActivity.class);
-                intent.putExtra("Login","check");
+                intent.putExtra("check","Login");
                 startActivity(intent);
             }
         });
@@ -79,6 +81,10 @@ public class LoginActivity extends AppCompatActivity {
                 AdminLink.setVisibility(View.INVISIBLE);
                 NotAdminLink.setVisibility(View.VISIBLE);
                 parentDbName = "Admins";
+
+
+
+
 
             }
         });
@@ -145,6 +151,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             Toast.makeText(LoginActivity.this, "logged in Successfully...", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
+
                             Prevalent.currentOnlineUser = usersData;
                             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                             startActivity(intent);
