@@ -1,44 +1,41 @@
-package com.example.shoppingproject;
+package com.example.shoppingproject.Buyers;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.example.shoppingproject.Admin.AdminMaintainProductsActivity;
-import com.example.shoppingproject.Model.Products;
-import com.example.shoppingproject.Prevalent.Prevalent;
-import com.example.shoppingproject.ViewHolder.ProductViewHolder;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.shoppingproject.Admin.AdminMaintainProductsActivity;
+import com.example.shoppingproject.Model.Products;
+import com.example.shoppingproject.Prevalent.Prevalent;
+import com.example.shoppingproject.R;
+import com.example.shoppingproject.ViewHolder.ProductViewHolder;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-import androidx.drawerlayout.widget.DrawerLayout;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.paperdb.Paper;
-
-import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -46,7 +43,9 @@ public class HomeActivity extends AppCompatActivity {
     private DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-    private String type="";
+    private String type = "";
+
+
 
 
     @Override
@@ -55,12 +54,11 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
 
-Intent intent = getIntent();
-Bundle bundle=intent.getExtras();
-if (bundle!= null)
-{
-    type=getIntent().getExtras().get("Admin").toString();
-}
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if (bundle != null) {
+            type = getIntent().getExtras().get("Admin").toString();
+        }
 
 
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
@@ -77,9 +75,8 @@ if (bundle!= null)
             @Override
             public void onClick(View view) {
 //
-                if (!type.equals("Admin"))
-                {
-                    Intent intent =new Intent(HomeActivity.this,CartActivity.class);
+                if (!type.equals("Admin")) {
+                    Intent intent = new Intent(HomeActivity.this, CartActivity.class);
                     startActivity(intent);
                 }
             }
@@ -109,43 +106,31 @@ if (bundle!= null)
         navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override
             public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
-//                if (destination.getId() == R.id.nav_home) {
-//                    Toast.makeText(HomeActivity.this, "home", Toast.LENGTH_LONG).show();
-//                }
-
                 if (destination.getId() == R.id.nav_cart) {
-                    if(!type.equals("Admin")) {
-                        Intent intent =new Intent(HomeActivity.this,CartActivity.class);
+                    if (!type.equals("Admin")) {
+                        Intent intent = new Intent(HomeActivity.this, CartActivity.class);
                         startActivity(intent);
                     }
-
-                    //                    Toast.makeText(HomeActivity.this, "nav_cart", Toast.LENGTH_LONG).show();
-
                 }
                 if (destination.getId() == R.id.nav_search) {
-                    if(!type.equals("Admin")) {
-                        Intent intent =new Intent(HomeActivity.this,SearchProductsActivity.class);
+                    if (!type.equals("Admin")) {
+                        Intent intent = new Intent(HomeActivity.this, SearchProductsActivity.class);
                         startActivity(intent);
                     }
-
-//                    Toast.makeText(HomeActivity.this, "nav_orders", Toast.LENGTH_LONG).show();
                 }
                 if (destination.getId() == R.id.nav_categories) {
 
-//                    Toast.makeText(HomeActivity.this, "nav_categories", Toast.LENGTH_LONG).show();
                 }
                 if (destination.getId() == R.id.nav_settings) {
 
-                    if(!type.equals("Admin")) {
+                    if (!type.equals("Admin")) {
                         Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
                         startActivity(intent);
                     }
-
-//                    Toast.makeText(HomeActivity.this, "nav_settings", Toast.LENGTH_LONG).show();
                 }
                 if (destination.getId() == R.id.nav_logout) {
 
-                    if(!type.equals("Admin")) {
+                    if (!type.equals("Admin")) {
                         Toast.makeText(HomeActivity.this, "Logout", Toast.LENGTH_LONG).show();
 
                         Paper.book().destroy();
@@ -154,7 +139,6 @@ if (bundle!= null)
                         startActivity(intent);
                         finish();
                     }
-
 
 
                 } else {
@@ -169,7 +153,7 @@ if (bundle!= null)
         TextView userNameTextView = headerView.findViewById(R.id.user_profile_name);
         CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
 
-        if(!type.equals("Admin")) {
+        if (!type.equals("Admin")) {
             userNameTextView.setText(Prevalent.currentOnlineUser.getName());
             Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
         }
@@ -187,7 +171,7 @@ if (bundle!= null)
         super.onStart();
         FirebaseRecyclerOptions<Products> options =
                 new FirebaseRecyclerOptions.Builder<Products>()
-                        .setQuery(ProductsRef, Products.class)
+                        .setQuery(ProductsRef.orderByChild("productState").equalTo("Approved"), Products.class)
                         .build();
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
                 new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
@@ -203,14 +187,13 @@ if (bundle!= null)
                             @Override
                             public void onClick(View v) {
 
-                                if (type.equals("Admin"))
-                                {
+                                if (type.equals("Admin")) {
                                     Intent intent = new Intent(HomeActivity.this, AdminMaintainProductsActivity.class);
-                                    intent.putExtra("pid",model.getPid());
+                                    intent.putExtra("pid", model.getPid());
                                     startActivity(intent);
-                                }else {
+                                } else {
                                     Intent intent = new Intent(HomeActivity.this, ProductDetailsActivity.class);
-                                    intent.putExtra("pid",model.getPid());
+                                    intent.putExtra("pid", model.getPid());
                                     startActivity(intent);
                                 }
                             }

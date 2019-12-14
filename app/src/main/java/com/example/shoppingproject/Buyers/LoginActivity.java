@@ -1,12 +1,7 @@
-package com.example.shoppingproject;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import io.paperdb.Paper;
+package com.example.shoppingproject.Buyers;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -16,14 +11,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.shoppingproject.Admin.AdminCategoryActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.shoppingproject.Admin.AdminHomeActivity;
 import com.example.shoppingproject.Model.Users;
 import com.example.shoppingproject.Prevalent.Prevalent;
+import com.example.shoppingproject.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import io.paperdb.Paper;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -144,7 +145,7 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, "Welcome Admin, you are logged in Successfully...", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
 
-                            Intent intent = new Intent(LoginActivity.this, AdminCategoryActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, AdminHomeActivity.class);
                             startActivity(intent);
 
                         } else if (parentDbName.equals("Users")) {

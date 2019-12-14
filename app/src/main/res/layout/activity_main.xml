@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/welcome"
-    tools:context=".MainActivity">
+    tools:context=".Buyers.MainActivity">
 
     <ImageView
         android:id="@+id/app_logo"
@@ -34,19 +34,29 @@
         android:id="@+id/btn_account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
         android:layout_margin="5dp"
         android:background="@drawable/buttons"
         android:padding="20dp"
         android:textAllCaps="false"
         android:textSize="18sp"
+        android:layout_above="@id/seller_to_begin"
         android:text="Create an account"
         android:textColor="@android:color/white"
         />
 
-
-
-
+    <TextView
+        android:id="@+id/seller_to_begin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Wants to become a Seller ?"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

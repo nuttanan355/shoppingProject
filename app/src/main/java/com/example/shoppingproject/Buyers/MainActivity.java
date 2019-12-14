@@ -1,30 +1,37 @@
-package com.example.shoppingproject;
+package com.example.shoppingproject.Buyers;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import io.paperdb.Paper;
-
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shoppingproject.Model.Users;
 import com.example.shoppingproject.Prevalent.Prevalent;
+import com.example.shoppingproject.R;
+import com.example.shoppingproject.Sellers.SellerHomeActivity;
+import com.example.shoppingproject.Sellers.SellerRegistrationActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import io.paperdb.Paper;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button login_btn, register_btn;
     private ProgressDialog loadingBar;
+    private TextView sellerBegin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
         login_btn = (Button) findViewById(R.id.btn_welcome_login);
         register_btn = (Button) findViewById(R.id.btn_account);
+
+        sellerBegin=(TextView)findViewById(R.id.seller_to_begin);
 
         loadingBar = new ProgressDialog(this);
 
@@ -56,6 +65,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        sellerBegin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SellerRegistrationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         String UserPhoneKey = Paper.book().read(Prevalent.UserPhoneKey);
         String UserPasswordKey = Paper.book().read(Prevalent.UserPasswordKey);
 
@@ -71,6 +89,23 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (firebaseUser!=null)
+        {
+            Intent intent = new Intent(MainActivity.this, SellerHomeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+        }
+
 
     }
 
