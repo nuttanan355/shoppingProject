@@ -25,7 +25,7 @@
             android:layout_above="@id/btn_maintain"
             android:layout_below="@id/admin_welcome"
             android:layout_marginTop="10dp"
-            android:src="@drawable/adminIMG" />
+            android:src="@drawable/adminimg" />
 
 
         <Button

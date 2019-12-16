@@ -85,7 +85,7 @@ public class SellerAddNewProductActivity extends AppCompatActivity {
         AddNewProductBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ValidataProductData();
+                ValidateProductData();
 
             }
         });
@@ -135,7 +135,7 @@ public class SellerAddNewProductActivity extends AppCompatActivity {
 
     }
 
-    private void ValidataProductData() {
+    private void ValidateProductData() {
 
         Description = InputProductDescription.getText().toString();
         Price = InputProductPrice.getText().toString();
@@ -157,7 +157,7 @@ public class SellerAddNewProductActivity extends AppCompatActivity {
     private void StoreProductInformation() {
 
         loadingBar.setTitle("Add New Product");
-        loadingBar.setMessage("Dear Admin, please wait while we are adding the new product.");
+        loadingBar.setMessage("Dear Seller, please wait while we are adding the new product.");
         loadingBar.setCanceledOnTouchOutside(false);
         loadingBar.show();
 
