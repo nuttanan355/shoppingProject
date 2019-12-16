@@ -56,7 +56,7 @@ public class AdminCheckNewProductsActivity extends AppCompatActivity {
                         .setQuery(unverifiedProductsRef.orderByChild("productState")
                                 .equalTo("Not Approved"),Products.class).build();
 
-        FirebaseRecyclerAdapter<Products, ProductViewHolder>adapter1=
+        FirebaseRecyclerAdapter<Products, ProductViewHolder>adapter=
                 new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model)
@@ -101,18 +101,18 @@ public class AdminCheckNewProductsActivity extends AppCompatActivity {
                     @Override
                     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
                     {
-                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_items_layout, parent, false);
+                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_items_view, parent, false);
                         ProductViewHolder holder = new ProductViewHolder(view);
                         return holder;
                     }
                 };
-        recyclerView.setAdapter(adapter1);
-        adapter1.startListening();
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
     }
 
     private void ChangeProductState(String productID)
     {
-        unverifiedProductsRef.child("productID")
+        unverifiedProductsRef.child(productID)
                 .child("productState").setValue("Approved")
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

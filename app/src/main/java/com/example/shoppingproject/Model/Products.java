@@ -2,7 +2,7 @@ package com.example.shoppingproject.Model;
 
 public class Products
 {
-    private String pname,description,price,image,category,pid,date,time;
+    private String pname,description,price,image,category,pid,date,time,productState;
 
     public Products()
     {
@@ -10,7 +10,7 @@ public class Products
 
     }
 
-    public Products(String pname, String description, String price, String image, String category, String pid, String date, String time) {
+    public Products(String pname, String description, String price, String image, String category, String pid, String date, String time, String productState) {
         this.pname = pname;
         this.description = description;
         this.price = price;
@@ -19,6 +19,7 @@ public class Products
         this.pid = pid;
         this.date = date;
         this.time = time;
+        this.productState = productState;
     }
 
     public String getPname() {
@@ -83,5 +84,13 @@ public class Products
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getProductState() {
+        return productState;
+    }
+
+    public void setProductState(String productState) {
+        this.productState = productState;
     }
 }

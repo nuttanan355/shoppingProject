@@ -204,7 +204,7 @@ public class HomeActivity extends AppCompatActivity {
                     @NonNull
                     @Override
                     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_items_layout, parent, false);
+                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_items_view, parent, false);
                         ProductViewHolder holder = new ProductViewHolder(view);
                         return holder;
                     }
