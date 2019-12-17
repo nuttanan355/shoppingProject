@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Buyers.SearchProductsActivity">
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/r5"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -16,12 +16,13 @@
 
         <EditText
             android:id="@+id/search_product_name"
-            android:layout_width="300dp"
+            android:layout_width="0dp"
+            android:layout_weight="3"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="5dp"
             android:background="@color/white"
-            android:hint="Product Name"
+            android:hint="ชื่อสินค้า"
             android:padding="9dp"
             android:textColorHint="@color/colorBlack"
             android:textSize="18sp"
@@ -29,7 +30,8 @@
 
         <Button
             android:id="@+id/search_btn"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="10dp"
@@ -41,7 +43,7 @@
             android:textSize="16dp"
             android:textStyle="bold" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/search_list"

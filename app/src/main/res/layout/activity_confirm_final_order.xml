@@ -10,7 +10,7 @@
         android:id="@+id/txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Please confirm your Shipment Details"
+        android:text="ยืนยันการจัดส่ง"
         android:textSize="18sp"
         android:textColor="@color/colorPrimaryDark"
         android:layout_margin="15dp"
@@ -26,7 +26,7 @@
         android:layout_marginTop="60dp"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
-        android:hint="your Name"
+        android:hint="ชื่อ"
         />
 
     <EditText
@@ -38,7 +38,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
-        android:hint="your Phone Number"
+        android:hint="เบอร์โทรศัพท์"
         />
 
     <EditText
@@ -49,7 +49,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
-        android:hint="your Home Address"
+        android:hint="ที่อยู่"
         />
 
     <EditText
@@ -60,7 +60,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
-        android:hint="your City Name"
+        android:hint="จังหวัด"
         />
 
     <Button
@@ -69,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_margin="20dp"
-        android:text="Confirm"
+        android:text="ยืนยัน"
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/white"
         android:textSize="20dp"

@@ -18,7 +18,7 @@
             android:id="@+id/text_total_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="New Orders"
+            android:text="รายการสั่งซื้อ"
             android:textColor="@color/white"
             android:textSize="25dp"
             android:textAlignment="center"

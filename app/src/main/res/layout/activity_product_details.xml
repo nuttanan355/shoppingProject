@@ -21,7 +21,7 @@
         android:layout_below="@+id/product_image_details"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="Product Name"
+        android:text="ชื่อสินค้า"
         android:textColor="@color/colorBlack"
         android:textSize="15dp"
         android:textStyle="bold" />
@@ -45,7 +45,7 @@
         android:layout_below="@+id/product_description_details"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="Product Price"
+        android:text="ราคาสินค้า"
         android:textColor="@color/colorBlack"
         android:textSize="15dp"
         android:textStyle="bold" />
@@ -72,7 +72,7 @@
     android:background="@color/colorPrimaryDark"
     android:layout_margin="15dp"
     android:layout_alignParentBottom="true"
-    android:text="Add to Cart"
+    android:text="เพิ่มลงตะกร้า"
     android:textColor="@color/white"
     android:textSize="15dp"
 

@@ -13,22 +13,22 @@
             android:id="@+id/nav_cart"
             android:icon="@drawable/nav_cart"
             android:iconTint="@android:color/white"
-            android:title="Cart" />
+            android:title="ตะกร้าสินค้า" />
         <item
             android:id="@+id/nav_search"
             android:icon="@drawable/search"
             android:iconTint="@android:color/white"
-            android:title="Search" />
+            android:title="ค้นหา" />
         <item
             android:id="@+id/nav_categories"
             android:icon="@drawable/category"
             android:iconTint="@android:color/white"
-            android:title="Categories" />
+            android:title="ประเภทสินค้า" />
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_menu_manage"
             android:iconTint="@android:color/white"
-            android:title="Settings" />
+            android:title="ตั้งค่า" />
         <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/logout"

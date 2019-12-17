@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="Add New Product"
+        android:text="เพิ่มสินค้าใหม่"
         android:textAlignment="center"
         android:textSize="26dp"
         android:textStyle="bold" />
@@ -73,7 +73,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="T Shirts"
+            android:text="เสื้อเชิ้ต"
             android:textAlignment="center"
             android:textColor="@color/colorBlack"
             android:textStyle="bold" />
@@ -82,7 +82,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Sports T'Shirts"
+            android:text="เสื้อกีฬา"
             android:textAlignment="center"
             android:textColor="@color/colorBlack"
             android:textStyle="bold" />
@@ -91,7 +91,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Female Dresses"
+            android:text="ชุดผู้หญิง"
             android:textAlignment="center"
             android:textColor="@color/colorBlack"
             android:textSize="13dp"
@@ -101,7 +101,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Sweather"
+            android:text="เสื้อกันหนาว"
             android:textAlignment="center"
             android:textColor="@color/colorBlack"
             android:textStyle="bold" />
@@ -164,7 +164,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Glasses"
+            android:text="แว่นตา"
             android:textAlignment="center"
             android:textColor="@color/colorBlack"
             android:textStyle="bold" />
@@ -173,7 +173,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Purses Bags"
+            android:text="กระเป๋า"
             android:textAlignment="center"
             android:textColor="@color/colorBlack"
             android:textStyle="bold" />
@@ -182,7 +182,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Hats"
+            android:text="หมวก"
             android:textAlignment="center"
             android:textColor="@color/colorBlack"
             android:textSize="13dp"
@@ -192,7 +192,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Shoes"
+            android:text="รองเท้า"
             android:textAlignment="center"
             android:textColor="@color/colorBlack"
             android:textStyle="bold" />
@@ -255,7 +255,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Head Phone"
+            android:text="หูฟัง"
             android:textAlignment="center"
             android:textColor="@color/colorBlack"
             android:textStyle="bold" />
@@ -264,7 +264,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Laptops"
+            android:text="โน๊ตบุ๊คและพีซี"
             android:textAlignment="center"
             android:textColor="@color/colorBlack"
             android:textStyle="bold" />
@@ -273,7 +273,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Watches"
+            android:text="นาฬิกา"
             android:textAlignment="center"
             android:textColor="@color/colorBlack"
             android:textSize="13dp"
@@ -283,7 +283,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Mobiles"
+            android:text="โทรศัพท์มือถือ"
             android:textAlignment="center"
             android:textColor="@color/colorBlack"
             android:textStyle="bold" />

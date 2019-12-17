@@ -32,7 +32,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_below="@id/title_seller"
-        android:hint="Name..."
+        android:hint="ชื่อ..."
         android:inputType="text"
         android:textSize="16dp"
         android:layout_marginTop="10dp"/>
@@ -44,7 +44,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_below="@id/seller_name"
-        android:hint="Phone..."
+        android:hint="เบอร์โทรศัพท์..."
         android:inputType="phone"
         android:textSize="16dp"
         android:layout_marginTop="10dp"/>
@@ -56,7 +56,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_below="@id/seller_phone"
-        android:hint="Email..."
+        android:hint="อีเมลล์..."
         android:inputType="textEmailAddress"
         android:textSize="16dp"
         android:layout_marginTop="10dp"/>
@@ -68,7 +68,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_below="@id/seller_email"
-        android:hint="Password..."
+        android:hint="รหัสผ่าน..."
         android:inputType="textPassword"
         android:textSize="16dp"
         android:layout_marginTop="10dp"/>
@@ -80,7 +80,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_below="@id/seller_password"
-        android:hint="Shop - Business Address..."
+        android:hint="ที่อยู่ร้านค้า..."
         android:inputType="textEmailAddress"
         android:textSize="16dp"
         android:layout_marginTop="10dp"/>
@@ -108,7 +108,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="15dp"
         android:background="@android:color/holo_green_light"
-        android:text="Already have an Account?"
+        android:text="มีบัญชีผู้ใช้อยู่แล้ว"
         android:textAllCaps="false"
         android:textSize="18dp"
         android:textColor="@color/white"

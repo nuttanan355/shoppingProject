@@ -12,7 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-            android:text="Welcome Dear Admin"
+            android:text="Welcome Admin"
             android:textAlignment="center"
             android:textColor="@color/AdmincolorPrimaryDark"
             android:textSize="40dp"
@@ -37,7 +37,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="10dp"
             android:background="@color/colorPrimaryDark"
-            android:text="Maintain Products"
+            android:text="ดูสินค้า"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="20dp" />
@@ -51,7 +51,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="10dp"
             android:background="@color/colorPrimaryDark"
-            android:text="Check New Orders"
+            android:text="สั่งซื้อ"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="20dp" />
@@ -65,7 +65,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="10dp"
             android:background="@color/colorPrimaryDark"
-            android:text="Check and Approve New Product"
+            android:text="ตรวจสอบและอนุมัติสืนค้า"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="20dp" />

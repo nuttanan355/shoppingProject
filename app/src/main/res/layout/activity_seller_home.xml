@@ -18,7 +18,7 @@
             android:id="@+id/home_seller"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="My All Un-Verified Products"
+            android:text="สินค้าทั้งหมด"
             android:textColor="@color/white"
             android:textSize="20dp"
             android:textStyle="bold"
