@@ -5,14 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Buyers.ProductDetailsActivity">
+    
 
     <ImageView
         android:id="@+id/product_image_details"
         android:layout_width="match_parent"
-        android:layout_height="260dp"
-        android:scaleType="centerCrop"
-
-        />
+        android:layout_height="260dp" />
 
     <TextView
         android:id="@+id/product_name_details"

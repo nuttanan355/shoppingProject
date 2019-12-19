@@ -36,9 +36,9 @@ public class RegisterActivity extends AppCompatActivity {
 
         CreateAccount_btn = (Button) findViewById(R.id.btn_register);
 
-        txtUaername = (EditText) findViewById(R.id.regiter_txt_username);
-        txtPhonenumber = (EditText) findViewById(R.id.regiter_txt_phone_number);
-        txtPassword = (EditText) findViewById(R.id.regiter_txt_password);
+        txtUaername = (EditText) findViewById(R.id.register_txt_username);
+        txtPhonenumber = (EditText) findViewById(R.id.register_txt_phone_number);
+        txtPassword = (EditText) findViewById(R.id.register_txt_password);
 
         loadingBar=new ProgressDialog(this);
 

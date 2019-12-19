@@ -1,11 +1,5 @@
 package com.example.shoppingproject.Admin;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shoppingproject.Model.AdminOrders;
 import com.example.shoppingproject.R;
@@ -56,7 +56,8 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
                 holder.userPhoneNumber.setText("Phone: " + model.getPhone());
                 holder.userTotalPrice.setText("Total: " + model.getTotalAmount());
                 holder.userDateTime.setText("Order at: " + model.getDate() + ", " + model.getTime());
-                holder.userShippingAddress.setText("Shipping Address: " + model.getAddress() + ", " + model.getCity());
+                holder.userShippingAddress.setText("Address: " + model.getAddress() + ", " + model.getCity());
+                holder.userShippingCity.setText("City: " + model.getCity());
 
                 holder.btnShowOrder.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -77,7 +78,7 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
                                         "Yes", "No"
                                 };
                         AlertDialog.Builder builder = new AlertDialog.Builder(AdminNewOrdersActivity.this);
-                        builder.setTitle("Have you shipped this order products ?");
+                        builder.setTitle("จัดส่งสินค้าตามคำสั่งซื้อหรือไม่ ?");
 
                         builder.setItems(options, new DialogInterface.OnClickListener() {
                             @Override
@@ -112,7 +113,7 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
 
     public static class AdminOrdersViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView userName, userPhoneNumber, userTotalPrice, userDateTime, userShippingAddress;
+        public TextView userName, userPhoneNumber, userTotalPrice, userDateTime, userShippingAddress,userShippingCity;
         public Button btnShowOrder;
 
 
@@ -123,7 +124,8 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
             userPhoneNumber = itemView.findViewById(R.id.order_phone_number);
             userTotalPrice = itemView.findViewById(R.id.order_total_price);
             userDateTime = itemView.findViewById(R.id.order_date_time);
-            userShippingAddress = itemView.findViewById(R.id.order_address_city);
+            userShippingAddress = itemView.findViewById(R.id.order_address);
+            userShippingCity =itemView.findViewById(R.id.order_city);
 
             btnShowOrder = itemView.findViewById(R.id.btn_show_all_products);
 

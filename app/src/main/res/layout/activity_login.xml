@@ -19,27 +19,59 @@
         android:layout_marginTop="156dp"
         android:src="@drawable/applogo" />
 
-    <EditText
-        android:id="@+id/login_txt_username"
+    <LinearLayout
+        android:id="@+id/country_phone_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/app_logo"
-        android:background="@drawable/input_design"
-        android:padding="20dp"
         android:layout_marginLeft="15dp"
+        android:layout_marginTop="6dp"
+            android:layout_below="@+id/app_logo"
+            android:background="@drawable/input_design"
         android:layout_marginRight="15dp"
-        android:hint="Phone Number"
-        android:inputType="phone"
-        android:textColor="@color/colorPrimaryDark"
-        android:textColorHint="@color/colorPrimaryDark"
-        android:textSize="17dp"
-        android:textStyle="bold"
-        />
+        android:gravity="center_vertical">
+
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/ccp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:ccp_defaultNameCode="TH" />
+
+        <EditText
+            android:id="@+id/login_txt_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:hint="00 000 0000"
+            android:inputType="phone"
+            android:padding="20dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+<!--    <EditText-->
+<!--        android:id="@+id/login_txt_username"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/app_logo"-->
+<!--        android:background="@drawable/input_design"-->
+<!--        android:padding="20dp"-->
+<!--        android:layout_marginLeft="15dp"-->
+<!--        android:layout_marginRight="15dp"-->
+<!--        android:hint="Phone Number"-->
+<!--        android:inputType="phone"-->
+<!--        android:textColor="@color/colorPrimaryDark"-->
+<!--        android:textColorHint="@color/colorPrimaryDark"-->
+<!--        android:textSize="17dp"-->
+<!--        android:textStyle="bold"-->
+<!--        />-->
     <EditText
         android:id="@+id/login_txt_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/login_txt_username"
+        android:layout_below="@+id/country_phone_login"
         android:background="@drawable/input_design"
         android:padding="20dp"
         android:layout_marginLeft="15dp"

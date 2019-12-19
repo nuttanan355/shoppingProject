@@ -16,6 +16,7 @@
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:text="UserName"
+            android:fontFamily="@font/sukhumvitset_text"
             android:textColor="@color/white"
             android:textSize="14dp"
             android:layout_marginLeft="5dp"
@@ -27,6 +28,7 @@
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:text="เบอร์โทรศัพท์"
+            android:fontFamily="@font/sukhumvitset_text"
             android:textColor="@color/white"
             android:textSize="14dp"
             android:layout_marginLeft="5dp"
@@ -40,6 +42,7 @@
             android:id="@+id/order_total_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/sukhumvitset_text"
             android:text="ราคารวม"
             android:textColor="@color/white"
             android:textSize="18dp"
@@ -50,14 +53,28 @@
             />
 
         <TextView
-            android:id="@+id/order_address_city"
+            android:id="@+id/order_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ที่อยู่, จังหวัด"
+            android:fontFamily="@font/sukhumvitset_text"
+            android:text="ที่อยู่"
             android:textColor="@color/white"
             android:textSize="18dp"
             android:textStyle="bold"
             android:layout_below="@+id/order_total_price"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            />
+        <TextView
+            android:id="@+id/order_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sukhumvitset_text"
+            android:text="จังหวัด"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_below="@+id/order_address"
             android:gravity="center"
             android:layout_marginTop="10dp"
             />
@@ -66,14 +83,16 @@
             android:id="@+id/order_date_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/sukhumvitset_text"
             android:text="วันที่, เวลา"
             android:textColor="@color/white"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:layout_below="@+id/order_address_city"
+            android:layout_below="@+id/order_city"
             android:gravity="center"
             android:layout_marginTop="10dp"
             />
+
 
         <Button
             android:id="@+id/btn_show_all_products"
@@ -82,6 +101,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
+            android:fontFamily="@font/sukhumvitset_text"
             android:text="แสดงคำสั่งซื้อสินค้า"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp"
