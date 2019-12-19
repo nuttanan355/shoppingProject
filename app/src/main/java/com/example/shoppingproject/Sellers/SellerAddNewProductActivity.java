@@ -122,6 +122,7 @@ public class SellerAddNewProductActivity extends AppCompatActivity {
         startActivityForResult(intent, GalleryPick);
 
 
+
     }
 
     @Override
@@ -130,7 +131,9 @@ public class SellerAddNewProductActivity extends AppCompatActivity {
 
         if (requestCode == GalleryPick && resultCode == RESULT_OK && data != null) {
             ImageUri = data.getData();
+//            InputProductImage.setI
             InputProductImage.setImageURI(ImageUri);
+
         }
 
     }
