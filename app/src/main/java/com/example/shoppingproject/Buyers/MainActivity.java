@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
                     Users usersData = dataSnapshot.child("Users").child(phone).getValue(Users.class);
 
                     if (usersData.getPhone().equals(phone) && usersData.getPassword().equals(password)) {
-                        Toast.makeText(MainActivity.this, "Please wait, you are already logged in...", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "กรุณาสักครู่คุณได้เข้าสู่ระบบ", Toast.LENGTH_SHORT).show();
                         loadingBar.dismiss();
 
                         Intent intent = new Intent(MainActivity.this, HomeActivity.class);
@@ -129,11 +129,11 @@ public class MainActivity extends AppCompatActivity {
                     } else {
 
                         loadingBar.dismiss();
-                        Toast.makeText(MainActivity.this, "Password is incorrect.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "รหัสผ่านไม่ถูกต้อง", Toast.LENGTH_SHORT).show();
                     }
 
                 } else {
-                    Toast.makeText(MainActivity.this, "Accout with this " + phone + "number do not exists.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "บัญชีนี้ " + phone + "ไม่มีหมายเลข", Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
 
                 }

@@ -80,7 +80,7 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
 
-                Toast.makeText(AdminMaintainProductsActivity.this, "The Product Is deleted successfully.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AdminMaintainProductsActivity.this, "ลบสินค้าสำเร็จแล้ว", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -93,15 +93,15 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
 
         if (pName.equals(""))
         {
-            Toast.makeText(this, "Write down Product Name.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "กรุณาใส่ชื่อสินค้า", Toast.LENGTH_SHORT).show();
         }
         else if (pPrice.equals(""))
         {
-            Toast.makeText(this, "Write down Product Price.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "กรุณาใส่ราคาสินค้า", Toast.LENGTH_SHORT).show();
         }
         else if (pDescription.equals(""))
         {
-            Toast.makeText(this, "Write down Product Description.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "กรุณาใส่รายละเอียดสินค้า", Toast.LENGTH_SHORT).show();
         }
         else
         {
@@ -117,7 +117,7 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
                 {
                     if (task.isSuccessful())
                     {
-                        Toast.makeText(AdminMaintainProductsActivity.this, "Changes applied successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AdminMaintainProductsActivity.this, "การเปลี่ยนแปลงสำเร็จ", Toast.LENGTH_SHORT).show();
 
                         Intent intent = new Intent(AdminMaintainProductsActivity.this, SellerProductCategoryActivity.class);
                         startActivity(intent);

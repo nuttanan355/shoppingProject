@@ -67,7 +67,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
                 if (state.equals("Order Placed")||state.equals("Order Shipped"))
                 {
-                    Toast.makeText(ProductDetailsActivity.this,"you can add purchase more products, once your order is shipped or confirmed.",Toast.LENGTH_LONG).show();
+                    Toast.makeText(ProductDetailsActivity.this,"สามารถซื้อสินค้าเพิ่มเติมคำสั่งซื้อของคุณจะถูกส่งหรือยืนยัน",Toast.LENGTH_LONG).show();
                 }
                 else
                     {
@@ -121,7 +121,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
                                       @Override
                                       public void onComplete(@NonNull Task<Void> task) {
                                           if (task.isSuccessful()){
-                                              Toast.makeText(ProductDetailsActivity.this,"Added to Cart List.",Toast.LENGTH_SHORT).show();
+                                              Toast.makeText(ProductDetailsActivity.this,"เพิ่มในรถเข็นแล้ว",Toast.LENGTH_SHORT).show();
 
                                               Intent intent=new Intent(ProductDetailsActivity.this,HomeActivity.class);
                                               startActivity(intent);

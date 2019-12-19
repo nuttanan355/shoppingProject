@@ -133,7 +133,7 @@ public class CartActivity extends AppCompatActivity {
                                                 public void onComplete(@NonNull Task<Void> task) {
 
                                                     if (task.isSuccessful()) {
-                                                        Toast.makeText(CartActivity.this, "Item removed successfully.", Toast.LENGTH_SHORT).show();
+                                                        Toast.makeText(CartActivity.this, "ลบสินค้าสำเร็จแล้ว", Toast.LENGTH_SHORT).show();
 
                                                         Intent intent = new Intent(CartActivity.this, HomeActivity.class);
                                                         startActivity(intent);
@@ -180,10 +180,10 @@ public class CartActivity extends AppCompatActivity {
                         recyclerView.setVisibility(View.GONE);
 
                         txtMsg1.setVisibility(View.VISIBLE);
-                        txtMsg1.setText("Congratulations, your final order has been Shipped successfully. Soon you will received your order at your door step.");
+                        txtMsg1.setText("ขอแสดงความยินดีการสั่งซื้อขั้นสุดท้ายของคุณได้รับการจัดส่งเรียบร้อยแล้ว");
                         NextProductBtn.setVisibility(View.GONE);
 
-                        Toast.makeText(CartActivity.this, "you can purchase more products ,once you received your first final order.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CartActivity.this, "สามารถซื้อสินค้าเพิ่มเติมได้, เมื่อได้รับคำสั่งซื้อครั้งสุดท้าย", Toast.LENGTH_SHORT).show();
                     } else if (shippingstate.equals("not shipped")) {
                         txtTotalAmount.setText("Shipping State = Not Shipped");
                         recyclerView.setVisibility(View.GONE);
@@ -191,7 +191,7 @@ public class CartActivity extends AppCompatActivity {
                         txtMsg1.setVisibility(View.VISIBLE);
                         NextProductBtn.setVisibility(View.GONE);
 
-                        Toast.makeText(CartActivity.this, "you can purchase more products ,once you received your first final order.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CartActivity.this, "สามารถซื้อสินค้าเพิ่มเติมได้, เมื่อได้รับคำสั่งซื้อครั้งสุดท้าย", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

@@ -64,8 +64,8 @@ public class SellerLoginActivity extends AppCompatActivity {
 
         if (!email.equals("")&&!password.equals(""))
         {
-            loadingBar.setTitle("Login Seller Account");
-            loadingBar.setMessage("Please wait, while we are checking the credentials.");
+            loadingBar.setTitle("เข้าสู่ระบบบัญชีผู้ขาย");
+            loadingBar.setMessage("โปรดรอสักครู่ขณะที่กำลังตรวจสอบข้อมูล");
             loadingBar.setCanceledOnTouchOutside(false);
             loadingBar.show();
 
@@ -86,7 +86,7 @@ public class SellerLoginActivity extends AppCompatActivity {
         }
         else
         {
-            Toast.makeText(SellerLoginActivity.this, "Please complete the Registration form.", Toast.LENGTH_LONG).show();
+            Toast.makeText(SellerLoginActivity.this, "กรุณากรอกแบบฟอร์มลงทะเบียน", Toast.LENGTH_LONG).show();
         }
 
 

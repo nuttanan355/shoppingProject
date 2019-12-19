@@ -58,19 +58,19 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
 
         if (TextUtils.isEmpty(nameEditText.getText().toString()))
         {
-            Toast.makeText(this,"Please provide your full name.",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"กรุณาระบุชื่อเต็ม",Toast.LENGTH_SHORT).show();
         }
         else if (TextUtils.isEmpty(phoneEditText.getText().toString()))
         {
-            Toast.makeText(this,"Please provide your phone number.",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"กรุณาระบุเบอรืโทรศัพท์",Toast.LENGTH_SHORT).show();
         }
         else if (TextUtils.isEmpty(addressEditText.getText().toString()))
         {
-            Toast.makeText(this,"Please provide your address.",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"กรุณาระบุที่อยู่",Toast.LENGTH_SHORT).show();
         }
         else if (TextUtils.isEmpty(cityEditText.getText().toString()))
         {
-            Toast.makeText(this,"Please provide your city name.",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"กรุณาระบุจังหวัด",Toast.LENGTH_SHORT).show();
         }
         else 
             {
@@ -118,7 +118,7 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
 
                             if (task.isSuccessful()){
-                                Toast.makeText(ConfirmFinalOrderActivity.this,"your finl order has been placed successfully.",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ConfirmFinalOrderActivity.this,"คำสั่งซื้อสุดท้ายเรียบร้อยแล้ว",Toast.LENGTH_SHORT).show();
 
                                 Intent intent =new Intent(ConfirmFinalOrderActivity.this,HomeActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TASK);

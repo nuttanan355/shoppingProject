@@ -60,8 +60,8 @@ public class ResetPasswordActivity extends AppCompatActivity {
 
 
         if (check.equals("settings")) {
-            pageTitle.setText("Set Questions");
-            titlteQuestions.setText("Please set Answers for the Following Security Questions?");
+            pageTitle.setText("ตั้งคำถาม");
+            titlteQuestions.setText("โปรดตั้งคำตอบสำหรับคำถามเพื่อความปลอดภัยต่อไปนี้?");
             verifyBTN.setText("Set");
 
             displayPreviousAnsers();
@@ -93,7 +93,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
         String answer2 = question2.getText().toString().toLowerCase();
 
         if (question1.equals("") && question2.equals("")) {
-            Toast.makeText(ResetPasswordActivity.this, "Please answer both question.", Toast.LENGTH_LONG).show();
+            Toast.makeText(ResetPasswordActivity.this, "กรุณาตอบคำถามทั้ง2", Toast.LENGTH_LONG).show();
         } else {
             DatabaseReference ref = FirebaseDatabase.getInstance()
                     .getReference()
@@ -108,7 +108,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
-                        Toast.makeText(ResetPasswordActivity.this, "you have set security questions successfully.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(ResetPasswordActivity.this, "ได้ตั้งคำถามเพื่อความปลอดภัยเรียบร้อยแล้ว", Toast.LENGTH_LONG).show();
 
                         Intent intent = new Intent(ResetPasswordActivity.this, HomeActivity.class);
                         startActivity(intent);
@@ -170,15 +170,15 @@ public class ResetPasswordActivity extends AppCompatActivity {
                             String ans2 = dataSnapshot.child("Security Questions").child("answer2").getValue().toString();
 
                             if (!ans1.equals(answer1)) {
-                                Toast.makeText(ResetPasswordActivity.this, "your 1st answer is wrong.", Toast.LENGTH_LONG).show();
+                                Toast.makeText(ResetPasswordActivity.this, "คำตอบแรกของคุณผิด", Toast.LENGTH_LONG).show();
                             } else if (!ans2.equals(answer2)) {
-                                Toast.makeText(ResetPasswordActivity.this, "your 2nd answer is wrong.", Toast.LENGTH_LONG).show();
+                                Toast.makeText(ResetPasswordActivity.this, "คำตอบที่สองของคุณผิด", Toast.LENGTH_LONG).show();
                             } else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(ResetPasswordActivity.this);
-                                builder.setTitle("New Password");
+                                builder.setTitle("รหัสผ่านใหม่");
 
                                 final EditText newPassword = new EditText(ResetPasswordActivity.this);
-                                newPassword.setHint("Write Password here...");
+                                newPassword.setHint("กรอกรหัสผ่านที่นี่...");
                                 builder.setView(newPassword);
 
                                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -190,7 +190,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
                                                         @Override
                                                         public void onComplete(@NonNull Task<Void> task) {
                                                             if (task.isSuccessful()) {
-                                                                Toast.makeText(ResetPasswordActivity.this, "Password changed successfully.", Toast.LENGTH_LONG).show();
+                                                                Toast.makeText(ResetPasswordActivity.this, "เปลียนรหัสผ่านสำเร็จแล้ว", Toast.LENGTH_LONG).show();
 
                                                                 Intent intent = new Intent(ResetPasswordActivity.this, LoginActivity.class);
                                                                 startActivity(intent);
@@ -213,10 +213,10 @@ public class ResetPasswordActivity extends AppCompatActivity {
                         }
 //                    }
                         else {
-                            Toast.makeText(ResetPasswordActivity.this, "you have not set the security questions.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(ResetPasswordActivity.this, "ยังไม่ได้ตั้งคำถามเพื่อความปลอดภัย", Toast.LENGTH_LONG).show();
                         }
                     } else {
-                        Toast.makeText(ResetPasswordActivity.this, "This phone number not exist.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(ResetPasswordActivity.this, "ไม่มีหมายเลขโทรศัพท์นี้", Toast.LENGTH_LONG).show();
                     }
 
                 }
@@ -229,7 +229,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
         }
         else
             {
-                Toast.makeText(ResetPasswordActivity.this, "please complete the form.", Toast.LENGTH_LONG).show();
+                Toast.makeText(ResetPasswordActivity.this, "กรุณากรอกแบบฟอร์ม", Toast.LENGTH_LONG).show();
             }
     }
 }

@@ -75,8 +75,8 @@ public class SellerRegistrationActivity extends AppCompatActivity {
 
         if (!name.equals("") && !phone.equals("") && !email.equals("") && !password.equals("") && !address.equals("")) {
 
-            loadingBar.setTitle("Create Seller Account");
-            loadingBar.setMessage("Please wait, while we are checking the credentials.");
+            loadingBar.setTitle("สร้างบัญชีผู้ขาย");
+            loadingBar.setMessage("โปรดรอสักครู่ขณะที่กำลังตรวจสอบข้อมูล");
             loadingBar.setCanceledOnTouchOutside(false);
             loadingBar.show();
 
@@ -107,7 +107,7 @@ public class SellerRegistrationActivity extends AppCompatActivity {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 loadingBar.dismiss();
-                                                Toast.makeText(SellerRegistrationActivity.this, "You are Registered Successfully", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(SellerRegistrationActivity.this, "ลงทะเบียนเรียบร้อยแล้ว", Toast.LENGTH_SHORT).show();
 
                                                 Intent intent = new Intent(SellerRegistrationActivity.this, SellerHomeActivity.class);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -119,7 +119,7 @@ public class SellerRegistrationActivity extends AppCompatActivity {
                         }
                     });
         } else {
-            Toast.makeText(SellerRegistrationActivity.this, "Please complete the Registration form.", Toast.LENGTH_LONG).show();
+            Toast.makeText(SellerRegistrationActivity.this, "กรุณากรอกแบบฟอร์มลงทะเบียน", Toast.LENGTH_LONG).show();
         }
 
 

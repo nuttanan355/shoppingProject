@@ -126,7 +126,7 @@ public class SellerHomeActivity extends AppCompatActivity {
                                         };
 
                                 AlertDialog.Builder builder = new AlertDialog.Builder(SellerHomeActivity.this);
-                                builder.setTitle("Do you want to Delete this Product. Are you Sure ?");
+                                builder.setTitle("ต้องการลบสินค้านี้หรือไม่ แน่ใจไหม ?");
                                 builder.setItems(options, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int position) {
@@ -166,7 +166,7 @@ public class SellerHomeActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task)
                     {
-                        Toast.makeText(SellerHomeActivity.this,"That item has been Delete Successfully.",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SellerHomeActivity.this,"ลบสำเร็จแล้ว",Toast.LENGTH_SHORT).show();
 
                     }
                 });

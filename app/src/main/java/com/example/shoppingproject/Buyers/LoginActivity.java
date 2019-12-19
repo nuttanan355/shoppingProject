@@ -107,12 +107,12 @@ public class LoginActivity extends AppCompatActivity {
         String txtpassword = txtPassword.getText().toString();
 
         if (TextUtils.isEmpty(txtphone)) {
-            Toast.makeText(this, "Please write your Phone Number.....", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "กรุณากรอกหมายเลขโทรศัพท์.....", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(txtpassword)) {
-            Toast.makeText(this, "Please write your Password.....", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "กรุณากรอกรหัสผ่าน.....", Toast.LENGTH_SHORT).show();
         } else {
             loadingBar.setTitle("Login Account");
-            loadingBar.setMessage("Please wait, while we are checking the credentials.");
+            loadingBar.setMessage("โปรดรอสักครู่ขณะนี้เรากำลังตรวจสอบข้อมูล");
             loadingBar.setCanceledOnTouchOutside(false);
             loadingBar.show();
 
@@ -142,7 +142,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (usersData.getPhone().equals(phone) && usersData.getPassword().equals(password)) {
                         if (parentDbName.equals("Admins")) {
 
-                            Toast.makeText(LoginActivity.this, "Welcome Admin, you are logged in Successfully...", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "ยินดีต้อนรับ คุณเข้าสู่ระบบสำเร็จ..", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
 
                             Intent intent = new Intent(LoginActivity.this, AdminHomeActivity.class);
@@ -150,7 +150,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         } else if (parentDbName.equals("Users")) {
 
-                            Toast.makeText(LoginActivity.this, "logged in Successfully...", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "เข้าสู่ระบบสำเร็จ...", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
 
                             Prevalent.currentOnlineUser = usersData;
@@ -161,11 +161,11 @@ public class LoginActivity extends AppCompatActivity {
                     } else {
 
                         loadingBar.dismiss();
-                        Toast.makeText(LoginActivity.this, "Password is incorrect.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "รหัสผ่านไม่ถูกต้อง", Toast.LENGTH_SHORT).show();
                     }
 
                 } else {
-                    Toast.makeText(LoginActivity.this, "Account with this " + phone + " number do not exists.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "บัญชีนี้ " + phone + " ไม่มีหมายเลข", Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
 
                 }

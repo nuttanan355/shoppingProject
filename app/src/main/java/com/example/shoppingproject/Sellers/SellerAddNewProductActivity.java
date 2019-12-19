@@ -142,13 +142,13 @@ public class SellerAddNewProductActivity extends AppCompatActivity {
         Pname = InputProductName.getText().toString();
 
         if (ImageUri == null) {
-            Toast.makeText(this, "Product image is mandatory...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "กรุณใส่รูปภาพ...", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(Description)) {
-            Toast.makeText(this, "Please write product Description...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "กรุณากรอกรายละเอียดสินค้า...", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(Price)) {
-            Toast.makeText(this, "Please write product Price...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "กรุณากรอกราคาสินค้า...", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(Pname)) {
-            Toast.makeText(this, "Please write product Name...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "กรุณากรอกชื่อสินค้า...", Toast.LENGTH_SHORT).show();
         } else {
             StoreProductInformation();
         }
@@ -156,8 +156,8 @@ public class SellerAddNewProductActivity extends AppCompatActivity {
 
     private void StoreProductInformation() {
 
-        loadingBar.setTitle("Add New Product");
-        loadingBar.setMessage("Dear Seller, please wait while we are adding the new product.");
+        loadingBar.setTitle("เพิ่มสินค้าใหม่");
+        loadingBar.setMessage("กรุณารอสักครู่ขณะที่กำลังเพิ่มสินค้าใหม่");
         loadingBar.setCanceledOnTouchOutside(false);
         loadingBar.show();
 
@@ -186,7 +186,7 @@ public class SellerAddNewProductActivity extends AppCompatActivity {
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(SellerAddNewProductActivity.this, "Product Image uploaded Successfully....", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SellerAddNewProductActivity.this, "อัปโหลดรูปภาพสินค้าสำเร็จแล้ว....", Toast.LENGTH_SHORT).show();
 
                 Task<Uri> uriTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                     @Override
@@ -205,7 +205,7 @@ public class SellerAddNewProductActivity extends AppCompatActivity {
 
                         downloadImageUrl = task.getResult().toString();
 
-                        Toast.makeText(SellerAddNewProductActivity.this, "got the Product image Uri Successfully...", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SellerAddNewProductActivity.this, "ใส่รูปภาพเรียบร้อยแล้ว...", Toast.LENGTH_SHORT).show();
 
                         SaveProductInfoToDatabase();
                     }
@@ -247,7 +247,7 @@ public class SellerAddNewProductActivity extends AppCompatActivity {
                             startActivity(intent);
 
                             loadingBar.dismiss();
-                            Toast.makeText(SellerAddNewProductActivity.this, "Product is added successfully...", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SellerAddNewProductActivity.this, "เพิ่มสินค้าสำเร็จแล้ว...", Toast.LENGTH_SHORT).show();
                         } else {
                             loadingBar.dismiss();
                             String message = task.getException().toString();

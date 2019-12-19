@@ -79,7 +79,7 @@ public class AdminCheckNewProductsActivity extends AppCompatActivity {
                                         };
 
                                 AlertDialog.Builder builder = new AlertDialog.Builder(AdminCheckNewProductsActivity.this);
-                                builder.setTitle("Do you want to Approved this Product. Are you Sure ?");
+                                builder.setTitle("ต้องการอนุมัติสินค้านี้หรือไม่ คุณแน่ใจไหม ??");
                                 builder.setItems(options, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int position) {
@@ -113,12 +113,12 @@ public class AdminCheckNewProductsActivity extends AppCompatActivity {
     private void ChangeProductState(String productID)
     {
         unverifiedProductsRef.child(productID)
-                .child("productState").setValue("Approved")
+                .child("productState").setValue("การอนุมัติ")
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task)
             {
-                Toast.makeText(AdminCheckNewProductsActivity.this,"That item has been approved, and it is now available for sale from the seller.",Toast.LENGTH_SHORT).show();
+                Toast.makeText(AdminCheckNewProductsActivity.this,"กำลังอนุมัติรายการสินค้านี้.",Toast.LENGTH_SHORT).show();
 
             }
         });

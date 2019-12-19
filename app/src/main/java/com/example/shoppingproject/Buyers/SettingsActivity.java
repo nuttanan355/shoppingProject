@@ -119,7 +119,7 @@ public class SettingsActivity extends AppCompatActivity {
         ref.child(Prevalent.currentOnlineUser.getPhone()).updateChildren(userMap);
 
         startActivity(new Intent(SettingsActivity.this,HomeActivity.class));
-        Toast.makeText(SettingsActivity.this,"ProFile Info update successfully.",Toast.LENGTH_SHORT).show();
+        Toast.makeText(SettingsActivity.this,"อัปเดตข้อมูลสำเร็จแล้ว",Toast.LENGTH_SHORT).show();
         finish();
 
     }
@@ -133,7 +133,7 @@ public class SettingsActivity extends AppCompatActivity {
             imageUri = result.getUri();
             profileImageView.setImageURI(imageUri);
         } else {
-            Toast.makeText(this, "Error,Try Again.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "มีข้ผิดพลาด, ลองอีกครั้ง", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(SettingsActivity.this, SettingsActivity.class));
             finish();
         }
@@ -141,13 +141,13 @@ public class SettingsActivity extends AppCompatActivity {
 
     private void userInfoSaved() {
         if (TextUtils.isEmpty(fullNameEditText.getText().toString())) {
-            Toast.makeText(this, "Name is mandatory", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "ต้องระบุชื่อ", Toast.LENGTH_SHORT).show();
 
         } else if (TextUtils.isEmpty(userPhoneEditText.getText().toString())) {
-            Toast.makeText(this, "Phone is mandatory", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "ต้องระบุเบอร์โทรศัพท์", Toast.LENGTH_SHORT).show();
 
         } else if (TextUtils.isEmpty(addressEditText.getText().toString())) {
-            Toast.makeText(this, "Address is mandatory", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "ต้องระบุที่อยู่", Toast.LENGTH_SHORT).show();
 
         } else if (checker.equals("clicked")) {
             uploadImage();
@@ -158,7 +158,7 @@ public class SettingsActivity extends AppCompatActivity {
     private void uploadImage() {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Update Profile");
-        progressDialog.setMessage("Please wait,While we are updating your account information");
+        progressDialog.setMessage("โปรดรอสักครู่ขณะที่กำลังอัปเดตข้อมูลบัญชีของคุณ");
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
 
@@ -194,7 +194,7 @@ public class SettingsActivity extends AppCompatActivity {
 
                                 progressDialog.dismiss();
                                 startActivity(new Intent(SettingsActivity.this,HomeActivity.class));
-                                Toast.makeText(SettingsActivity.this,"ProFile Info update successfully.",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SettingsActivity.this,"อัปเดตข้อมูลสำเร็จ",Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                             else {
@@ -205,7 +205,7 @@ public class SettingsActivity extends AppCompatActivity {
                     });
         }
         else {
-            Toast.makeText(this,"image is not selected.",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"ไม่ได้เลือกรูปภาพ",Toast.LENGTH_SHORT).show();
         }
 
     }

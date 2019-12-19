@@ -59,19 +59,19 @@ public class RegisterActivity extends AppCompatActivity {
         String txtpassword = txtPassword.getText().toString();
 
         if(TextUtils.isEmpty(txtname)){
-            Toast.makeText(this,"Please write your name.....",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"กรุณากรอกชื่อ.....",Toast.LENGTH_SHORT).show();
         }
 
         else if(TextUtils.isEmpty(txtphone)){
-            Toast.makeText(this,"Please write your Phone Number.....",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"กรุณากรอกเบอร์โทรศัพท์.....",Toast.LENGTH_SHORT).show();
         }
 
         else if(TextUtils.isEmpty(txtpassword)){
-            Toast.makeText(this,"Please write your Password.....",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"กรุณากรอกรหัสผ่าน.....",Toast.LENGTH_SHORT).show();
         }
         else {
             loadingBar.setTitle("Create Account");
-            loadingBar.setMessage("Please wait, while we are checking the credentials.");
+            loadingBar.setMessage("โปรดรอสักครู่ขณะนี้เรากำลังตรวจสอบข้อมูล");
             loadingBar.setCanceledOnTouchOutside(false);
             loadingBar.show();
 
@@ -102,22 +102,22 @@ public class RegisterActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()){
-                                        Toast.makeText(RegisterActivity.this,"Congratulations, your account has been created",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(RegisterActivity.this,"ขอแสดงความยินดีบัญชีของคุณได้ถูกสร้างขึ้นแล้ว",Toast.LENGTH_SHORT).show();
                                         loadingBar.dismiss();
 
                                         Intent intent =new Intent(RegisterActivity.this,LoginActivity.class);
                                         startActivity(intent);
                                     } else {
                                         loadingBar.dismiss();
-                                        Toast.makeText(RegisterActivity.this,"Network Error: Please try again after some time...",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(RegisterActivity.this,"เครือข่ายผิดพลาด,โปรดลองอีกครั้ง...",Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
 
                 }else {
-                    Toast.makeText(RegisterActivity.this,"This"+phone+" already exists",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this,"หมายเลข"+phone+"มีอยู่แล้ว",Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
-                    Toast.makeText(RegisterActivity.this,"Please try again using another phone number.",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this,"โปรดลองอีกครั้งโดยใช้เบอร์โทรศัพท์อื่น",Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(RegisterActivity.this,MainActivity.class);
                     startActivity(intent);
 
