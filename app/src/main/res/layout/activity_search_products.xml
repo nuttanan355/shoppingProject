@@ -22,6 +22,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="5dp"
             android:background="@color/white"
+            android:fontFamily="@font/sukhumvitset_text"
             android:hint="ชื่อสินค้า"
             android:padding="9dp"
             android:textColorHint="@color/colorBlack"
@@ -38,7 +39,8 @@
             android:layout_toRightOf="@+id/search_product_name"
             android:background="@color/colorPrimaryDark"
             android:padding="9dp"
-            android:text="Search"
+            android:fontFamily="@font/sukhumvitset_text"
+            android:text="ค้นหา"
             android:textColor="@color/white"
             android:textSize="16dp"
             android:textStyle="bold" />
