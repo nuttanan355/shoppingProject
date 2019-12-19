@@ -33,9 +33,11 @@
         android:layout_marginRight="15dp"
         android:layout_below="@id/title_seller"
         android:hint="ชื่อ..."
+        android:fontFamily="@font/sukhumvitset_text"
         android:inputType="text"
         android:textSize="16dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/seller_phone"
@@ -45,9 +47,11 @@
         android:layout_marginRight="15dp"
         android:layout_below="@id/seller_name"
         android:hint="เบอร์โทรศัพท์..."
+        android:fontFamily="@font/sukhumvitset_text"
         android:inputType="phone"
         android:textSize="16dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/seller_email"
@@ -57,9 +61,11 @@
         android:layout_marginRight="15dp"
         android:layout_below="@id/seller_phone"
         android:hint="อีเมลล์..."
+        android:fontFamily="@font/sukhumvitset_text"
         android:inputType="textEmailAddress"
         android:textSize="16dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/seller_password"
@@ -69,9 +75,11 @@
         android:layout_marginRight="15dp"
         android:layout_below="@id/seller_email"
         android:hint="รหัสผ่าน..."
+        android:fontFamily="@font/sukhumvitset_text"
         android:inputType="textPassword"
         android:textSize="16dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/seller_address"
@@ -81,9 +89,11 @@
         android:layout_marginRight="15dp"
         android:layout_below="@id/seller_password"
         android:hint="ที่อยู่ร้านค้า..."
+        android:fontFamily="@font/sukhumvitset_text"
         android:inputType="textEmailAddress"
         android:textSize="16dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btn_seller_register"
@@ -109,10 +119,13 @@
         android:layout_marginBottom="15dp"
         android:background="@android:color/holo_green_light"
         android:text="มีบัญชีผู้ใช้อยู่แล้ว"
+        android:textStyle="bold"
+        android:fontFamily="@font/sukhumvitset_text"
         android:textAllCaps="false"
         android:textSize="18dp"
         android:textColor="@color/white"
         android:layout_alignParentBottom="true"
+
         />
 
 

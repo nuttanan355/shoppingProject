@@ -42,7 +42,8 @@
             android:text="ดูสินค้า"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="21dp"
+            android:textStyle="bold"/>
 
         <Button
             android:id="@+id/btn_check_orders"
@@ -57,7 +58,8 @@
             android:text="สั่งซื้อ"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="21dp"
+            android:textStyle="bold"/>
 
         <Button
             android:id="@+id/btn_check_approve_product"
@@ -72,7 +74,8 @@
             android:text="ตรวจสอบและอนุมัติสืนค้า"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="21dp"
+            android:textStyle="bold"/>
 
         <Button
             android:id="@+id/btn_admin_logout"
@@ -87,7 +90,8 @@
             android:text="Logout"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="25dp"
+            android:textStyle="bold"/>
 
 
 </RelativeLayout>

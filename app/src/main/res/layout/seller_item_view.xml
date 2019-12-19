@@ -37,6 +37,7 @@ app:cardElevation="15dp"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="16dp"
+        android:textStyle="bold"
 
         />
 
@@ -58,7 +59,8 @@ app:cardElevation="15dp"
         android:text="ราคาสินค้า"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="16dp"
+        android:textSize="18dp"
+        android:textStyle="bold"
 
         />
 
@@ -73,7 +75,8 @@ app:cardElevation="15dp"
         android:text="ประเภทสินค้า"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="16dp" />
+        android:textSize="18dp"
+        android:textStyle="bold"/>
 
 
 </RelativeLayout>

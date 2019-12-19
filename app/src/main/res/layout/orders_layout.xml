@@ -107,6 +107,7 @@
             android:textSize="18sp"
             android:background="@color/white"
             android:layout_below="@+id/order_date_time"
+            android:textStyle="bold"
 
             />
 

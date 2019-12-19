@@ -20,8 +20,9 @@
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:text="ชื่อสินค้า"
+        android:fontFamily="@font/sukhumvitset_text"
         android:textColor="@color/colorBlack"
-        android:textSize="15dp"
+        android:textSize="18dp"
         android:textStyle="bold" />
 
     <TextView
@@ -31,9 +32,10 @@
         android:layout_below="@+id/product_name_details"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="Product Description"
+        android:text="รายละเอียดสินค้า"
+        android:fontFamily="@font/sukhumvitset_text"
         android:textColor="@color/colorBlack"
-        android:textSize="15dp"
+        android:textSize="18dp"
         android:textStyle="bold" />
 
     <TextView
@@ -44,8 +46,9 @@
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:text="ราคาสินค้า"
+        android:fontFamily="@font/sukhumvitset_text"
         android:textColor="@color/colorBlack"
-        android:textSize="15dp"
+        android:textSize="18dp"
         android:textStyle="bold" />
 
  <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
@@ -71,8 +74,10 @@
     android:layout_margin="15dp"
     android:layout_alignParentBottom="true"
     android:text="เพิ่มลงตะกร้า"
+    android:fontFamily="@font/sukhumvitset_text"
     android:textColor="@color/white"
-    android:textSize="15dp"
+    android:textSize="20dp"
+    android:textStyle="bold"
 
     />
 

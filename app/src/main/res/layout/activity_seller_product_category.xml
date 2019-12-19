@@ -14,6 +14,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:text="เพิ่มสินค้าใหม่"
+        android:fontFamily="@font/sukhumvitset_text"
         android:textAlignment="center"
         android:textSize="26dp"
         android:textStyle="bold" />
@@ -74,6 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="เสื้อเชิ้ต"
+            android:fontFamily="@font/sukhumvitset_text"
             android:textAlignment="center"
             android:textColor="@color/colorBlack"
             android:textStyle="bold" />
@@ -83,6 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="เสื้อกีฬา"
+            android:fontFamily="@font/sukhumvitset_text"
             android:textAlignment="center"
             android:textColor="@color/colorBlack"
             android:textStyle="bold" />
@@ -92,6 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="ชุดผู้หญิง"
+            android:fontFamily="@font/sukhumvitset_text"
             android:textAlignment="center"
             android:textColor="@color/colorBlack"
             android:textSize="13dp"
@@ -102,6 +106,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="เสื้อกันหนาว"
+            android:fontFamily="@font/sukhumvitset_text"
             android:textAlignment="center"
             android:textColor="@color/colorBlack"
             android:textStyle="bold" />
@@ -165,6 +170,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="แว่นตา"
+            android:fontFamily="@font/sukhumvitset_text"
             android:textAlignment="center"
             android:textColor="@color/colorBlack"
             android:textStyle="bold" />
@@ -174,6 +180,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="กระเป๋า"
+            android:fontFamily="@font/sukhumvitset_text"
             android:textAlignment="center"
             android:textColor="@color/colorBlack"
             android:textStyle="bold" />
@@ -183,6 +190,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="หมวก"
+            android:fontFamily="@font/sukhumvitset_text"
             android:textAlignment="center"
             android:textColor="@color/colorBlack"
             android:textSize="13dp"
@@ -193,6 +201,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="รองเท้า"
+            android:fontFamily="@font/sukhumvitset_text"
             android:textAlignment="center"
             android:textColor="@color/colorBlack"
             android:textStyle="bold" />
@@ -256,6 +265,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="หูฟัง"
+            android:fontFamily="@font/sukhumvitset_text"
             android:textAlignment="center"
             android:textColor="@color/colorBlack"
             android:textStyle="bold" />
@@ -265,6 +275,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="โน๊ตบุ๊คและพีซี"
+            android:fontFamily="@font/sukhumvitset_text"
             android:textAlignment="center"
             android:textColor="@color/colorBlack"
             android:textStyle="bold" />
@@ -274,6 +285,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="นาฬิกา"
+            android:fontFamily="@font/sukhumvitset_text"
             android:textAlignment="center"
             android:textColor="@color/colorBlack"
             android:textSize="13dp"
@@ -284,6 +296,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="โทรศัพท์มือถือ"
+            android:fontFamily="@font/sukhumvitset_text"
             android:textAlignment="center"
             android:textColor="@color/colorBlack"
             android:textStyle="bold" />

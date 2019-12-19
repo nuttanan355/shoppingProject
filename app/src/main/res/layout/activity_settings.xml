@@ -88,6 +88,7 @@
         android:inputType="phone"
         android:layout_margin="15dp"
         android:padding="10dp"
+        android:textStyle="bold"
         />
 
     <EditText
@@ -99,6 +100,7 @@
         android:hint="ชื่อ....."
         android:layout_margin="15dp"
         android:padding="10dp"
+        android:textStyle="bold"
         />
 
     <EditText
@@ -110,6 +112,7 @@
         android:hint="ที่อยู่....."
         android:layout_margin="15dp"
         android:padding="10dp"
+        android:textStyle="bold"
         />
     <Button
         android:id="@+id/btn_security_questions"
@@ -118,10 +121,12 @@
         android:layout_below="@+id/settings_address"
         android:fontFamily="@font/sukhumvitset_text"
         android:text="ตั้งคำถามเพื่อปลอดภัย"
+        android:textSize="17dp"
         android:background="@drawable/buttons"
         android:textColor="@color/white"
         android:layout_margin="15dp"
         android:padding="10dp"
+        android:textStyle="bold"
         />
 
 </RelativeLayout>

@@ -21,8 +21,10 @@
             android:text="อนุมัติสินค้า"
             android:textColor="@color/white"
             android:textSize="25dp"
+            android:fontFamily="@font/sukhumvitset_text"
             android:textAlignment="center"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
+            android:textStyle="bold"
             />
 
 

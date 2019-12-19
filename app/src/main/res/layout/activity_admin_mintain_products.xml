@@ -31,11 +31,13 @@
             android:layout_below="@+id/maintain_product_image"
             android:hint="ชื่อสินค้า"
             android:textAlignment="center"
-            android:textSize="16dp"
+            android:textSize="18dp"
             android:padding="12dp"
             android:layout_margin="5dp"
+            android:fontFamily="@font/sukhumvitset_text"
             android:background="@drawable/input_design_back"
-            android:textColor="@color/colorPrimaryDark" />
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"/>
 
         <EditText
             android:id="@+id/maintain_product_price"
@@ -44,11 +46,13 @@
             android:layout_below="@+id/maintain_product_name"
             android:hint="ราคาสินค้า"
             android:textAlignment="center"
-            android:textSize="16dp"
+            android:textSize="18dp"
             android:padding="12dp"
             android:layout_margin="5dp"
+            android:fontFamily="@font/sukhumvitset_text"
             android:background="@drawable/input_design_back"
-            android:textColor="@color/colorPrimaryDark" />
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"/>
 
 
         <EditText
@@ -59,11 +63,13 @@
             android:hint="ลักษณะสินค้า"
             android:layout_marginTop="2dp"
             android:textAlignment="center"
-            android:textSize="16dp"
+            android:textSize="18dp"
             android:padding="12dp"
             android:layout_margin="5dp"
+            android:fontFamily="@font/sukhumvitset_text"
             android:background="@drawable/input_design_back"
-            android:textColor="@color/colorPrimaryDark" />
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"/>
 
         <Button
             android:id="@+id/btn_apply_changes"
@@ -71,13 +77,15 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/maintain_product_description"
             android:text="ยืนยันการแก้ไข"
+            android:fontFamily="@font/sukhumvitset_text"
             android:layout_marginTop="2dp"
             android:textAlignment="center"
-            android:textSize="18dp"
+            android:textSize="20dp"
             android:padding="12dp"
             android:layout_margin="5dp"
             android:background="@drawable/buttons"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
 
 
         <Button
@@ -87,11 +95,13 @@
             android:layout_below="@+id/btn_apply_changes"
             android:text="ลบสินค้า"
             android:textAlignment="center"
-            android:textSize="18dp"
+            android:textSize="20dp"
             android:padding="12dp"
             android:layout_margin="30dp"
+            android:fontFamily="@font/sukhumvitset_text"
             android:background="@drawable/buttons"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
 
     </RelativeLayout>
 

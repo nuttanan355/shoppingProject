@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ยืนยันการจัดส่ง"
-        android:textSize="18sp"
+        android:fontFamily="@font/sukhumvitset_text"
+        android:textSize="22sp"
         android:textColor="@color/colorPrimaryDark"
         android:layout_margin="15dp"
         android:textAlignment="center"
@@ -27,6 +28,8 @@
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
         android:hint="ชื่อ"
+        android:fontFamily="@font/sukhumvitset_text"
+        android:textStyle="bold"
         />
 
     <EditText
@@ -39,6 +42,8 @@
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
         android:hint="เบอร์โทรศัพท์"
+        android:fontFamily="@font/sukhumvitset_text"
+        android:textStyle="bold"
         />
 
     <EditText
@@ -50,6 +55,9 @@
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
         android:hint="ที่อยู่"
+        android:fontFamily="@font/sukhumvitset_text"
+        android:textStyle="bold"
+
         />
 
     <EditText
@@ -61,6 +69,8 @@
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
         android:hint="จังหวัด"
+        android:fontFamily="@font/sukhumvitset_text"
+        android:textStyle="bold"
         />
 
     <Button
@@ -70,9 +80,11 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="20dp"
         android:text="ยืนยัน"
+        android:fontFamily="@font/sukhumvitset_text"
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/white"
         android:textSize="20dp"
+        android:textStyle="bold"
 />
 
 </RelativeLayout>

@@ -39,8 +39,8 @@
             android:layout_toRightOf="@+id/search_product_name"
             android:background="@color/colorPrimaryDark"
             android:padding="9dp"
-            android:fontFamily="@font/sukhumvitset_text"
             android:text="ค้นหา"
+            android:fontFamily="@font/sukhumvitset_text"
             android:textColor="@color/white"
             android:textSize="16dp"
             android:textStyle="bold" />
