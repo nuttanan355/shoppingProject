@@ -57,6 +57,8 @@ dependencies {
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
     implementation 'com.cepheuen.elegant-number-button:lib:1.0.2'
 
+    implementation 'com.hbb20:ccp:2.3.4'
+
     //ไลเบอรี่ Firebase
     implementation 'com.google.firebase:firebase-auth:19.1.0'
     implementation 'com.google.firebase:firebase-database:19.2.0'
