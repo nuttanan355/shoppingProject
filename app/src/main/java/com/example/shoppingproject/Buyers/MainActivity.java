@@ -82,8 +82,8 @@ public class MainActivity extends AppCompatActivity {
             if (!TextUtils.isEmpty(UserPhoneKey) && !TextUtils.isEmpty(UserPasswordKey)) {
                 AllowAccess(UserPhoneKey, UserPasswordKey);
 
-                loadingBar.setTitle("Already Logged in");
-                loadingBar.setMessage("Please wait......");
+                loadingBar.setTitle("เข้าสู่ระบบแล้ว");
+                loadingBar.setMessage("กรุณารอสักครู่......");
                 loadingBar.setCanceledOnTouchOutside(false);
                 loadingBar.show();
             }

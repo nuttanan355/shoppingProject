@@ -176,7 +176,7 @@ public class CartActivity extends AppCompatActivity {
                     String userName = dataSnapshot.child("name").getValue().toString();
 
                     if (shippingstate.equals("shipped")) {
-                        txtTotalAmount.setText("Dear " + userName + "\n order is shipped successfully.");
+                        txtTotalAmount.setText("คำสั่งซื้อ" + userName + "\n จัดส่งเรียบร้อยแล้ว");
                         recyclerView.setVisibility(View.GONE);
 
                         txtMsg1.setVisibility(View.VISIBLE);
@@ -185,7 +185,7 @@ public class CartActivity extends AppCompatActivity {
 
                         Toast.makeText(CartActivity.this, "สามารถซื้อสินค้าเพิ่มเติมได้, เมื่อได้รับคำสั่งซื้อครั้งสุดท้าย", Toast.LENGTH_SHORT).show();
                     } else if (shippingstate.equals("not shipped")) {
-                        txtTotalAmount.setText("Shipping State = Not Shipped");
+                        txtTotalAmount.setText("สถานะการจัดส่ง = ไม่ได้จัดส่ง");
                         recyclerView.setVisibility(View.GONE);
 
                         txtMsg1.setVisibility(View.VISIBLE);

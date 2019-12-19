@@ -59,7 +59,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
         phoneNumber.setVisibility(View.GONE);
 
 
-        if (check.equals("settings")) {
+        if (check.equals("ตั่งค่า")) {
             pageTitle.setText("ตั้งคำถาม");
             titlteQuestions.setText("โปรดตั้งคำตอบสำหรับคำถามเพื่อความปลอดภัยต่อไปนี้?");
             verifyBTN.setText("Set");

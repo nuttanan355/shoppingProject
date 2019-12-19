@@ -111,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
         } else if (TextUtils.isEmpty(txtpassword)) {
             Toast.makeText(this, "กรุณากรอกรหัสผ่าน.....", Toast.LENGTH_SHORT).show();
         } else {
-            loadingBar.setTitle("Login Account");
+            loadingBar.setTitle("เข้าสู่ระบบ");
             loadingBar.setMessage("โปรดรอสักครู่ขณะนี้เรากำลังตรวจสอบข้อมูล");
             loadingBar.setCanceledOnTouchOutside(false);
             loadingBar.show();
