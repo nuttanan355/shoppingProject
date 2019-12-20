@@ -1,4 +1,4 @@
-package com.example.shoppingproject.Buyers;
+package com.example.shoppingproject;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -14,8 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shoppingproject.Model.Users;
 import com.example.shoppingproject.Prevalent.Prevalent;
-import com.example.shoppingproject.R;
-import com.example.shoppingproject.Sellers.SellerHomeActivity;
+import com.example.shoppingproject.Admin.AdminHomeActivity;
 import com.example.shoppingproject.Sellers.SellerRegistrationActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -100,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (firebaseUser!=null)
         {
-            Intent intent = new Intent(MainActivity.this, SellerHomeActivity.class);
+            Intent intent = new Intent(MainActivity.this, AdminHomeActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();

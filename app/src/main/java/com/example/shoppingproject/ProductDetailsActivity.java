@@ -1,7 +1,4 @@
-package com.example.shoppingproject.Buyers;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.shoppingproject;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,10 +8,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.example.shoppingproject.Model.Products;
 import com.example.shoppingproject.Prevalent.Prevalent;
-import com.example.shoppingproject.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -105,7 +104,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         cartMap.put("date",saveCurrentDate);
         cartMap.put("time",saveCurrentTime);
         cartMap.put("quantity",numberButton.getNumber());
-        cartMap.put("discount","");
+        cartMap.put("discount",productDescription.getText().toString());
 
         cartListRef.child("User View").child(Prevalent.currentOnlineUser.getPhone())
                 .child("Products").child(productID)

@@ -1,4 +1,4 @@
-package com.example.shoppingproject.Buyers;
+package com.example.shoppingproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.shoppingproject.Model.Products;
-import com.example.shoppingproject.R;
 import com.example.shoppingproject.ViewHolder.ProductViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;

@@ -1,4 +1,4 @@
-package com.example.shoppingproject.Buyers;
+package com.example.shoppingproject;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,7 +24,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.shoppingproject.Admin.AdminMaintainProductsActivity;
 import com.example.shoppingproject.Model.Products;
 import com.example.shoppingproject.Prevalent.Prevalent;
-import com.example.shoppingproject.R;
 import com.example.shoppingproject.ViewHolder.ProductViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -47,11 +46,12 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+
 
 
         Intent intent = getIntent();
@@ -171,7 +171,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onStart();
         FirebaseRecyclerOptions<Products> options =
                 new FirebaseRecyclerOptions.Builder<Products>()
-                        .setQuery(ProductsRef.orderByChild("productState").equalTo("Approved"), Products.class)
+//                        .setQuery(ProductsRef.orderByChild("productState").equalTo("Approved"), Products.class)
+                        .setQuery(ProductsRef.orderByChild("productState"), Products.class)
                         .build();
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
                 new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {

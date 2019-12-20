@@ -1,4 +1,4 @@
-package com.example.shoppingproject.Sellers;
+package com.example.shoppingproject.Admin;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,7 +20,7 @@ public class AdminProductCategoryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_seller_product_category);
+        setContentView(R.layout.activity_admin_product_category);
 
 
         //-------------set------1-------------------------

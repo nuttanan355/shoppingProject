@@ -1,4 +1,4 @@
-package com.example.shoppingproject.Buyers;
+package com.example.shoppingproject;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -14,10 +14,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.shoppingproject.Admin.AdminHomeActivity;
 import com.example.shoppingproject.Model.Users;
 import com.example.shoppingproject.Prevalent.Prevalent;
-import com.example.shoppingproject.R;
+import com.example.shoppingproject.Admin.AdminHomeActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

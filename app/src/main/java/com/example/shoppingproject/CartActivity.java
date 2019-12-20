@@ -1,4 +1,4 @@
-package com.example.shoppingproject.Buyers;
+package com.example.shoppingproject;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shoppingproject.Model.Cart;
 import com.example.shoppingproject.Prevalent.Prevalent;
-import com.example.shoppingproject.R;
 import com.example.shoppingproject.ViewHolder.CartViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -95,22 +94,24 @@ public class CartActivity extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull final Cart model) {
-                holder.txtProductQuantity.setText("Quantity = " + model.getQuantity());
-                holder.txtProductPrice.setText("Price = " + model.getPrice() + " ฿");
+                holder.txtProductQuantity.setText("จำนวน = " + model.getQuantity());
+                holder.txtProductPrice.setText("ราคา = " + model.getPrice() + " ฿");
+                holder.txtProductDescription.setText(model.getDiscount());
                 holder.txtProductName.setText(model.getPname());
+//                Picasso.get().load(model.getImage()).into(holder.imgProduct);
 
                 int oneTypeProductPrice = Integer.valueOf(model.getPrice()) * Integer.valueOf(model.getQuantity());
                 overTotalPrice = overTotalPrice + oneTypeProductPrice;
 
-                txtTotalAmount.setText("Total Price = " + String.valueOf(overTotalPrice) + " ฿");
+                txtTotalAmount.setText("ราคารวม = " + String.valueOf(overTotalPrice) + " ฿");
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         CharSequence options[] = new CharSequence[]{
 
-                                "Edit",
-                                "Remove"
+                                "แก้ไขจำนวน",
+                                "ลบออก"
                         };
                         AlertDialog.Builder builder = new AlertDialog.Builder(CartActivity.this);
                         builder.setTitle("Cart Options :");
