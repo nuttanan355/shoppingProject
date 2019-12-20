@@ -92,7 +92,7 @@ public class HomeActivity extends AppCompatActivity {
                 R.id.nav_home,
                 R.id.nav_cart,
                 R.id.nav_search,
-                R.id.nav_categories,
+//                R.id.nav_categories,
                 R.id.nav_settings,
                 R.id.nav_logout).setDrawerLayout(drawer).build();
 
@@ -118,9 +118,9 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 }
-                if (destination.getId() == R.id.nav_categories) {
-
-                }
+//                if (destination.getId() == R.id.nav_categories) {
+//
+//                }
                 if (destination.getId() == R.id.nav_settings) {
 
                     if (!type.equals("Admin")) {
@@ -178,7 +178,7 @@ public class HomeActivity extends AppCompatActivity {
                     @Override
                     protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model) {
                         holder.txtProductName.setText(model.getPname());
-                        holder.txtProductPrice.setText("Price = " + model.getPrice() + " ฿");
+                        holder.txtProductPrice.setText("ราคา = " + model.getPrice() + " ฿");
                         holder.txtProductDescription.setText(model.getDescription());
                         Picasso.get().load(model.getImage()).into(holder.imageView);
 

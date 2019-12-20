@@ -34,7 +34,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 
-public class SellerAddNewProductActivity extends AppCompatActivity {
+public class AdminAddNewProductActivity extends AppCompatActivity {
 
     private String CategoryName, Description, Price, Pname, saveCurrentDate, saveCurrentTime;
     private Button AddNewProductBTN;
@@ -182,14 +182,14 @@ public class SellerAddNewProductActivity extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception e) {
                 String message = e.toString();
-                Toast.makeText(SellerAddNewProductActivity.this, "Error:" + message, Toast.LENGTH_SHORT).show();
+                Toast.makeText(AdminAddNewProductActivity.this, "Error:" + message, Toast.LENGTH_SHORT).show();
                 loadingBar.dismiss();
 
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(SellerAddNewProductActivity.this, "อัปโหลดรูปภาพสินค้าสำเร็จแล้ว....", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AdminAddNewProductActivity.this, "อัปโหลดรูปภาพสินค้าสำเร็จแล้ว....", Toast.LENGTH_SHORT).show();
 
                 Task<Uri> uriTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                     @Override
@@ -208,7 +208,7 @@ public class SellerAddNewProductActivity extends AppCompatActivity {
 
                         downloadImageUrl = task.getResult().toString();
 
-                        Toast.makeText(SellerAddNewProductActivity.this, "ใส่รูปภาพเรียบร้อยแล้ว...", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AdminAddNewProductActivity.this, "ใส่รูปภาพเรียบร้อยแล้ว...", Toast.LENGTH_SHORT).show();
 
                         SaveProductInfoToDatabase();
                     }
@@ -246,15 +246,15 @@ public class SellerAddNewProductActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
 
-                            Intent intent = new Intent(SellerAddNewProductActivity.this, SellerHomeActivity.class);
+                            Intent intent = new Intent(AdminAddNewProductActivity.this, SellerHomeActivity.class);
                             startActivity(intent);
 
                             loadingBar.dismiss();
-                            Toast.makeText(SellerAddNewProductActivity.this, "เพิ่มสินค้าสำเร็จแล้ว...", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AdminAddNewProductActivity.this, "เพิ่มสินค้าสำเร็จแล้ว...", Toast.LENGTH_SHORT).show();
                         } else {
                             loadingBar.dismiss();
                             String message = task.getException().toString();
-                            Toast.makeText(SellerAddNewProductActivity.this, "Error :" + message, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AdminAddNewProductActivity.this, "Error :" + message, Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

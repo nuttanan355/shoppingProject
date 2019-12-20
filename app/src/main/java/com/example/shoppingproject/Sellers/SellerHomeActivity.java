@@ -58,7 +58,7 @@ public class SellerHomeActivity extends AppCompatActivity {
                         return true;
                     case R.id.navigation_add:
 //                        mTextMessage.setText(R.string.title_add);
-                        Intent intentCate = new Intent(SellerHomeActivity.this, SellerProductCategoryActivity.class);
+                        Intent intentCate = new Intent(SellerHomeActivity.this, AdminProductCategoryActivity.class);
                         startActivity(intentCate);
 
                         return true;

@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.shoppingproject.R;
-import com.example.shoppingproject.Sellers.SellerProductCategoryActivity;
+import com.example.shoppingproject.Sellers.AdminProductCategoryActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -76,7 +76,7 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) 
             {
-                Intent intent = new Intent(AdminMaintainProductsActivity.this, SellerProductCategoryActivity.class);
+                Intent intent = new Intent(AdminMaintainProductsActivity.this, AdminProductCategoryActivity.class);
                 startActivity(intent);
                 finish();
 
@@ -119,7 +119,7 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
                     {
                         Toast.makeText(AdminMaintainProductsActivity.this, "การเปลี่ยนแปลงสำเร็จ", Toast.LENGTH_SHORT).show();
 
-                        Intent intent = new Intent(AdminMaintainProductsActivity.this, SellerProductCategoryActivity.class);
+                        Intent intent = new Intent(AdminMaintainProductsActivity.this, AdminProductCategoryActivity.class);
                         startActivity(intent);
                         finish();
                     }

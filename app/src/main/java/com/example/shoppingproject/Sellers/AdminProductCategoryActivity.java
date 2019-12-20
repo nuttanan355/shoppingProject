@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shoppingproject.R;
 
-public class SellerProductCategoryActivity extends AppCompatActivity {
+public class AdminProductCategoryActivity extends AppCompatActivity {
 
     private ImageView tShirts,sportsTShirts,female,sweather;
     private ImageView glasses,pursesBags,hats,shoess;
@@ -50,7 +50,7 @@ public class SellerProductCategoryActivity extends AppCompatActivity {
         tShirts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(SellerProductCategoryActivity.this, SellerAddNewProductActivity.class);
+                Intent intent =new Intent(AdminProductCategoryActivity.this, AdminAddNewProductActivity.class);
                 intent.putExtra("category","tShires");
                 startActivity(intent);
             }
@@ -59,7 +59,7 @@ public class SellerProductCategoryActivity extends AppCompatActivity {
         sportsTShirts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(SellerProductCategoryActivity.this, SellerAddNewProductActivity.class);
+                Intent intent =new Intent(AdminProductCategoryActivity.this, AdminAddNewProductActivity.class);
                 intent.putExtra("category","Sports tShirts");
                 startActivity(intent);
             }
@@ -68,7 +68,7 @@ public class SellerProductCategoryActivity extends AppCompatActivity {
         female.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(SellerProductCategoryActivity.this, SellerAddNewProductActivity.class);
+                Intent intent =new Intent(AdminProductCategoryActivity.this, AdminAddNewProductActivity.class);
                 intent.putExtra("category","Female Dresses");
                 startActivity(intent);
             }
@@ -77,7 +77,7 @@ public class SellerProductCategoryActivity extends AppCompatActivity {
         sweather.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(SellerProductCategoryActivity.this, SellerAddNewProductActivity.class);
+                Intent intent =new Intent(AdminProductCategoryActivity.this, AdminAddNewProductActivity.class);
                 intent.putExtra("category","Sweather");
                 startActivity(intent);
             }
@@ -90,7 +90,7 @@ public class SellerProductCategoryActivity extends AppCompatActivity {
         glasses.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(SellerProductCategoryActivity.this, SellerAddNewProductActivity.class);
+                Intent intent =new Intent(AdminProductCategoryActivity.this, AdminAddNewProductActivity.class);
                 intent.putExtra("category","Glasses");
                 startActivity(intent);
             }
@@ -99,7 +99,7 @@ public class SellerProductCategoryActivity extends AppCompatActivity {
         pursesBags.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(SellerProductCategoryActivity.this, SellerAddNewProductActivity.class);
+                Intent intent =new Intent(AdminProductCategoryActivity.this, AdminAddNewProductActivity.class);
                 intent.putExtra("category","Purses Bags");
                 startActivity(intent);
             }
@@ -108,7 +108,7 @@ public class SellerProductCategoryActivity extends AppCompatActivity {
         hats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(SellerProductCategoryActivity.this, SellerAddNewProductActivity.class);
+                Intent intent =new Intent(AdminProductCategoryActivity.this, AdminAddNewProductActivity.class);
                 intent.putExtra("category","Hats");
                 startActivity(intent);
             }
@@ -117,7 +117,7 @@ public class SellerProductCategoryActivity extends AppCompatActivity {
         shoess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(SellerProductCategoryActivity.this, SellerAddNewProductActivity.class);
+                Intent intent =new Intent(AdminProductCategoryActivity.this, AdminAddNewProductActivity.class);
                 intent.putExtra("category","Shoess");
                 startActivity(intent);
             }
@@ -130,7 +130,7 @@ public class SellerProductCategoryActivity extends AppCompatActivity {
         headPhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(SellerProductCategoryActivity.this, SellerAddNewProductActivity.class);
+                Intent intent =new Intent(AdminProductCategoryActivity.this, AdminAddNewProductActivity.class);
                 intent.putExtra("category","Head Phone");
                 startActivity(intent);
             }
@@ -139,7 +139,7 @@ public class SellerProductCategoryActivity extends AppCompatActivity {
         laptops.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(SellerProductCategoryActivity.this, SellerAddNewProductActivity.class);
+                Intent intent =new Intent(AdminProductCategoryActivity.this, AdminAddNewProductActivity.class);
                 intent.putExtra("category","Laptops");
                 startActivity(intent);
             }
@@ -148,7 +148,7 @@ public class SellerProductCategoryActivity extends AppCompatActivity {
         watches.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(SellerProductCategoryActivity.this, SellerAddNewProductActivity.class);
+                Intent intent =new Intent(AdminProductCategoryActivity.this, AdminAddNewProductActivity.class);
                 intent.putExtra("category","Watches");
                 startActivity(intent);
             }
@@ -157,7 +157,7 @@ public class SellerProductCategoryActivity extends AppCompatActivity {
         mobiles.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(SellerProductCategoryActivity.this, SellerAddNewProductActivity.class);
+                Intent intent =new Intent(AdminProductCategoryActivity.this, AdminAddNewProductActivity.class);
                 intent.putExtra("category","Mobiles");
                 startActivity(intent);
             }
