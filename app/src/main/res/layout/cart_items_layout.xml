@@ -20,7 +20,8 @@
             android:layout_height="70dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@tools:sample/avatars"
+            android:visibility="gone"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,6 +39,16 @@
                 android:fontFamily="@font/sukhumvitset_text"
                 android:textColor="@color/colorGrey"
                 android:textSize="17dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/cart_product_description"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="รายละเอียดสินค้า"
+                android:fontFamily="@font/sukhumvitset_text"
+                android:textColor="@color/colorGrey"
+                android:textSize="14dp"
                 android:textStyle="bold" />
 
             <TextView
