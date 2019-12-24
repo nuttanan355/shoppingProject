@@ -38,8 +38,8 @@ public class SettingsActivity extends AppCompatActivity {
 
     private EditText fullNameEditText, userPhoneEditText, addressEditText;
     private CircleImageView profileImageView;
-    private TextView profileChangeTextBTN, closeTextBTN, updateTextBTN;
-    private Button btnSecuityQuestion;
+    private TextView profileChangeTextBTN, closeTextBTN, btnSecuityQuestion;
+    private Button updateTextBTN;
 
     private Uri imageUri;
     private String myUri = "", checker = "";
@@ -61,11 +61,11 @@ public class SettingsActivity extends AppCompatActivity {
         userPhoneEditText = (EditText) findViewById(R.id.settings_phone_number);
         addressEditText = (EditText) findViewById(R.id.settings_address);
 
-        btnSecuityQuestion=(Button)findViewById(R.id.btn_security_questions);
-
+        btnSecuityQuestion=(TextView)findViewById(R.id.btn_security_questions);
         profileChangeTextBTN = (TextView) findViewById(R.id.btn_profile_image_change);
         closeTextBTN = (TextView) findViewById(R.id.btn_close_settings);
-        updateTextBTN = (TextView) findViewById(R.id.btn_update_settings);
+
+        updateTextBTN = (Button) findViewById(R.id.btn_update_settings);
 
         userInfoDisplay(profileImageView, fullNameEditText, userPhoneEditText, addressEditText);
 

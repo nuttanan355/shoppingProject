@@ -34,11 +34,11 @@
                     />
 
                 <TextView
-                    android:id="@+id/btn_update_settings"
+                    android:id="@+id/btn_security_questions"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/kanit_extralight"
-                    android:text="Update"
+                    android:text="ตั้งคำถามเพื่อปลอดภัย"
                     android:textColor="@color/white"
                     android:textSize="17dp"
                     android:textStyle="bold"
@@ -112,12 +112,12 @@
         android:padding="10dp"
         />
     <Button
-        android:id="@+id/btn_security_questions"
+        android:id="@+id/btn_update_settings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/settings_address"
         android:fontFamily="@font/sukhumvitset_text"
-        android:text="ตั้งคำถามเพื่อปลอดภัย"
+        android:text="Update"
         android:background="@drawable/buttons"
         android:textColor="@color/white"
         android:layout_margin="15dp"

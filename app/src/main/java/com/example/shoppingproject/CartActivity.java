@@ -34,7 +34,7 @@ public class CartActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private Button NextProductBtn;
-    private TextView txtTotalAmount, txtMsg1;
+    private TextView txtTotalAmount, txtMsg1,txtTotalDeliver;
 
     private int overTotalPrice = 0;
 
@@ -52,6 +52,8 @@ public class CartActivity extends AppCompatActivity {
 
         NextProductBtn = (Button) findViewById(R.id.btn_next_product);
         txtTotalAmount = (TextView) findViewById(R.id.text_total_price);
+        txtTotalDeliver=(TextView) findViewById(R.id.text_total_deliver);
+
 
 
         txtMsg1 = (TextView) findViewById(R.id.msg1);
@@ -67,7 +69,7 @@ public class CartActivity extends AppCompatActivity {
                 Intent intent = new Intent(CartActivity.this, ConfirmFinalOrderActivity.class);
                 intent.putExtra("Total Price", String.valueOf(overTotalPrice));
                 startActivity(intent);
-//                finish();
+                overTotalPrice=0;
             }
 
         });
@@ -94,16 +96,19 @@ public class CartActivity extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull final Cart model) {
-                holder.txtProductQuantity.setText("จำนวน = " + model.getQuantity());
-                holder.txtProductPrice.setText("ราคา = " + model.getPrice() + " ฿");
+                holder.txtProductQuantity.setText("จำนวน " + model.getQuantity());
+                holder.txtProductPrice.setText("ราคา = "+ "฿" + model.getPrice());
                 holder.txtProductDescription.setText(model.getDiscount());
                 holder.txtProductName.setText(model.getPname());
 //                Picasso.get().load(model.getImage()).into(holder.imgProduct);
 
                 int oneTypeProductPrice = Integer.valueOf(model.getPrice()) * Integer.valueOf(model.getQuantity());
-                overTotalPrice = overTotalPrice + oneTypeProductPrice;
+                overTotalPrice = overTotalPrice + oneTypeProductPrice+45;
 
-                txtTotalAmount.setText("ราคารวม = " + String.valueOf(overTotalPrice) + " ฿");
+                NextProductBtn.setVisibility(View.VISIBLE);
+
+                txtTotalDeliver.setText("฿" + String.valueOf(45));
+                txtTotalAmount.setText("฿" + String.valueOf(overTotalPrice));
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
