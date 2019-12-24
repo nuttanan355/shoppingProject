@@ -37,6 +37,7 @@ public class CartActivity extends AppCompatActivity {
     private TextView txtTotalAmount, txtMsg1,txtTotalDeliver;
 
     private int overTotalPrice = 0;
+//    private int overTotalDeliver = 45;
 
 
     @Override
@@ -67,9 +68,10 @@ public class CartActivity extends AppCompatActivity {
 //                txtTotalAmount.setText("Total Price = " + String.valueOf(overTotalPrice) + " ฿");
 
                 Intent intent = new Intent(CartActivity.this, ConfirmFinalOrderActivity.class);
-                intent.putExtra("Total Price", String.valueOf(overTotalPrice));
+                intent.putExtra("Total Price", String.valueOf(overTotalPrice+45));
                 startActivity(intent);
                 overTotalPrice=0;
+                finish();
             }
 
         });
@@ -103,12 +105,13 @@ public class CartActivity extends AppCompatActivity {
 //                Picasso.get().load(model.getImage()).into(holder.imgProduct);
 
                 int oneTypeProductPrice = Integer.valueOf(model.getPrice()) * Integer.valueOf(model.getQuantity());
-                overTotalPrice = overTotalPrice + oneTypeProductPrice+45;
+                overTotalPrice = overTotalPrice + oneTypeProductPrice;
+
 
                 NextProductBtn.setVisibility(View.VISIBLE);
 
                 txtTotalDeliver.setText("฿" + String.valueOf(45));
-                txtTotalAmount.setText("฿" + String.valueOf(overTotalPrice));
+                txtTotalAmount.setText("฿" + String.valueOf(overTotalPrice+45));
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override

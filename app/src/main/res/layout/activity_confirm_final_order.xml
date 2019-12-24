@@ -10,7 +10,7 @@
         android:id="@+id/txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ยืนยันการจัดส่ง"
+        android:text="ชำระเงิน"
         android:fontFamily="@font/sukhumvitset_text"
         android:textSize="22sp"
         android:textColor="@color/colorPrimaryDark"
@@ -72,6 +72,37 @@
         android:fontFamily="@font/sukhumvitset_text"
         android:textStyle="bold"
         />
+
+    <LinearLayout
+        android:id="@+id/txt2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shipment_city"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sukhumvitset_text"
+            android:text="ราคาที่ต้องชำระ : "
+            android:textSize="18sp"
+            android:textColor="@color/colorRed"
+            android:textAlignment="textStart"
+            android:layout_marginLeft="20dp"
+            />
+        <TextView
+            android:id="@+id/total_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sukhumvitset_text"
+            android:text="00"
+            android:textSize="18sp"
+            android:textColor="@color/colorRed"
+            android:textAlignment="textStart"
+            android:layout_marginLeft="20dp"
+            />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_confirm_final_order"
