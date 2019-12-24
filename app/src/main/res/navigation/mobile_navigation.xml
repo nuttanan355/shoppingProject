@@ -7,63 +7,61 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.shoppingproject.ui.send.SendFragment"
+        android:name="com.example.shoppingproject.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/nav_cart"
         android:name="com.example.shoppingproject.ui.home.HomeFragment"
-        android:label="Cart"
+        android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_search"
-        android:name="com.example.shoppingproject.ui.gallery.GalleryFragment"
-        android:label="Search"
-        tools:layout="@layout/fragment_gallery" />
-
-    <fragment
-        android:id="@+id/nav_categories"
-        android:name="com.example.shoppingproject.ui.slideshow.SlideshowFragment"
-        android:label="Categories"
-        tools:layout="@layout/fragment_slideshow" />
+        android:name="com.example.shoppingproject.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_settings"
-        android:name="com.example.shoppingproject.ui.tools.ToolsFragment"
-        android:label="Settings"
-        tools:layout="@layout/fragment_tools" />
+        android:name="com.example.shoppingproject.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+<!--    <fragment-->
+<!--        android:id="@+id/nav_settings"-->
+<!--        android:label="@string/menu_home" />-->
 
     <fragment
         android:id="@+id/nav_logout"
-        android:name="com.example.shoppingproject.ui.share.ShareFragment"
-        android:label="Logout"
-        tools:layout="@layout/fragment_share" />
+        android:name="com.example.shoppingproject.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
 
 
-    <!--    android:id="@+id/nav_cart"-->
-    <!--    android:icon="@drawable/nav_cart"-->
-    <!--    android:iconTint="@android:color/white"-->
-    <!--    android:title="Cart" />-->
-    <!--    <item-->
-    <!--        android:id="@+id/nav_orders"-->
-    <!--        android:icon="@drawable/orders"-->
-    <!--        android:iconTint="@android:color/white"-->
-    <!--        android:title="Orders" />-->
-    <!--    <item-->
-    <!--        android:id="@+id/nav_categories"-->
-    <!--        android:icon="@drawable/category"-->
-    <!--        android:iconTint="@android:color/white"-->
-    <!--        android:title="Categories" />-->
-    <!--    <item-->
-    <!--        android:id="@+id/nav_settings"-->
-    <!--        android:icon="@drawable/ic_menu_manage"-->
-    <!--        android:iconTint="@android:color/white"-->
-    <!--        android:title="Settings" />-->
-    <!--    <item-->
-    <!--        android:id="@+id/nav_logout"-->
-    <!--        android:icon="@drawable/logout"-->
-    <!--        android:iconTint="@android:color/white"-->
-    <!--        android:title="Logout" />-->
-    <!--    -->
+<!--        android:id="@+id/nav_cart"-->
+<!--        android:icon="@drawable/nav_cart"-->
+<!--        android:iconTint="@android:color/white"-->
+<!--        android:title="Cart" />-->
+<!--        <item-->
+<!--            android:id="@+id/nav_orders"-->
+<!--            android:icon="@drawable/orders"-->
+<!--            android:iconTint="@android:color/white"-->
+<!--            android:title="Orders" />-->
+<!--        <item-->
+<!--            android:id="@+id/nav_categories3"-->
+<!--            android:icon="@drawable/category"-->
+<!--            android:iconTint="@android:color/white"-->
+<!--            android:title="Categories" />-->
+<!--        <item-->
+<!--            android:id="@+id/nav_settings2"-->
+<!--            android:icon="@drawable/ic_menu_manage"-->
+<!--            android:iconTint="@android:color/white"-->
+<!--            android:title="Settings" />-->
+<!--        <item-->
+<!--            android:id="@+id/nav_logout1"-->
+<!--            android:icon="@drawable/logout"-->
+<!--            android:iconTint="@android:color/white"-->
+<!--            android:title="Logout" />-->
+
 </navigation>
