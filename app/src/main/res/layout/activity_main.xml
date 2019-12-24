@@ -7,60 +7,15 @@
     android:background="@drawable/welcome"
     tools:context=".MainActivity">
 
+
+
+
+
     <ImageView
         android:id="@+id/app_logo"
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="265dp"
         android:src="@drawable/applogo"/>
-
-
-    <Button
-        android:id="@+id/btn_welcome_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/btn_account"
-        android:layout_marginHorizontal="10dp"
-        android:background="@drawable/input_design"
-        android:padding="20dp"
-        android:textAllCaps="false"
-        android:textSize="18sp"
-        android:text="Login"
-        android:textColor="@android:color/white"
-        />
-
-    <Button
-        android:id="@+id/btn_account"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/buttons"
-        android:padding="20dp"
-        android:textAllCaps="false"
-        android:textSize="18sp"
-        android:text="Create an account"
-        android:textColor="@android:color/white"
-        />
-
-    <TextView
-        android:id="@+id/seller_to_begin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:text="Wants to become a Seller ?"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:visibility="gone"/>
-
 </RelativeLayout>

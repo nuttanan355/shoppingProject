@@ -34,6 +34,8 @@ public class LoginActivity extends AppCompatActivity {
     private String parentDbName = "Users";
     private CheckBox chbRememberMe;
 
+    private TextView register_btn;
+
     private TextView AdminLink, NotAdminLink,ForgetPasswordLink;
 
 
@@ -42,6 +44,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
+
         btn_login = (Button) findViewById(R.id.btn_login);
         txtNumber = (EditText) findViewById(R.id.login_txt_username);
         txtPassword = (EditText) findViewById(R.id.login_txt_password);
@@ -49,6 +53,8 @@ public class LoginActivity extends AppCompatActivity {
         AdminLink = (TextView) findViewById(R.id.admin_panel_link);
         NotAdminLink = (TextView) findViewById(R.id.not_admin_panel_link);
         ForgetPasswordLink=(TextView)findViewById(R.id.forget_password_link);
+
+        register_btn = (TextView) findViewById(R.id.btn_account);
 
 
 
@@ -98,6 +104,15 @@ public class LoginActivity extends AppCompatActivity {
                 parentDbName = "Users";
             }
         });
+
+        register_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 
