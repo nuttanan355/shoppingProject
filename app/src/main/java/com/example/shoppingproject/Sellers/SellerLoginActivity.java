@@ -11,7 +11,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.shoppingproject.Admin.AdminHomeActivity;
 import com.example.shoppingproject.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -77,7 +76,7 @@ public class SellerLoginActivity extends AppCompatActivity {
                         {
                             if (task.isSuccessful())
                             {
-                                Intent intent =new Intent(SellerLoginActivity.this, AdminHomeActivity.class);
+                                Intent intent =new Intent(SellerLoginActivity.this,SellerHomeActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
                                 finish();

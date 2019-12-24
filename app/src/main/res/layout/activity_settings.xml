@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Buyers.SettingsActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_settings"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/btn_close_settings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/kanit_extralight"
+                    android:text="Close"
+                    android:textColor="@color/white"
+                    android:textSize="17dp"
+                    android:textStyle="bold"
+                    android:layout_alignParentStart="true"
+                    />
+
+                <TextView
+                    android:id="@+id/btn_update_settings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/kanit_extralight"
+                    android:text="Update"
+                    android:textColor="@color/white"
+                    android:textSize="17dp"
+                    android:textStyle="bold"
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentEnd="true"
+                    />
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/settings_profile_image"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:src="@drawable/profile"
+        android:layout_below="@+id/app_bar_settings"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:id="@+id/btn_profile_image_change"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/kanit_extralight"
+        android:text="Change Profile"
+        android:textColor="@color/colorBlack"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="4dp"
+        android:layout_below="@+id/settings_profile_image"
+        android:layout_centerHorizontal="true"
+        />
+
+    <EditText
+        android:id="@+id/settings_phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_profile_image_change"
+        android:fontFamily="@font/sukhumvitset_text"
+        android:hint="เบอร์โทรศัพท์....."
+        android:inputType="phone"
+        android:layout_margin="15dp"
+        android:padding="10dp"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:id="@+id/settings_full_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/settings_phone_number"
+        android:fontFamily="@font/sukhumvitset_text"
+        android:hint="ชื่อ....."
+        android:layout_margin="15dp"
+        android:padding="10dp"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:id="@+id/settings_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/settings_full_name"
+        android:fontFamily="@font/sukhumvitset_text"
+        android:hint="ที่อยู่....."
+        android:layout_margin="15dp"
+        android:padding="10dp"
+        android:textStyle="bold"
+        />
+    <Button
+        android:id="@+id/btn_security_questions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/settings_address"
+        android:fontFamily="@font/sukhumvitset_text"
+        android:text="ตั้งคำถามเพื่อปลอดภัย"
+        android:textSize="17dp"
+        android:background="@drawable/buttons"
+        android:textColor="@color/white"
+        android:layout_margin="15dp"
+        android:padding="10dp"
+        android:textStyle="bold"
+        />
+
+</RelativeLayout>

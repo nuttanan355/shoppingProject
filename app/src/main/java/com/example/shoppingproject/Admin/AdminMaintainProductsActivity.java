@@ -1,5 +1,8 @@
 package com.example.shoppingproject.Admin;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,10 +11,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.shoppingproject.R;
+import com.example.shoppingproject.Sellers.SellerProductCategoryActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -27,9 +28,6 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
     private Button btnApplyChange, btnDelete;
     private EditText name,price,description;
     private ImageView imageView;
-
-//    private static final int GalleryPick = 1;
-//    private Uri ImageUri;
 
     private String productID = "0";
     private DatabaseReference productsRef;
@@ -70,13 +68,6 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
             }
         });
 
-//        imageView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                OpenGallery();
-//            }
-//        });
-
     }
 
     private void deleteProduct()
@@ -85,7 +76,7 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) 
             {
-                Intent intent = new Intent(AdminMaintainProductsActivity.this, AdminHomeActivity.class);
+                Intent intent = new Intent(AdminMaintainProductsActivity.this, SellerProductCategoryActivity.class);
                 startActivity(intent);
                 finish();
 
@@ -93,31 +84,6 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
             }
         });
     }
-
-//    private void OpenGallery() {
-//
-//        Intent intent = new Intent();
-//        intent.setType("image/*");
-//        intent.setAction(Intent.ACTION_GET_CONTENT);
-//        startActivityForResult(intent, GalleryPick);
-//
-//
-//
-//    }
-//
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//
-//        if (requestCode == GalleryPick && resultCode == RESULT_OK && data != null) {
-//            ImageUri = data.getData();
-////            InputProductImage.setI
-//            imageView.setImageURI(ImageUri);
-//
-//        }
-//
-//    }
-
 
     private void ApplyChange()
     {
@@ -153,7 +119,7 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
                     {
                         Toast.makeText(AdminMaintainProductsActivity.this, "การเปลี่ยนแปลงสำเร็จ", Toast.LENGTH_SHORT).show();
 
-                        Intent intent = new Intent(AdminMaintainProductsActivity.this, AdminHomeActivity.class);
+                        Intent intent = new Intent(AdminMaintainProductsActivity.this, SellerProductCategoryActivity.class);
                         startActivity(intent);
                         finish();
                     }

@@ -52,12 +52,12 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
                 adapter = new FirebaseRecyclerAdapter<AdminOrders, AdminOrdersViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull AdminOrdersViewHolder holder, final int position, @NonNull final AdminOrders model) {
-                holder.userName.setText("ชื่อผู้สั่งซื้อ : " + model.getName());
-                holder.userPhoneNumber.setText("เบอร์โทร : " + model.getPhone());
-                holder.userTotalPrice.setText("ราคารวม : " + model.getTotalAmount());
-                holder.userDateTime.setText("วันที่ : " + model.getDate() + " เวลา :" + model.getTime());
-                holder.userShippingAddress.setText("ที่อยู่ : " + model.getAddress());
-                holder.userShippingCity.setText("จังหวัด : " + model.getCity());
+                holder.userName.setText("Name: " + model.getName());
+                holder.userPhoneNumber.setText("Phone: " + model.getPhone());
+                holder.userTotalPrice.setText("Total: " + model.getTotalAmount());
+                holder.userDateTime.setText("Order at: " + model.getDate() + ", " + model.getTime());
+                holder.userShippingAddress.setText("Address: " + model.getAddress() + ", " + model.getCity());
+                holder.userShippingCity.setText("City: " + model.getCity());
 
                 holder.btnShowOrder.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -75,7 +75,7 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         CharSequence options[] = new CharSequence[]
                                 {
-                                        "ใช่", "ไม่"
+                                        "Yes", "No"
                                 };
                         AlertDialog.Builder builder = new AlertDialog.Builder(AdminNewOrdersActivity.this);
                         builder.setTitle("จัดส่งสินค้าตามคำสั่งซื้อหรือไม่ ?");

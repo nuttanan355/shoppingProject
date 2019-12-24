@@ -1,14 +1,15 @@
 package com.example.shoppingproject.Admin;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransitionImpl;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shoppingproject.Model.Cart;
 import com.example.shoppingproject.R;
@@ -56,9 +57,8 @@ public class AdminUserProductActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull Cart model)
             {
-                holder.txtProductQuantity.setText("จำนวน " + model.getQuantity());
-                holder.txtProductPrice.setText("ราคา = " + model.getPrice() + " ฿");
-                holder.txtProductDescription.setText(model.getDiscount());
+                holder.txtProductQuantity.setText("Quantity = " + model.getQuantity());
+                holder.txtProductPrice.setText("Price = " + model.getPrice() + " ฿");
                 holder.txtProductName.setText(model.getPname());
             }
 
