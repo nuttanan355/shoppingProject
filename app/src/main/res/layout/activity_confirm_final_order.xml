@@ -81,7 +81,7 @@
         android:layout_margin="20dp"
         android:text="ยืนยัน"
         android:fontFamily="@font/sukhumvitset_text"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/AdmincolorAccent"
         android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold"

@@ -80,11 +80,12 @@
             android:layout_marginTop="2dp"
             android:textAlignment="center"
             android:textSize="20dp"
-            android:padding="12dp"
+            android:padding="10dp"
             android:layout_margin="5dp"
-            android:background="@drawable/buttons"
+            android:background="@color/AdmincolorAccent"
             android:textColor="@color/white"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:drawableLeft="@drawable/ok"/>
 
 
         <Button
@@ -95,12 +96,13 @@
             android:text="ลบสินค้า"
             android:textAlignment="center"
             android:textSize="20dp"
-            android:padding="12dp"
-            android:layout_margin="30dp"
+            android:padding="10dp"
+            android:layout_margin="5dp"
             android:fontFamily="@font/sukhumvitset_text"
-            android:background="@drawable/buttons"
+            android:background="@color/colorRed"
             android:textColor="@color/white"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:drawableLeft="@drawable/de"/>
 
     </RelativeLayout>
 

@@ -57,7 +57,7 @@
         android:layout_marginRight="15dp"
         android:layout_marginTop="30dp"
         android:layout_below="@+id/login_seller_password"
-        android:background="@android:color/holo_blue_light"
+        android:background="@color/AdmincolorAccent"
         android:textColor="@color/white"
         android:text="Login"
         android:textAllCaps="false"
