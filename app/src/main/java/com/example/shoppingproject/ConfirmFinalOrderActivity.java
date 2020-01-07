@@ -18,27 +18,54 @@ import com.example.shoppingproject.Model.PayPalConfig;
 import com.example.shoppingproject.Prevalent.Prevalent;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalPayment;
 import com.paypal.android.sdk.payments.PayPalService;
 import com.paypal.android.sdk.payments.PaymentActivity;
 import com.paypal.android.sdk.payments.PaymentConfirmation;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 
-public class ConfirmFinalOrderActivity extends AppCompatActivity {
+import co.omise.android.api.Client;
+import co.omise.android.api.Request;
+import co.omise.android.api.RequestListener;
+import co.omise.android.models.Capability;
+import kotlin.text.StringsKt;
+
+
+public class ConfirmFinalOrderActivity<val> extends AppCompatActivity {
 
     private EditText nameEditText, phoneEditText, addressEditText, cityEditText;
     private Button confrimOrderBtn;
     private String totalAmount = "";
-    private TextView totalPrice;
+    private TextView totalPrice, currencyEdit;
 
-    private int PAYPAL_REQUEST_CODE = 1 ;
+
+    //--------OMIES--------
+    private static String PUBLIC_KEY = "pkey_test_5idvjypsdpvqytorxfs";
+//    private static String PUBLIC_KEY = "skey_test_5ialne0wqo6lfd82gg0";
+
+    private int AUTHORIZING_PAYMENT_REQUEST_CODE = 0x3D5;
+    private int PAYMENT_CREATOR_REQUEST_CODE = 0x3D6;
+    private int CREDIT_CARD_REQUEST_CODE = 0x3D7;
+    private Snackbar snackbar;
+    private Capability capability;
+//-----------END-----------
+
+    //    PAYPAL
+    private int PAYPAL_REQUEST_CODE = 0x3D5;
+//    END
 
 
     @Override
@@ -46,9 +73,9 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_final_order);
 
-        Intent intent = new Intent(this, PayPalService.class);
-        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, payPalConfiguration);
-        startService(intent);
+//        Intent intent = new Intent(this, PayPalService.class);
+//        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, payPalConfiguration);
+//        startService(intent);
 
         confrimOrderBtn = (Button) findViewById(R.id.btn_confirm_final_order);
 
@@ -61,13 +88,32 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
         cityEditText = (EditText) findViewById(R.id.shipment_city);
 
         totalPrice = (TextView) findViewById(R.id.total_price);
+        currencyEdit = (TextView) findViewById(R.id.currencyEdit);
 
-        totalPrice.setText(totalAmount + " ฿");
+
+        snackbar = Snackbar.make(findViewById(R.id.content), "", Snackbar.LENGTH_SHORT);
+        totalPrice.setText(totalAmount);
 
         confrimOrderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CheckAddress();
+            }
+        });
+
+
+        Client client = new Client(PUBLIC_KEY);
+        Request<Capability> request = new Capability.GetCapabilitiesRequestBuilder().build();
+        client.send(request, new RequestListener<Capability>() {
+            @Override
+            public void onRequestSucceed(@NotNull Capability model) {
+                capability = model;
+            }
+
+            @Override
+            public void onRequestFailed(@NotNull Throwable throwable) {
+//                Toast.makeText(this, "capitalize", Toast.LENGTH_SHORT).show();
+                snackbar.setText(StringsKt.capitalize(throwable.getMessage())).show();
             }
         });
 
@@ -88,43 +134,122 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
 
             payPalPayment();
 
+//            omise
+//            choosePaymentMethod();
+
 //            ComfirmOrder();
         }
     }
 
+    //----------------------------------------------------omise----------------------------------------------------
 
+//    private void choosePaymentMethod() {
+////        boolean isUsedSpecificsPaymentMethods = PaymentSetting.isUsedSpecificsPaymentMethods(this);
+//
+////        if (!isUsedSpecificsPaymentMethods && capability == null) {
+////            snackbar.setText(R.string.error_capability_have_not_set_yet);
+////            return;
+////        }
+//
+//        double localAmount = Double.valueOf(totalPrice.getText().toString().trim());
+//        String currency = currencyEdit.getText().toString().trim().toLowerCase();
+//        Amount amount = Amount.fromLocalAmount(localAmount, currency);
+//
+//        Intent intent = new Intent(ConfirmFinalOrderActivity.this, PaymentCreatorActivity.class);
+//        intent.putExtra(OmiseActivity.EXTRA_PKEY, PUBLIC_KEY);
+//        intent.putExtra(OmiseActivity.EXTRA_AMOUNT, amount.getAmount());
+//        intent.putExtra(OmiseActivity.EXTRA_CURRENCY, amount.getCurrency());
+//
+////        if (isUsedSpecificsPaymentMethods) {
+////            intent.putExtra(OmiseActivity.EXTRA_CAPABILITY, PaymentSetting.createCapabilityFromPreferences(this));
+////        } else {
+//            intent.putExtra(OmiseActivity.EXTRA_CAPABILITY, capability);
+////        }
+//
+//        startActivityForResult(intent,PAYMENT_CREATOR_REQUEST_CODE);
+//    }
+//
+//    private void payByCreditCard() {
+//        Intent intent = new Intent(this, CreditCardActivity.class);
+//        intent.putExtra(OmiseActivity.EXTRA_PKEY, PUBLIC_KEY);
+//        startActivityForResult(intent, CREDIT_CARD_REQUEST_CODE);
+//    }
+//
+//    private void authorizeUrl() {
+//        Intent intent = new Intent(this, AuthorizingPaymentActivity.class);
+//        intent.putExtra(EXTRA_AUTHORIZED_URLSTRING, "https://pay.omise.co/offsites/");
+//        intent.putExtra(EXTRA_EXPECTED_RETURN_URLSTRING_PATTERNS, new String[]{"http://www.example.com"});
+//        startActivityForResult(intent, AUTHORIZING_PAYMENT_REQUEST_CODE);
+//    }
+//
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+////        super.onActivityResult(requestCode, resultCode, data);
+//        if (resultCode == RESULT_CANCELED) {
+//
+//            Toast.makeText(this, "การสร้างการชำระเงินถูกยกเลิก", Toast.LENGTH_SHORT).show();
+//            snackbar.setText("การสร้างการชำระเงินถูกยกเลิก").show();
+//            return;
+//        }
+//
+////        if (requestCode == AUTHORIZING_PAYMENT_REQUEST_CODE) {
+////            String url = data.getStringExtra(EXTRA_RETURNED_URLSTRING);
+//////            snackbar.setText(url).show();
+////        }
+//        else if (requestCode == PAYPAL_REQUEST_CODE) {
+//            if (data.hasExtra(OmiseActivity.EXTRA_SOURCE_OBJECT)) {
+//                Source source = data.getParcelableExtra(OmiseActivity.EXTRA_SOURCE_OBJECT);
+//                Toast.makeText(this, source.getId(), Toast.LENGTH_SHORT).show();
+////                snackbar.setText(source.getId()).show();
+//            } else if (data.hasExtra(OmiseActivity.EXTRA_TOKEN)) {
+//                Token token = data.getParcelableExtra(OmiseActivity.EXTRA_TOKEN_OBJECT);
+//                Toast.makeText(this, token.getId(), Toast.LENGTH_SHORT).show();
+////                snackbar.setText(token.getId()).show();
+//            }
+//        }
+//        else if (requestCode == CREDIT_CARD_REQUEST_CODE) {
+//            Token token = data.getParcelableExtra(OmiseActivity.EXTRA_TOKEN_OBJECT);
+//            Toast.makeText(this, token.getId(), Toast.LENGTH_SHORT).show();
+////            snackbar.setText(token.getId()).show();
+//        }
+//        else {
+//            super.onActivityResult(requestCode, resultCode, data);
+//        }
+//    }
+
+    //-----------------------------------------END--------omise----------------------------------------------------
     private static PayPalConfiguration payPalConfiguration = new PayPalConfiguration()
             .environment(PayPalConfiguration.ENVIRONMENT_SANDBOX)
             .clientId(PayPalConfig.PAYPAL_CLIENT_ID);
 
     private void payPalPayment() {
-        PayPalPayment payPalPaymenta = new PayPalPayment(new BigDecimal(totalAmount), "THB","ShoppingProject",
+        PayPalPayment payPalPaymenta = new PayPalPayment(new BigDecimal(totalAmount), "THB", "ProjectShopping",
+//        PayPalPayment payPalPaymenta = new PayPalPayment(new BigDecimal(totalAmount), "USD","ProjectShopping",
                 PayPalPayment.PAYMENT_INTENT_SALE);
 
         Intent intent = new Intent(ConfirmFinalOrderActivity.this, PaymentActivity.class);
 
-        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION,payPalConfiguration);
-        intent.putExtra(PaymentActivity.EXTRA_PAYMENT,payPalPaymenta);
+        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, payPalConfiguration);
+        intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payPalPaymenta);
 
-        startActivityForResult(intent,PAYPAL_REQUEST_CODE);
+        startActivityForResult(intent, PAYPAL_REQUEST_CODE);
 
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PAYPAL_REQUEST_CODE){
-            if(resultCode == Activity.RESULT_OK){
+        if (requestCode == PAYPAL_REQUEST_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
                 PaymentConfirmation paymentConfirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
-                if (paymentConfirmation != null)
-                {
+                if (paymentConfirmation != null) {
                     ComfirmOrder();
 
                 }
 
 
-            }else{
-                Toast.makeText(getApplicationContext(), "Payment unsuccessful", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(getApplicationContext(), "การชำระเงินไม่สำเร็จ", Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -132,11 +257,14 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        stopService(new Intent(ConfirmFinalOrderActivity.this,PayPalService.class));
         super.onDestroy();
+        stopService(new Intent(ConfirmFinalOrderActivity.this, PayPalService.class));
     }
 
+
     private void ComfirmOrder() {
+
+        final String OrdersRandomKay;
         final String saveCurrentDate, saveCurrentTime;
 
         Calendar calForDate = Calendar.getInstance();
@@ -146,13 +274,25 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
         saveCurrentTime = currentTime.format(calForDate.getTime());
 
+        OrdersRandomKay = saveCurrentDate + "," + saveCurrentTime;
+
+
+
+        final DatabaseReference Orderlist = FirebaseDatabase.getInstance()
+                .getReference().child("Cart List")
+                .child("User View")
+                .child(Prevalent.currentOnlineUser.getPhone());
+
+
         final DatabaseReference orderRef = FirebaseDatabase.getInstance()
                 .getReference()
                 .child("Orders")
-                .child(Prevalent.currentOnlineUser.getPhone());
+                .child(Prevalent.currentOnlineUser.getPhone()).child(OrdersRandomKay);
 
-        HashMap<String, Object> orderMap = new HashMap<>();
 
+        final HashMap<String, Object> orderMap = new HashMap<>();
+
+        orderMap.put("oid", OrdersRandomKay);
         orderMap.put("totalAmount", totalAmount);
         orderMap.put("name", nameEditText.getText().toString());
         orderMap.put("phone", phoneEditText.getText().toString());
@@ -160,37 +300,54 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
         orderMap.put("city", cityEditText.getText().toString());
         orderMap.put("date", saveCurrentDate);
         orderMap.put("time", saveCurrentTime);
-        orderMap.put("state", "not Shipped");
-        orderMap.put("payment", "successful payment");
-        orderMap.put("package", "package number");
+        orderMap.put("state", "not shipped");
+        orderMap.put("payment", "ชำระเงินสำเร็จ");
+        orderMap.put("package", "เลขพัสดุ");
 
-        orderRef.updateChildren(orderMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+        Orderlist.child("Products").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    FirebaseDatabase.getInstance().getReference().child("Cart List")
-                            .child("User View")
-                            .child(Prevalent.currentOnlineUser.getPhone())
-                            .removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                orderRef.child("orderList").setValue(dataSnapshot.getValue());
 
-                            if (task.isSuccessful()) {
-                                Toast.makeText(ConfirmFinalOrderActivity.this, "คำสั่งซื้อสุดท้ายเรียบร้อยแล้ว", Toast.LENGTH_SHORT).show();
 
-                                Intent intent = new Intent(ConfirmFinalOrderActivity.this, HomeActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(intent);
-                                finish();
+                orderRef.updateChildren(orderMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
 
-                            }
+                            Orderlist.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(ConfirmFinalOrderActivity.this, "คำสั่งซื้อสุดท้ายเรียบร้อยแล้ว", Toast.LENGTH_SHORT).show();
+
+
+
+                                        Intent intent = new Intent(ConfirmFinalOrderActivity.this, HomeActivity.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(intent);
+                                        finish();
+
+                                    }
+                                }
+                            });
 
                         }
-                    });
-                }
+                    }
+                });
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
 
 
     }
+
+
 }

@@ -92,7 +92,7 @@ public class HomeActivity extends AppCompatActivity {
                 R.id.nav_home,
                 R.id.nav_cart,
                 R.id.nav_search,
-//                R.id.nav_categories,
+                R.id.nav_order_history,
                 R.id.nav_settings,
                 R.id.nav_logout).setDrawerLayout(drawer).build();
 
@@ -118,9 +118,9 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 }
-//                if (destination.getId() == R.id.nav_categories) {
-//
-//                }
+                if (destination.getId() == R.id.nav_order_history) {
+
+                }
                 if (destination.getId() == R.id.nav_settings) {
 
                     if (!type.equals("Admin")) {
@@ -172,7 +172,7 @@ public class HomeActivity extends AppCompatActivity {
         FirebaseRecyclerOptions<Products> options =
                 new FirebaseRecyclerOptions.Builder<Products>()
 //                        .setQuery(ProductsRef.orderByChild("productState").equalTo("Approved"), Products.class)
-                        .setQuery(ProductsRef.orderByChild("productState"), Products.class)
+                        .setQuery(ProductsRef, Products.class)
                         .build();
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
                 new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {

@@ -154,7 +154,7 @@ public class AdminHomeActivity extends AppCompatActivity {
 //                    @Override
 //                    public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
 //                    {
-//                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.seller_item_view, parent, false);
+//                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.order_history_view, parent, false);
 //                        ItemViewHolder holder = new ItemViewHolder(view);
 //                        return holder;
 //                    }

@@ -47,12 +47,12 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/register_txt_username"
             android:gravity="center_vertical">
-            <com.hbb20.CountryCodePicker
-                android:id="@+id/ccp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:ccp_defaultNameCode="TH"
-                android:visibility="gone"/>
+<!--            <com.hbb20.CountryCodePicker-->
+<!--                android:id="@+id/ccp"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:ccp_defaultNameCode="TH"-->
+<!--                android:visibility="gone"/>-->
 
             <EditText
                 android:id="@+id/register_txt_phone_number"

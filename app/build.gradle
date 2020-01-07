@@ -60,7 +60,11 @@ dependencies {
     //PayPalConfig
     implementation 'com.paypal.sdk:paypal-android-sdk:2.16.0'
 
+    implementation 'co.omise:omise-android:3.0.0'
+
     implementation 'com.hbb20:ccp:2.3.4'
+
+
 
     //ไลเบอรี่ Firebase
     implementation 'com.google.firebase:firebase-auth:19.1.0'

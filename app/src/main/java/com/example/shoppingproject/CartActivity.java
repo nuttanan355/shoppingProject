@@ -84,7 +84,7 @@ public class CartActivity extends AppCompatActivity {
 
 
 
-        CheckOrderSate();
+//        CheckOrderSate();
 
 
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
@@ -122,7 +122,7 @@ public class CartActivity extends AppCompatActivity {
                                 "ลบออก"
                         };
                         AlertDialog.Builder builder = new AlertDialog.Builder(CartActivity.this);
-                        builder.setTitle("Cart Options :");
+                        builder.setTitle("ตัวเลือกรถเข็น :");
                         builder.setItems(options, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
@@ -175,7 +175,7 @@ public class CartActivity extends AppCompatActivity {
     private void CheckOrderSate() {
         DatabaseReference orderRef;
         orderRef = FirebaseDatabase.getInstance().getReference()
-                .child("Order")
+                .child("Orders")
                 .child(Prevalent.currentOnlineUser.getPhone());
         orderRef.addValueEventListener(new ValueEventListener() {
             @Override

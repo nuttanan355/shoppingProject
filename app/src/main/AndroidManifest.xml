@@ -17,6 +17,23 @@
         <activity
             android:name=".Admin.AdminHomeActivity"
             android:label="@string/title_activity_seller_home" />
+
+        <!--Omise-->
+        <activity
+            android:name="co.omise.android.ui.CreditCardActivity"
+            android:theme="@style/OmiseTheme" />
+        <activity
+            android:name="co.omise.android.ui.PaymentCreatorActivity"
+            android:theme="@style/OmiseTheme" />
+
+        <activity
+            android:name="co.omise.android.ui.AuthorizingPaymentActivity"
+            android:theme="@style/OmiseTheme" />
+
+
+        <!--END Omise-->
+
+
         <activity android:name=".Sellers.SellerLoginActivity" />
         <activity android:name=".Sellers.SellerRegistrationActivity" />
         <activity android:name=".ResetPasswordActivity" />

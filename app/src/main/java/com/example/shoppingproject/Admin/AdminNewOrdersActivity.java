@@ -85,7 +85,7 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int i) {
                                 if (i == 0) {
                                     String uID = getRef(position).getKey();
-
+                                    OrderHistory();
                                     RemoverOrder(uID);
                                 } else {
                                     finish();
@@ -109,6 +109,10 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
         adapter.startListening();
     }
 
+    private void OrderHistory()
+    {
+
+    }
 
 
     public static class AdminOrdersViewHolder extends RecyclerView.ViewHolder {
