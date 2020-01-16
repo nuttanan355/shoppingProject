@@ -1,10 +1,5 @@
 package com.example.shoppingproject;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shoppingproject.Model.Products;
 import com.example.shoppingproject.ViewHolder.ProductViewHolder;
@@ -85,7 +85,7 @@ public class SearchProductsActivity extends AppCompatActivity {
             @NonNull
             @Override
             public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_items_view, parent, false);
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_product_view, parent, false);
                 ProductViewHolder holder = new ProductViewHolder(view);
                 return holder;
             }

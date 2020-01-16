@@ -103,28 +103,28 @@ public class ProductDetailsActivity extends AppCompatActivity {
         cartMap.put("quantity", numberButton.getNumber());
         cartMap.put("discount", productDescription.getText().toString());
 
-        cartListRef.child("User View").child(Prevalent.currentOnlineUser.getPhone())
+        cartListRef.child(Prevalent.currentOnlineUser.getPhone())
                 .child("Products").child(productID)
                 .updateChildren(cartMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            cartListRef.child("Admin View").child(Prevalent.currentOnlineUser.getPhone())
-                                    .child("Products").child(productID)
-                                    .updateChildren(cartMap)
-                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()) {
+//                            cartListRef.child("Admin View").child(Prevalent.currentOnlineUser.getPhone())
+//                                    .child("Products").child(productID)
+//                                    .updateChildren(cartMap)
+//                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                        @Override
+//                                        public void onComplete(@NonNull Task<Void> task) {
+//                                            if (task.isSuccessful()) {
                                                 Toast.makeText(ProductDetailsActivity.this, "เพิ่มในรถเข็นแล้ว", Toast.LENGTH_SHORT).show();
 
                                                 Intent intent = new Intent(ProductDetailsActivity.this, HomeActivity.class);
                                                 startActivity(intent);
                                             }
-                                        }
-                                    });
-                        }
+//                                        }
+//                                    });
+//                        }
                     }
                 });
     }

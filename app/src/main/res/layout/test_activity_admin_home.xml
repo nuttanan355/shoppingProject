@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#335889"
-    tools:context=".Admin.AdminHomeTestActivity">
+    tools:context=".Admin.TestAdminHomeActivity">
 
         <TextView
             android:id="@+id/admin_welcome"

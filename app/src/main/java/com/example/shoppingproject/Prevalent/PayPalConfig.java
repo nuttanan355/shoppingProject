@@ -1,4 +1,4 @@
-package com.example.shoppingproject.Model;
+package com.example.shoppingproject.Prevalent;
 
 public class PayPalConfig {
 

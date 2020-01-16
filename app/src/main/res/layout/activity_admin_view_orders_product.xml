@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Admin.AdminViewOrdersProductActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/order_layout0"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentTop="true"
+                android:background="@color/colorPrimaryDark">
+
+                <TextView
+                    android:id="@+id/text_total_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/sukhumvitset_text"
+                    android:text="รายละเอียดคำสั่งซื้อ"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="22dp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/order_layout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/order_layout0"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/gps" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:paddingLeft="20dp"
+                        android:text="ที่อยู่ในการจัดส่ง"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="20dp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/view_order_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="40dp"
+                    android:text="นาย สมศศักดิ์ นวงสว่าง" />
+
+                <TextView
+                    android:id="@+id/view_order_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="40dp"
+                    android:text="0986865516" />
+
+                <TextView
+                    android:id="@+id/view_order_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:paddingLeft="40dp"
+                    android:paddingRight="20dp"
+                    android:text="60/1 ม.10 ต.โมคลาน อ.ท่าศาลา จ.นครศรีธรรมราช 80160" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/order_layout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/order_layout0"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/box" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:paddingLeft="20dp"
+                        android:text="เลขพัสดุ"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="20dp" />
+
+                </LinearLayout>
+
+               <EditText
+                   android:id="@+id/view_order_package"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:hint="ใส่เลขพัสดุ"
+                   android:layout_marginLeft="20dp"/>
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:padding="10dp"
+                android:id="@+id/products_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/order_layout1" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:text="ค่าจัดส่ง"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="223dp"
+                    android:layout_marginEnd="9dp"
+                    android:layout_toStartOf="@+id/text111"
+                    android:text="45"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/text111"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="THB"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16dp" />
+
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:text="ราคารวม"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/view_order_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="223dp"
+                    android:layout_marginEnd="9dp"
+                    android:layout_toStartOf="@+id/text11"
+                    android:text="0000"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/text11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="THB"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20dp" />
+
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:id="@+id/order_layout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <Button
+                    android:id="@+id/btn_delete_order"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="ไม่อนุมัติและลบคำสั่งซื้อ"
+                    android:background="@color/colorRed"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="10dp"
+                    android:textSize="15dp"/>
+
+                <Button
+                    android:id="@+id/btn_save_order"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:background="@color/AdmincolorAccent"
+                    android:textStyle="bold"
+                    android:text="อนุมัติและส่งคำสั่งซื้อ"
+                    android:textSize="15dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+

@@ -11,14 +11,14 @@ import com.example.shoppingproject.HomeActivity;
 import com.example.shoppingproject.MainActivity;
 import com.example.shoppingproject.R;
 
-public class AdminHomeTestActivity extends AppCompatActivity {
+public class TestAdminHomeActivity extends AppCompatActivity {
 
     private Button LogoutBtn, CheckOrdersBtn, btnMaintainProducts,btnCheckApproveProduct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_home_test);
+        setContentView(R.layout.test_activity_admin_home);
 
         LogoutBtn = (Button) findViewById(R.id.btn_admin_logout);
         CheckOrdersBtn = (Button) findViewById(R.id.btn_check_orders);
@@ -28,7 +28,7 @@ public class AdminHomeTestActivity extends AppCompatActivity {
         btnMaintainProducts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AdminHomeTestActivity.this, HomeActivity.class);
+                Intent intent = new Intent(TestAdminHomeActivity.this, HomeActivity.class);
                 intent.putExtra("Admin", "Admin");
                 startActivity(intent);
                 finish();
@@ -38,7 +38,7 @@ public class AdminHomeTestActivity extends AppCompatActivity {
         LogoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AdminHomeTestActivity.this, MainActivity.class);
+                Intent intent = new Intent(TestAdminHomeActivity.this, MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
@@ -48,7 +48,8 @@ public class AdminHomeTestActivity extends AppCompatActivity {
         CheckOrdersBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AdminHomeTestActivity.this, AdminNewOrdersActivity.class);
+                Intent intent = new Intent(TestAdminHomeActivity.this, TestAdminNewOrdersActivity.class);
+                intent.putExtra("Admin", "Admin");
                 startActivity(intent);
             }
         });
@@ -56,7 +57,7 @@ public class AdminHomeTestActivity extends AppCompatActivity {
         btnCheckApproveProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AdminHomeTestActivity.this, AdminCheckNewProductsActivity.class);
+                Intent intent = new Intent(TestAdminHomeActivity.this, AdminCheckNewProductsActivity.class);
                 startActivity(intent);
             }
         });

@@ -89,7 +89,7 @@ public class CartActivity extends AppCompatActivity {
 
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
         FirebaseRecyclerOptions<Cart> options = new FirebaseRecyclerOptions.Builder<Cart>()
-                .setQuery(cartListRef.child("User View")
+                .setQuery(cartListRef
                         .child(Prevalent.currentOnlineUser.getPhone())
                         .child("Products"), Cart.class).build();
 
@@ -132,7 +132,7 @@ public class CartActivity extends AppCompatActivity {
                                     startActivity(intent);
                                 }
                                 if (i == 1) {
-                                    cartListRef.child("User View")
+                                    cartListRef
                                             .child(Prevalent.currentOnlineUser.getPhone())
                                             .child("Products")
                                             .child(model.getPid())
@@ -162,7 +162,7 @@ public class CartActivity extends AppCompatActivity {
             @NonNull
             @Override
             public CartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cart_items_layout, parent, false);
+                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_cart_layout, parent, false);
                 CartViewHolder holder = new CartViewHolder(v);
                 return holder;
             }

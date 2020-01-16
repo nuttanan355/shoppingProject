@@ -1,4 +1,4 @@
-package com.example.shoppingproject.Admin;
+package com.example.shoppingproject;
 
 import android.os.Bundle;
 
@@ -8,29 +8,23 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.shoppingproject.Admin.Fragment.AdminOrdersHistoryFragment;
-import com.example.shoppingproject.Admin.Fragment.AdminOrdersOneFragment;
-import com.example.shoppingproject.Admin.Fragment.AdminOrdersTwoFragment;
-import com.example.shoppingproject.R;
+import com.example.shoppingproject.Fragment.OrdersHistoryFragment;
+import com.example.shoppingproject.Fragment.OrdersOneFragment;
+import com.example.shoppingproject.Fragment.OrdersTwoFragment;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdminNewOrdersActivity extends AppCompatActivity {
+public class NewOrdersActivity extends AppCompatActivity {
 
-
-//    private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_new_orders);
-
-
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setContentView(R.layout.activity_new_orders);
 
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         setupViewPager(viewPager);
@@ -38,15 +32,13 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
 
-
-
     }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new AdminOrdersOneFragment(),"ที่ต้องจัดส่ง");
-        adapter.addFragment(new AdminOrdersTwoFragment(),"กำลังส่ง");
-        adapter.addFragment(new AdminOrdersHistoryFragment(),"สำเร็จ");
+        adapter.addFragment(new OrdersOneFragment(),"รอจัดส่ง");
+        adapter.addFragment(new OrdersTwoFragment(),"กำลังส่ง");
+        adapter.addFragment(new OrdersHistoryFragment(),"สำเร็จ");
         viewPager.setAdapter(adapter);
     }
 
@@ -78,6 +70,4 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
             return mFragmentTitleList.get(position);
         }
     }
-
-
 }

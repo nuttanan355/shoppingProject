@@ -1,12 +1,12 @@
 package com.example.shoppingproject.Model;
 
-public class AdminOrders {
+public class NewOrders {
     private String name, phone, address, city, state, date, time, totalAmount, oid;
 
-    public AdminOrders() {
+    public NewOrders() {
     }
 
-    public AdminOrders(String name, String phone, String address, String city, String state, String date, String time, String totalAmount, String oid) {
+    public NewOrders(String name, String phone, String address, String city, String state, String date, String time, String totalAmount, String oid) {
         this.name = name;
         this.phone = phone;
         this.address = address;

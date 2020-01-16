@@ -1,37 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:layout_margin="10dp"
-        android:background="@color/colorPrimaryDark">
+        android:background="@color/colorPrimaryDark"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/order_user_name"
-            android:layout_width="160dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="UserName"
             android:fontFamily="@font/sukhumvitset_text"
             android:textColor="@color/white"
             android:textSize="14dp"
-            android:layout_marginLeft="5dp"
             android:textStyle="bold"
             />
 
         <TextView
             android:id="@+id/order_phone_number"
-            android:layout_width="160dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="เบอร์โทรศัพท์"
             android:fontFamily="@font/sukhumvitset_text"
             android:textColor="@color/white"
+            android:layout_marginTop="5dp"
             android:textSize="14dp"
-            android:layout_marginLeft="5dp"
+
             android:layout_alignParentEnd="true"
             android:textAlignment="viewEnd"
             android:layout_marginRight="5dp"
@@ -39,16 +40,16 @@
             />
 
         <TextView
-            android:id="@+id/order_total_price"
+            android:id="@+id/order_date_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/sukhumvitset_text"
-            android:text="ราคารวม"
+            android:text="วันที่, เวลา"
             android:textColor="@color/white"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:layout_below="@+id/cart_product_quantity"
-            android:gravity="center"
+            android:layout_below="@+id/order_address"
+            android:gravity="left"
             android:layout_marginTop="18dp"
             />
 
@@ -62,56 +63,30 @@
             android:textSize="18dp"
             android:textStyle="bold"
             android:layout_below="@+id/order_total_price"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
-            />
-        <TextView
-            android:id="@+id/order_city"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/sukhumvitset_text"
-            android:text="จังหวัด"
-            android:textColor="@color/white"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:layout_below="@+id/order_address"
-            android:gravity="center"
+            android:gravity="left"
             android:layout_marginTop="10dp"
             />
 
         <TextView
-            android:id="@+id/order_date_time"
+            android:id="@+id/order_total_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/sukhumvitset_text"
-            android:text="วันที่, เวลา"
+            android:text="ราคารวม"
             android:textColor="@color/white"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:layout_below="@+id/order_city"
-            android:gravity="center"
+            android:layout_below="@+id/cart_product_quantity"
+            android:gravity="left"
             android:layout_marginTop="10dp"
             />
 
 
-        <Button
-            android:id="@+id/btn_show_all_products"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/sukhumvitset_text"
-            android:text="แสดงคำสั่งซื้อสินค้า"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp"
-            android:background="@color/white"
-            android:layout_below="@+id/order_date_time"
-            android:textStyle="bold"
-
-            />
 
 
-    </RelativeLayout>
 
-</RelativeLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

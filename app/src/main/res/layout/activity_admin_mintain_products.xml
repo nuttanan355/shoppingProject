@@ -70,39 +70,54 @@
             android:textColor="@color/colorPrimaryDark"
             android:textStyle="bold"/>
 
-        <Button
-            android:id="@+id/btn_apply_changes"
+        <LinearLayout
+            android:id="@+id/order_layout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/maintain_product_description"
-            android:text="ยืนยันการแก้ไข"
-            android:fontFamily="@font/sukhumvitset_text"
-            android:layout_marginTop="2dp"
-            android:textAlignment="center"
-            android:textSize="20dp"
-            android:padding="10dp"
-            android:layout_margin="5dp"
-            android:background="@color/AdmincolorAccent"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:drawableLeft="@drawable/ok"/>
+            android:orientation="horizontal"
+            android:padding="5dp">
 
 
-        <Button
-            android:id="@+id/btn_delete_product"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btn_apply_changes"
-            android:text="ลบสินค้า"
-            android:textAlignment="center"
-            android:textSize="20dp"
-            android:padding="10dp"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/sukhumvitset_text"
-            android:background="@color/colorRed"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:drawableLeft="@drawable/de"/>
+
+            <Button
+                android:id="@+id/btn_apply_changes"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="ยืนยันการแก้ไข"
+                android:fontFamily="@font/sukhumvitset_text"
+                android:layout_marginTop="2dp"
+                android:textAlignment="center"
+                android:textSize="15dp"
+                android:padding="10dp"
+                android:layout_margin="5dp"
+                android:background="@color/AdmincolorAccent"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/ok"/>
+
+
+            <Button
+                android:id="@+id/btn_delete_product"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btn_apply_changes"
+                android:text="ลบสินค้า"
+                android:textAlignment="center"
+                android:textSize="15dp"
+                android:padding="10dp"
+                android:layout_margin="5dp"
+                android:fontFamily="@font/sukhumvitset_text"
+                android:background="@color/colorRed"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/de"/>
+
+        </LinearLayout>
+
+
 
     </RelativeLayout>
 

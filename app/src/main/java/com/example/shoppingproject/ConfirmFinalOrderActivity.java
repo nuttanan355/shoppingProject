@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.shoppingproject.Model.PayPalConfig;
+import com.example.shoppingproject.Prevalent.PayPalConfig;
 import com.example.shoppingproject.Prevalent.Prevalent;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -50,6 +50,7 @@ public class ConfirmFinalOrderActivity<val> extends AppCompatActivity {
     private Button confrimOrderBtn;
     private String totalAmount = "";
     private TextView totalPrice, currencyEdit;
+
 
 
     //--------OMIES--------
@@ -277,38 +278,42 @@ public class ConfirmFinalOrderActivity<val> extends AppCompatActivity {
         OrdersRandomKay = saveCurrentDate + "," + saveCurrentTime;
 
 
+        String address =addressEditText.getText().toString()+" "+cityEditText.getText().toString();
+
 
         final DatabaseReference Orderlist = FirebaseDatabase.getInstance()
                 .getReference().child("Cart List")
-                .child("User View")
                 .child(Prevalent.currentOnlineUser.getPhone());
 
 
         final DatabaseReference orderRef = FirebaseDatabase.getInstance()
                 .getReference()
                 .child("Orders")
-                .child(Prevalent.currentOnlineUser.getPhone()).child(OrdersRandomKay);
+//                .child(Prevalent.currentOnlineUser.getPhone())
+                .child(OrdersRandomKay);
 
 
         final HashMap<String, Object> orderMap = new HashMap<>();
 
+
         orderMap.put("oid", OrdersRandomKay);
+        orderMap.put("userName", Prevalent.currentOnlineUser.getPhone());
         orderMap.put("totalAmount", totalAmount);
         orderMap.put("name", nameEditText.getText().toString());
         orderMap.put("phone", phoneEditText.getText().toString());
-        orderMap.put("address", addressEditText.getText().toString());
-        orderMap.put("city", cityEditText.getText().toString());
+        orderMap.put("address", address);
+//        orderMap.put("city", cityEditText.getText().toString());
         orderMap.put("date", saveCurrentDate);
         orderMap.put("time", saveCurrentTime);
-        orderMap.put("state", "not shipped");
+        orderMap.put("state approve", "not approve");
+        orderMap.put("state shipped", "not shipped");
         orderMap.put("payment", "ชำระเงินสำเร็จ");
-        orderMap.put("package", "เลขพัสดุ");
+        orderMap.put("package", "");
 
         Orderlist.child("Products").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 orderRef.child("orderList").setValue(dataSnapshot.getValue());
-
 
                 orderRef.updateChildren(orderMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

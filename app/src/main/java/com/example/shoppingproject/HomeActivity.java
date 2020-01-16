@@ -92,7 +92,7 @@ public class HomeActivity extends AppCompatActivity {
                 R.id.nav_home,
                 R.id.nav_cart,
                 R.id.nav_search,
-                R.id.nav_order_history,
+                R.id.nav_new_order,
                 R.id.nav_settings,
                 R.id.nav_logout).setDrawerLayout(drawer).build();
 
@@ -118,7 +118,11 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 }
-                if (destination.getId() == R.id.nav_order_history) {
+                if (destination.getId() == R.id.nav_new_order) {
+                    if (!type.equals("Admin")) {
+                        Intent intent = new Intent(HomeActivity.this, NewOrdersActivity.class);
+                        startActivity(intent);
+                    }
 
                 }
                 if (destination.getId() == R.id.nav_settings) {
@@ -205,7 +209,7 @@ public class HomeActivity extends AppCompatActivity {
                     @NonNull
                     @Override
                     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_items_view, parent, false);
+                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_product_view, parent, false);
                         ProductViewHolder holder = new ProductViewHolder(view);
                         return holder;
                     }

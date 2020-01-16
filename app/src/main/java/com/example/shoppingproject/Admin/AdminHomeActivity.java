@@ -60,6 +60,7 @@ public class AdminHomeActivity extends AppCompatActivity {
                     case R.id.navigation_orders:
 //                        mTextMessage.setText(R.string.title_add);
                         Intent intentOrder = new Intent(AdminHomeActivity.this, AdminNewOrdersActivity.class);
+                        intentOrder.putExtra("Admin", "Admin");
                         startActivity(intentOrder);
 
                         return true;
@@ -195,7 +196,7 @@ public class AdminHomeActivity extends AppCompatActivity {
                     @NonNull
                     @Override
                     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_items_view, parent, false);
+                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_product_view, parent, false);
                         ProductViewHolder holder = new ProductViewHolder(view);
                         return holder;
                     }
