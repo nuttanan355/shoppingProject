@@ -14,14 +14,22 @@
         android:background="@drawable/input_design_back"
         android:padding="10dp">
 
+
         <ImageView
             android:id="@+id/imageViewChild"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars"
-            android:visibility="gone"/>
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginVertical="20dp"
+            android:cropToPadding="true"
+            android:src="@drawable/select_product_image" />
+
+<!--        <ImageView-->
+<!--            android:id="@+id/imageViewChild"-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="100dp"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            tools:srcCompat="@tools:sample/avatars" />-->
 
         <LinearLayout
             android:layout_width="match_parent"

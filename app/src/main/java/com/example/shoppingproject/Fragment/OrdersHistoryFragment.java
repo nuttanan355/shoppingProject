@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shoppingproject.Model.NewOrders;
 import com.example.shoppingproject.OrdersHistoryActivity;
+import com.example.shoppingproject.Prevalent.Prevalent;
 import com.example.shoppingproject.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -37,7 +38,7 @@ public class OrdersHistoryFragment extends Fragment {
         ordersList = view.findViewById(R.id.orders_list3);
         ordersList.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        ordersRef.orderByChild("state shipped").equalTo("shipped");
+//        ordersRef.orderByChild("state shipped").equalTo("shipped");
 
         return view;
 
@@ -45,7 +46,7 @@ public class OrdersHistoryFragment extends Fragment {
 
     public static class AdminOrdersViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView userName, userPhoneNumber, userTotalPrice, userDateTime, userShippingAddress,userShippingCity;
+        public TextView userName, userPhoneNumber, userTotalPrice, userDateTime, userShippingAddress, userShippingCity;
 //        public Button btnShowOrder;
 
 
@@ -66,25 +67,33 @@ public class OrdersHistoryFragment extends Fragment {
     }
 
 
-
-
     @Override
     public void onStart() {
         super.onStart();
 
+        showOrder();
 
-//        FirebaseRecyclerOptions<NewOrders>
-//                options = new FirebaseRecyclerOptions.Builder<NewOrders>()
-//                .setQuery(ordersRef.orderByChild("userName")
-//                        .equalTo(Prevalent.currentOnlineUser.getPhone()), NewOrders.class).build();
+
+
+
+
+
+
+    }
+
+    private void showOrder() {
 
         FirebaseRecyclerOptions<NewOrders>
                 options = new FirebaseRecyclerOptions.Builder<NewOrders>()
-                .setQuery(ordersRef.orderByChild("state shipped")
-                        .equalTo("shipped"), NewOrders.class).build();
+                .setQuery(ordersRef.orderByChild("userName")
+                        .equalTo(Prevalent.currentOnlineUser.getPhone()+"twohis"), NewOrders.class).build();
 
         FirebaseRecyclerAdapter<NewOrders, AdminOrdersViewHolder>
                 adapter = new FirebaseRecyclerAdapter<NewOrders, AdminOrdersViewHolder>(options) {
+
+
+
+
             @Override
             protected void onBindViewHolder(@NonNull AdminOrdersViewHolder holder, final int position, @NonNull final NewOrders model) {
                 holder.userName.setText("ชื่อผู้สั่งซื้อ : " + model.getName());
@@ -92,15 +101,13 @@ public class OrdersHistoryFragment extends Fragment {
                 holder.userTotalPrice.setText("ราคารวม : " + model.getTotalAmount() + "THB");
                 holder.userDateTime.setText("วันที่ : " + model.getDate() + " เวลา :" + model.getTime());
                 holder.userShippingAddress.setText("ที่อยู่ : " + model.getAddress());
-//                holder.userShippingCity.setText("จังหวัด : " + model.getCity());
+
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                            String uID = getRef(position).getKey();
-//
+
                         Intent intent = new Intent(getActivity(), OrdersHistoryActivity.class);
-//                            intent.putExtra("uid", uID);
                         intent.putExtra("oid", model.getOid());
                         startActivity(intent);
                     }
@@ -121,4 +128,7 @@ public class OrdersHistoryFragment extends Fragment {
 
     }
 
+
 }
+
+

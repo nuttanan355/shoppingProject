@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class ViewOrderProductActivity extends AppCompatActivity {
 
@@ -104,6 +105,8 @@ public class ViewOrderProductActivity extends AppCompatActivity {
                 holder.txtProductPrice.setText("ราคา = " + model.getPrice() + " ฿");
                 holder.txtProductDescription.setText(model.getDiscount());
                 holder.txtProductName.setText(model.getPname());
+                Picasso.get().load(model.getImage()).into(holder.imageViewProduct);
+//                Picasso.get().load(model.getImage()).into(holder.imgProduct);
             }
 
             @NonNull

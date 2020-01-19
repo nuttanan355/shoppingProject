@@ -24,22 +24,27 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="15dp"
+        android:visibility="visible"
         android:padding="0dp">
+
 
         <EditText
             android:id="@+id/register_txt_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
             android:backgroundTint="@color/colorPrimaryDark"
             android:drawableTint="@color/colorPrimaryDark"
             android:hint="User Name"
             android:inputType="text"
             android:padding="20dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:textColorHint="@color/colorPrimaryDark"
+            android:textColor="@color/primaryTextColor"
+            android:textColorHint="@color/primaryTextColor"
             android:textSize="20dp"
             android:textStyle="bold" />
-
 
         <LinearLayout
             android:id="@+id/country_phone_register"
@@ -47,12 +52,13 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/register_txt_username"
             android:gravity="center_vertical">
-<!--            <com.hbb20.CountryCodePicker-->
-<!--                android:id="@+id/ccp"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                app:ccp_defaultNameCode="TH"-->
-<!--                android:visibility="gone"/>-->
+
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/ccp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:ccp_defaultNameCode="TH"
+                android:visibility="visible"/>
 
             <EditText
                 android:id="@+id/register_txt_phone_number"
@@ -61,12 +67,12 @@
                 android:backgroundTint="@color/colorPrimaryDark"
                 android:drawableTint="@color/colorPrimaryDark"
                 android:hint="Phone"
-                android:ems="10"
+                android:maxLength="12"
                 android:inputType="phone"
                 android:padding="20dp"
                 android:singleLine="true"
-                android:textColor="@color/colorPrimaryDark"
-                android:textColorHint="@color/colorPrimaryDark"
+                android:textColor="@color/primaryTextColor"
+                android:textColorHint="@color/primaryTextColor"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
@@ -83,41 +89,67 @@
             android:hint="Password"
             android:inputType="textPassword"
             android:padding="20dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:textColorHint="@color/colorPrimaryDark"
+            android:textColor="@color/primaryTextColor"
+            android:textColorHint="@color/primaryTextColor"
             android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/register_txt_password"
+            android:layout_margin="17dp"
+            android:background="@drawable/buttons"
+            android:padding="19dp"
+            android:text="Create Account"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="22dp"
             android:textStyle="bold" />
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/OtpAuth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/register_applogo"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:visibility="gone"
+        android:padding="0dp">
+
+
     <EditText
-        android:id="@+id/register_otp_phone"
+        android:id="@+id/code_otp_text"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_below="@+id/phoneAuth"
         android:layout_margin="25dp"
         android:backgroundTint="@color/colorPrimaryDark"
         android:drawableLeft="@drawable/password"
         android:drawableTint="@color/colorPrimaryDark"
-        android:hint="กรอกข้อมูลที่นี่..."
+        android:hint="กรอกข้อมูล OTP ที่นี่..."
         android:inputType="phone"
         android:singleLine="true"
-        android:textColor="@color/colorPrimaryDark"
-        android:textColorHint="@color/colorPrimaryDark"
-        android:visibility="gone" />
+        android:textColor="@color/primaryTextColor"
+        android:textColorHint="@color/primaryTextColor"
+        android:visibility="visible" />
 
     <Button
-        android:id="@+id/btn_register"
+        android:id="@+id/btn_otp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/register_otp_phone"
+        android:layout_below="@+id/code_otp_text"
         android:layout_margin="17dp"
         android:background="@drawable/buttons"
         android:padding="19dp"
-        android:text="Create Account"
+        android:text="Code Sent"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:textSize="22dp"
         android:textStyle="bold" />
+    </RelativeLayout>
 
 </RelativeLayout>

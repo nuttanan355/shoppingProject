@@ -21,7 +21,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.shoppingproject.Admin.AdminMaintainProductsActivity;
+import com.example.shoppingproject.Admin.AdminEditProductsActivity;
 import com.example.shoppingproject.Model.Products;
 import com.example.shoppingproject.Prevalent.Prevalent;
 import com.example.shoppingproject.ViewHolder.ProductViewHolder;
@@ -193,7 +193,7 @@ public class HomeActivity extends AppCompatActivity {
                             public void onClick(View v) {
 
                                 if (type.equals("Admin")) {
-                                    Intent intent = new Intent(HomeActivity.this, AdminMaintainProductsActivity.class);
+                                    Intent intent = new Intent(HomeActivity.this, AdminEditProductsActivity.class);
                                     intent.putExtra("pid", model.getPid());
                                     startActivity(intent);
                                 } else {

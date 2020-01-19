@@ -44,6 +44,9 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+
+
+
         adapter.addFragment(new AdminOrdersOneFragment(),"ที่ต้องจัดส่ง");
         adapter.addFragment(new AdminOrdersTwoFragment(),"กำลังส่ง");
         adapter.addFragment(new AdminOrdersHistoryFragment(),"สำเร็จ");

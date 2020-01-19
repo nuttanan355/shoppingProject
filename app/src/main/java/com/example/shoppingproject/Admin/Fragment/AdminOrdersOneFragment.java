@@ -30,6 +30,7 @@ public class AdminOrdersOneFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+
         View view = inflater.inflate(R.layout.fragment_admin_orders_one, container, false);
 
         ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders");
@@ -68,7 +69,7 @@ public class AdminOrdersOneFragment extends Fragment {
 
         FirebaseRecyclerOptions<NewOrders>
                 options = new FirebaseRecyclerOptions.Builder<NewOrders>()
-                .setQuery(ordersRef.orderByChild("state approve").equalTo("not approve"), NewOrders.class).build();
+                .setQuery(ordersRef.orderByChild("package").equalTo(""), NewOrders.class).build();
 
         FirebaseRecyclerAdapter<NewOrders, AdminOrdersViewHolder>
                 adapter = new FirebaseRecyclerAdapter<NewOrders, AdminOrdersViewHolder>(options) {
@@ -76,7 +77,7 @@ public class AdminOrdersOneFragment extends Fragment {
             protected void onBindViewHolder(@NonNull AdminOrdersViewHolder holder, final int position, @NonNull final NewOrders model) {
                 holder.userName.setText("ชื่อผู้สั่งซื้อ : " + model.getName());
                 holder.userPhoneNumber.setText("เบอร์โทร : " + model.getPhone());
-                holder.userTotalPrice.setText("ราคารวม : " + model.getTotalAmount() + "THB");
+                holder.userTotalPrice.setText("ราคารวม : " + model.getTotalAmount() + " THB");
                 holder.userDateTime.setText("วันที่ : " + model.getDate() + " เวลา :" + model.getTime());
                 holder.userShippingAddress.setText("ที่อยู่ : " + model.getAddress());
 
@@ -84,10 +85,11 @@ public class AdminOrdersOneFragment extends Fragment {
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        String uID = getRef(position).getKey();
+
+
                         Intent intent = new Intent(getActivity(), AdminViewOrdersProductActivity.class);
                         intent.putExtra("oid", model.getOid());
-//                        intent.putExtra("uid", uID);
+                        intent.putExtra("uid", model.getUserName());
                         startActivity(intent);
                     }
                 });

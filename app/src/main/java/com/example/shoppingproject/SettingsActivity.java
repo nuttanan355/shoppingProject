@@ -36,7 +36,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    private EditText fullNameEditText, userPhoneEditText, addressEditText;
+    private EditText fullNameEditText, userPhoneEditText, addressEditText,postalCodeEditText;
     private CircleImageView profileImageView;
     private TextView profileChangeTextBTN, closeTextBTN, btnSecuityQuestion;
     private Button updateTextBTN;
@@ -60,6 +60,7 @@ public class SettingsActivity extends AppCompatActivity {
         fullNameEditText = (EditText) findViewById(R.id.settings_full_name);
         userPhoneEditText = (EditText) findViewById(R.id.settings_phone_number);
         addressEditText = (EditText) findViewById(R.id.settings_address);
+        postalCodeEditText = (EditText) findViewById(R.id.settings_postal_code);
 
         btnSecuityQuestion=(TextView)findViewById(R.id.btn_security_questions);
         profileChangeTextBTN = (TextView) findViewById(R.id.btn_profile_image_change);
@@ -67,7 +68,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         updateTextBTN = (Button) findViewById(R.id.btn_update_settings);
 
-        userInfoDisplay(profileImageView, fullNameEditText, userPhoneEditText, addressEditText);
+        userInfoDisplay(profileImageView, fullNameEditText, userPhoneEditText, addressEditText,postalCodeEditText);
 
         closeTextBTN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,6 +116,7 @@ public class SettingsActivity extends AppCompatActivity {
         userMap.put("name",fullNameEditText.getText().toString());
         userMap.put("address",addressEditText.getText().toString());
         userMap.put("phoneOrder",userPhoneEditText.getText().toString());
+        userMap.put("postalCode",postalCodeEditText.getText().toString());
         ref.child(Prevalent.currentOnlineUser.getPhone()).updateChildren(userMap);
 
         startActivity(new Intent(SettingsActivity.this,HomeActivity.class));
@@ -142,13 +144,26 @@ public class SettingsActivity extends AppCompatActivity {
         if (TextUtils.isEmpty(fullNameEditText.getText().toString())) {
             Toast.makeText(this, "ต้องระบุชื่อ", Toast.LENGTH_SHORT).show();
 
-        } else if (TextUtils.isEmpty(userPhoneEditText.getText().toString())) {
+        }
+        else if (TextUtils.isEmpty(userPhoneEditText.getText().toString())) {
             Toast.makeText(this, "ต้องระบุเบอร์โทรศัพท์", Toast.LENGTH_SHORT).show();
 
-        } else if (TextUtils.isEmpty(addressEditText.getText().toString())) {
+        } else if ((userPhoneEditText.getText().toString()).length()<10) {
+            Toast.makeText(this, "ต้องระบุเบอร์โทรศัพท์", Toast.LENGTH_SHORT).show();
+
+        }
+        else if (TextUtils.isEmpty(addressEditText.getText().toString())) {
             Toast.makeText(this, "ต้องระบุที่อยู่", Toast.LENGTH_SHORT).show();
 
-        } else if (checker.equals("clicked")) {
+        }
+        else if (TextUtils.isEmpty(postalCodeEditText.getText().toString())) {
+            Toast.makeText(this, "รหัสไปรษณีย์", Toast.LENGTH_SHORT).show();
+
+        }    else if ((postalCodeEditText.getText().toString()).length()<5) {
+            Toast.makeText(this, "รหัสไปรษณีย์", Toast.LENGTH_SHORT).show();
+
+        }
+        else if (checker.equals("clicked")) {
             uploadImage();
         }
 
@@ -210,7 +225,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
 
-    private void userInfoDisplay(final CircleImageView profileImageView, final EditText fullNameEditText, final EditText userPhoneEditText, final EditText addressEditText) {
+    private void userInfoDisplay(final CircleImageView profileImageView, final EditText fullNameEditText, final EditText userPhoneEditText, final EditText addressEditText,final EditText postalCodeEditText) {
 
         DatabaseReference UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(Prevalent.currentOnlineUser.getPhone());
 
@@ -222,13 +237,16 @@ public class SettingsActivity extends AppCompatActivity {
 
                         String image = dataSnapshot.child("image").getValue().toString();
                         String name = dataSnapshot.child("name").getValue().toString();
-                        String phone = dataSnapshot.child("phone").getValue().toString();
+                        String phone = dataSnapshot.child("phoneOrder").getValue().toString();
                         String address = dataSnapshot.child("address").getValue().toString();
+                        String postalCode = dataSnapshot.child("postalCode").getValue().toString();
 
                         Picasso.get().load(image).into(profileImageView);
                         fullNameEditText.setText(name);
                         userPhoneEditText.setText(phone);
                         addressEditText.setText(address);
+                        postalCodeEditText.setText(postalCode);
+
                     }
 
                 }

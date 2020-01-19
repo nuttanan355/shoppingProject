@@ -39,7 +39,7 @@ public class OrdersTwoFragment extends Fragment {
         ordersList = view.findViewById(R.id.orders_list2);
         ordersList.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        ordersRef.orderByChild("state approve").equalTo("approve");
+//        ordersRef.orderByChild("state approve").equalTo("approve");
 
 
         return view;
@@ -49,7 +49,7 @@ public class OrdersTwoFragment extends Fragment {
 
     public static class AdminOrdersViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView userName, userPhoneNumber, userTotalPrice, userDateTime, userShippingAddress,userShippingCity;
+        public TextView userName, userPhoneNumber, userTotalPrice, userDateTime, userShippingAddress, userShippingCity;
 //        public Button btnShowOrder;
 
 
@@ -69,62 +69,67 @@ public class OrdersTwoFragment extends Fragment {
     }
 
 
-
-
     @Override
     public void onStart() {
         super.onStart();
 
 
-//            FirebaseRecyclerOptions<NewOrders>
-//                    options = new FirebaseRecyclerOptions.Builder<NewOrders>()
-//                    .setQuery(ordersRef.orderByChild("userName")
-//                            .equalTo(Prevalent.currentOnlineUser.getPhone()), NewOrders.class).build();
+
+            showData();
+
+
+
+    }
+
+    private void showData() {
 
 
         FirebaseRecyclerOptions<NewOrders>
                 options = new FirebaseRecyclerOptions.Builder<NewOrders>()
-                .setQuery(ordersRef.orderByChild("state shipped")
-                        .equalTo("not shipped", Prevalent.currentOnlineUser.getPhone()), NewOrders.class).build();
+                .setQuery(ordersRef.orderByChild("userName")
+                        .equalTo(Prevalent.currentOnlineUser.getPhone()+"two"), NewOrders.class).build();
 
-            FirebaseRecyclerAdapter<NewOrders, AdminOrdersViewHolder>
-                    adapter = new FirebaseRecyclerAdapter<NewOrders, AdminOrdersViewHolder>(options) {
-                @Override
-                protected void onBindViewHolder(@NonNull AdminOrdersViewHolder holder, final int position, @NonNull final NewOrders model) {
-                    holder.userName.setText("ชื่อผู้สั่งซื้อ : " + model.getName());
-                    holder.userPhoneNumber.setText("เบอร์โทร : " + model.getPhone());
-                    holder.userTotalPrice.setText("ราคารวม : " + model.getTotalAmount() + "THB");
-                    holder.userDateTime.setText("วันที่ : " + model.getDate() + " เวลา :" + model.getTime());
-                    holder.userShippingAddress.setText("ที่อยู่ : " + model.getAddress());
+//        FirebaseRecyclerOptions<NewOrders>
+//                options = new FirebaseRecyclerOptions.Builder<NewOrders>()
+//                .setQuery(ordersRef.orderByChild("state shipped")
+//                        .equalTo("not shipped"), NewOrders.class).build();
+
+        FirebaseRecyclerAdapter<NewOrders, AdminOrdersViewHolder>
+                adapter = new FirebaseRecyclerAdapter<NewOrders, AdminOrdersViewHolder>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull AdminOrdersViewHolder holder, final int position, @NonNull final NewOrders model) {
+                holder.userName.setText("ชื่อผู้สั่งซื้อ : " + model.getName());
+                holder.userPhoneNumber.setText("เบอร์โทร : " + model.getPhone());
+                holder.userTotalPrice.setText("ราคารวม : " + model.getTotalAmount() + "THB");
+                holder.userDateTime.setText("วันที่ : " + model.getDate() + " เวลา :" + model.getTime());
+                holder.userShippingAddress.setText("ที่อยู่ : " + model.getAddress());
 //                holder.userShippingCity.setText("จังหวัด : " + model.getCity());
 
-                    holder.itemView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            String uID = getRef(position).getKey();
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
 //
-                            Intent intent = new Intent(getActivity(), SendingOrdersActivity.class);
-                            intent.putExtra("oid", model.getOid());
-                            startActivity(intent);
-                        }
-                    });
+                        Intent intent = new Intent(getActivity(), SendingOrdersActivity.class);
+                        intent.putExtra("oid", model.getOid());
+                        intent.putExtra("uid", model.getUserName());
+                        startActivity(intent);
+                    }
+                });
 
 //
 
-                }
+            }
 
-                @NonNull
-                @Override
-                public AdminOrdersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                    View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_orders_layout, parent, false);
-                    return new AdminOrdersViewHolder(view);
-                }
-            };
-            ordersList.setAdapter(adapter);
-            adapter.startListening();
-
-
-        }
+            @NonNull
+            @Override
+            public AdminOrdersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_orders_layout, parent, false);
+                return new AdminOrdersViewHolder(view);
+            }
+        };
+        ordersList.setAdapter(adapter);
+        adapter.startListening();
+    }
 
 
 }

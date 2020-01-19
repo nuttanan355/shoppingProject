@@ -183,7 +183,7 @@ public class AdminHomeActivity extends AppCompatActivity {
                             public void onClick(View v) {
 
 
-                                    Intent intent = new Intent(AdminHomeActivity.this, AdminMaintainProductsActivity.class);
+                                    Intent intent = new Intent(AdminHomeActivity.this, AdminEditProductsActivity.class);
                                     intent.putExtra("pid", model.getPid());
                                     startActivity(intent);
 

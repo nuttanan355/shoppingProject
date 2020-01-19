@@ -21,13 +21,12 @@ import com.example.shoppingproject.R;
 import com.example.shoppingproject.ViewHolder.CartViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class AdminViewOrdersProductActivity extends AppCompatActivity {
 
@@ -35,7 +34,7 @@ public class AdminViewOrdersProductActivity extends AppCompatActivity {
     RecyclerView.LayoutManager layoutManager;
     private DatabaseReference ordersRef,ordersProRef;
 
-    private String oederID = "";
+    private String oederID = "",userID="";
     private TextView txtOrederName, txtOrederPhone, txtOrederAddress, txtOrederTotal;
     private EditText editOrederPackage;
 
@@ -61,6 +60,7 @@ public class AdminViewOrdersProductActivity extends AppCompatActivity {
 
 
         oederID = getIntent().getStringExtra("oid");
+        userID = getIntent().getStringExtra("uid");
 
         productsList = findViewById(R.id.products_list);
         productsList.setHasFixedSize(true);
@@ -83,6 +83,7 @@ public class AdminViewOrdersProductActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SendOeder();
+
             }
         });
 
@@ -113,6 +114,7 @@ public class AdminViewOrdersProductActivity extends AppCompatActivity {
                                     public void onClick(DialogInterface dialogInterface, int position) {
                                         if (position == 0) {
                                             ordersRef.removeValue();
+                                            finish();
                                         }
                                         if (position == 1) {
                                             finish();
@@ -132,33 +134,13 @@ public class AdminViewOrdersProductActivity extends AppCompatActivity {
             Toast.makeText(this,"กรุณาใส่เลขพัสดุ",Toast.LENGTH_SHORT).show();
         }else
             {
-                ordersRef.child("state approve").setValue("approve").addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
 
-                        ordersRef.child("package").setValue(txtPackage);
-//                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<Void> task) {
-//                                ordersRef.addListenerForSingleValueEvent(new ValueEventListener() {
-//                                    @Override
-//                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                                        ordersProRef.setValue(dataSnapshot.getValue());
-//                                        ordersRef.removeValue();
-//                                    }
-//
-//                                    @Override
-//                                    public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                                    }
-//                                });
-//                            }
-//                        });
+                ordersRef.child("state shipped").setValue("not shipped");
+                ordersRef.child("userName").setValue(userID+"two");
+//        orderMap.put("state shipped", "not shipped");
 
-                    }
-                });
-
-
+                ordersRef.child("package").setValue(txtPackage);
+                finish();
 
             }
 
@@ -208,6 +190,7 @@ public class AdminViewOrdersProductActivity extends AppCompatActivity {
                 holder.txtProductPrice.setText("ราคา = " + model.getPrice() + " ฿");
                 holder.txtProductDescription.setText(model.getDiscount());
                 holder.txtProductName.setText(model.getPname());
+                Picasso.get().load(model.getImage()).into(holder.imageViewProduct);
             }
 
             @NonNull

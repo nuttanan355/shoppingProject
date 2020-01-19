@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class SendingOrdersActivity extends AppCompatActivity {
 
@@ -28,7 +29,7 @@ public class SendingOrdersActivity extends AppCompatActivity {
     RecyclerView.LayoutManager layoutManager;
     private DatabaseReference ordersRef;
 
-    private String oederID = "";
+    private String oederID = "",userID="";
     private TextView txtOrederName, txtOrederPhone, txtOrederAddress, txtOrederTotal,txtOrederPackage;
 
     private Button btnReceiveOrder;
@@ -48,6 +49,7 @@ public class SendingOrdersActivity extends AppCompatActivity {
         btnReceiveOrder=findViewById(R.id.btn_receive_order);
 
         oederID = getIntent().getStringExtra("oid");
+        userID = getIntent().getStringExtra("uid");
 
         productsList = findViewById(R.id.products_list);
         productsList.setHasFixedSize(true);
@@ -73,6 +75,8 @@ public class SendingOrdersActivity extends AppCompatActivity {
 
     private void receiveOrder() {
         ordersRef.child("state shipped").setValue("shipped");
+        ordersRef.child("userName").setValue(userID+"his");
+        finish();
     }
 
     private void showOrders() {
@@ -117,6 +121,7 @@ public class SendingOrdersActivity extends AppCompatActivity {
                 holder.txtProductPrice.setText("ราคา = " + model.getPrice() + " ฿");
                 holder.txtProductDescription.setText(model.getDiscount());
                 holder.txtProductName.setText(model.getPname());
+                Picasso.get().load(model.getImage()).into(holder.imageViewProduct);
             }
 
             @NonNull

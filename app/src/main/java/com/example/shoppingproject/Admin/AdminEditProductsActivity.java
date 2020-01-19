@@ -23,9 +23,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 
-public class AdminMaintainProductsActivity extends AppCompatActivity {
+public class AdminEditProductsActivity extends AppCompatActivity {
     private Button btnApplyChange, btnDelete;
-    private EditText name,price,description;
+    private EditText name, price, description;
     private ImageView imageView;
 
 //    private static final int GalleryPick = 1;
@@ -38,17 +38,20 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_mintain_products);
+        setContentView(R.layout.activity_admin_edit_products);
 
         productID = getIntent().getStringExtra("pid");
         productsRef = FirebaseDatabase.getInstance().getReference().child("Products").child(productID);
 
-        btnApplyChange=findViewById(R.id.btn_apply_changes);
-        name=findViewById(R.id.maintain_product_name);
-        price=findViewById(R.id.maintain_product_price);
-        description=findViewById(R.id.maintain_product_description);
-        imageView=findViewById(R.id.maintain_product_image);
-        btnDelete=findViewById(R.id.btn_delete_product);
+        //EditText
+        name = findViewById(R.id.txt_edit_product_name);
+        price = findViewById(R.id.txt_edit_product_price);
+        description = findViewById(R.id.txt_edit_product_description);
+        imageView = findViewById(R.id.txt_edit_product_image);
+
+        //BUTTON
+        btnDelete = findViewById(R.id.btn_delete_product);
+        btnApplyChange = findViewById(R.id.btn_apply_changes);
 
 
         displaySpecificProductInfo();
@@ -56,16 +59,14 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
 
         btnApplyChange.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 ApplyChange();
             }
         });
 
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 deleteProduct();
             }
         });
@@ -79,17 +80,15 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
 
     }
 
-    private void deleteProduct()
-    {
+    private void deleteProduct() {
         productsRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
-            public void onComplete(@NonNull Task<Void> task) 
-            {
-                Intent intent = new Intent(AdminMaintainProductsActivity.this, AdminHomeActivity.class);
+            public void onComplete(@NonNull Task<Void> task) {
+                Intent intent = new Intent(AdminEditProductsActivity.this, AdminHomeActivity.class);
                 startActivity(intent);
                 finish();
 
-                Toast.makeText(AdminMaintainProductsActivity.this, "ลบสินค้าสำเร็จแล้ว", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AdminEditProductsActivity.this, "ลบสินค้าสำเร็จแล้ว", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -119,26 +118,18 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
 //    }
 
 
-    private void ApplyChange()
-    {
+    private void ApplyChange() {
         String pName = name.getText().toString();
         String pPrice = price.getText().toString();
         String pDescription = description.getText().toString();
 
-        if (pName.equals(""))
-        {
+        if (pName.equals("")) {
             Toast.makeText(this, "กรุณาใส่ชื่อสินค้า", Toast.LENGTH_SHORT).show();
-        }
-        else if (pPrice.equals(""))
-        {
+        } else if (pPrice.equals("")) {
             Toast.makeText(this, "กรุณาใส่ราคาสินค้า", Toast.LENGTH_SHORT).show();
-        }
-        else if (pDescription.equals(""))
-        {
+        } else if (pDescription.equals("")) {
             Toast.makeText(this, "กรุณาใส่รายละเอียดสินค้า", Toast.LENGTH_SHORT).show();
-        }
-        else
-        {
+        } else {
             HashMap<String, Object> productMap = new HashMap<>();
             productMap.put("pid", productID);
             productMap.put("description", pDescription);
@@ -147,13 +138,11 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
 
             productsRef.updateChildren(productMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
-                public void onComplete(@NonNull Task<Void> task)
-                {
-                    if (task.isSuccessful())
-                    {
-                        Toast.makeText(AdminMaintainProductsActivity.this, "การเปลี่ยนแปลงสำเร็จ", Toast.LENGTH_SHORT).show();
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(AdminEditProductsActivity.this, "การเปลี่ยนแปลงสำเร็จ", Toast.LENGTH_SHORT).show();
 
-                        Intent intent = new Intent(AdminMaintainProductsActivity.this, AdminHomeActivity.class);
+                        Intent intent = new Intent(AdminEditProductsActivity.this, AdminHomeActivity.class);
                         startActivity(intent);
                         finish();
                     }
@@ -162,14 +151,11 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
         }
     }
 
-    private void displaySpecificProductInfo()
-    {
+    private void displaySpecificProductInfo() {
         productsRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
-                if (dataSnapshot.exists())
-                {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
                     String pName = dataSnapshot.child("pname").getValue().toString();
                     String pPrice = dataSnapshot.child("price").getValue().toString();
                     String pDescription = dataSnapshot.child("description").getValue().toString();

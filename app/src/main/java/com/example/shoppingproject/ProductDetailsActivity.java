@@ -32,7 +32,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private Button addCartBtn;
     private ImageView productImage;
     private ElegantNumberButton numberButton;
-    private TextView productPrice, productDescription, productName;
+    private TextView productPrice, productDescription, productName,titleProductName;
     private String productID = "0", state = "Normal";
 
 //    private DatabaseReference productsRef;
@@ -51,6 +51,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
         productImage = (ImageView) findViewById(R.id.product_image_details);
 
+
+        titleProductName =(TextView)findViewById(R.id.title_product_name_details);
         productName = (TextView) findViewById(R.id.product_name_details);
         productDescription = (TextView) findViewById(R.id.product_description_details);
         productPrice = (TextView) findViewById(R.id.product_price_details);
@@ -61,11 +63,9 @@ public class ProductDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (state.equals("Order Placed") || state.equals("Order Shipped")) {
-                    Toast.makeText(ProductDetailsActivity.this, "สามารถซื้อสินค้านี้ได้ก็ต่อเมื่อคำสั่งซื้อของคุณ ถูกส่งหรือยืนยัน", Toast.LENGTH_LONG).show();
-                } else {
+
                     addingToCartList();
-                }
+
             }
         });
 
@@ -83,6 +83,15 @@ public class ProductDetailsActivity extends AppCompatActivity {
         String saveCurrentDate, saveCurrentTime;
         String ListRandomKay;
 
+        final DatabaseReference productImageRef = FirebaseDatabase.getInstance()
+                .getReference().child("Products")
+                .child(productID).child("image");
+
+        final DatabaseReference cartListRef = FirebaseDatabase.getInstance()
+                .getReference().child("Cart List")
+                .child(Prevalent.currentOnlineUser.getPhone())
+                .child("Products").child(productID);
+
         Calendar calForDate = Calendar.getInstance();
         SimpleDateFormat currentDate = new SimpleDateFormat("dd MMM yyyy");
         saveCurrentDate = currentDate.format(calForDate.getTime());
@@ -91,22 +100,24 @@ public class ProductDetailsActivity extends AppCompatActivity {
         saveCurrentTime = currentTime.format(calForDate.getTime());
 
         ListRandomKay = saveCurrentDate + "," + saveCurrentTime;
-        final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
 
         final HashMap<String, Object> cartMap = new HashMap<>();
         cartMap.put("pid", productID);
         cartMap.put("pname", productName.getText().toString());
         cartMap.put("price", productPrice.getText().toString());
-        cartMap.put("image",productImage.toString());
+//        cartMap.put("image","");
         cartMap.put("date", saveCurrentDate);
         cartMap.put("time", saveCurrentTime);
         cartMap.put("quantity", numberButton.getNumber());
         cartMap.put("discount", productDescription.getText().toString());
 
-        cartListRef.child(Prevalent.currentOnlineUser.getPhone())
-                .child("Products").child(productID)
-                .updateChildren(cartMap)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
+
+        productImageRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                cartListRef.child("image").setValue(dataSnapshot.getValue());
+
+                cartListRef.updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
@@ -117,16 +128,26 @@ public class ProductDetailsActivity extends AppCompatActivity {
 //                                        @Override
 //                                        public void onComplete(@NonNull Task<Void> task) {
 //                                            if (task.isSuccessful()) {
-                                                Toast.makeText(ProductDetailsActivity.this, "เพิ่มในรถเข็นแล้ว", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ProductDetailsActivity.this, "เพิ่มในรถเข็นแล้ว", Toast.LENGTH_SHORT).show();
 
-                                                Intent intent = new Intent(ProductDetailsActivity.this, HomeActivity.class);
-                                                startActivity(intent);
-                                            }
+                            Intent intent = new Intent(ProductDetailsActivity.this, HomeActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
 //                                        }
 //                                    });
 //                        }
                     }
                 });
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     private void getProductDetails() {
@@ -138,6 +159,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 if (dataSnapshot.exists()) {
 
                     Products products = dataSnapshot.getValue(Products.class);
+                    titleProductName.setText(products.getPname());
                     productName.setText(products.getPname());
                     productPrice.setText(products.getPrice());
                     productDescription.setText(products.getDescription());

@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-        chbRememberMe = (CheckBox) findViewById(R.id.remember_me_chkb);
+//        chbRememberMe = (CheckBox) findViewById(R.id.remember_me_chkb);
         Paper.init(this);
 
         loadingBar = new ProgressDialog(this);
@@ -137,11 +137,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private void AllowAccessToAccout(final String phone, final String password) {
 
-        if (chbRememberMe.isChecked()) {
-
             Paper.book().write(Prevalent.UserPhoneKey, phone);
             Paper.book().write(Prevalent.UserPasswordKey, password);
-        }
 
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
@@ -156,20 +153,26 @@ public class LoginActivity extends AppCompatActivity {
                     if (usersData.getPhone().equals(phone) && usersData.getPassword().equals(password)) {
                         if (parentDbName.equals("Admins")) {
 
-                            Toast.makeText(LoginActivity.this, "ยินดีต้อนรับ คุณเข้าสู่ระบบสำเร็จ..", Toast.LENGTH_SHORT).show();
+
+                            Toast.makeText(LoginActivity.this, "ยินดีต้อนรับ Admin\n คุณเข้าสู่ระบบสำเร็จแล้ว..", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
 
                             Intent intent = new Intent(LoginActivity.this, AdminHomeActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
+                            finish();
 
                         } else if (parentDbName.equals("Users")) {
+
 
                             Toast.makeText(LoginActivity.this, "เข้าสู่ระบบสำเร็จ...", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
 
                             Prevalent.currentOnlineUser = usersData;
                             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
+                            finish();
                         }
 
                     } else {

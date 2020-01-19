@@ -1,12 +1,12 @@
 package com.example.shoppingproject.Model;
 
 public class NewOrders {
-    private String name, phone, address, city, state, date, time, totalAmount, oid;
+    private String name, phone, address, city, state, date, time, totalAmount, oid,userName;
 
     public NewOrders() {
     }
 
-    public NewOrders(String name, String phone, String address, String city, String state, String date, String time, String totalAmount, String oid) {
+    public NewOrders(String name, String phone, String address, String city, String state, String date, String time, String totalAmount, String oid, String userName) {
         this.name = name;
         this.phone = phone;
         this.address = address;
@@ -16,6 +16,15 @@ public class NewOrders {
         this.time = time;
         this.totalAmount = totalAmount;
         this.oid = oid;
+        this.userName = userName;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getName() {

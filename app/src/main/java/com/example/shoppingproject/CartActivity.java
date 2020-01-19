@@ -28,6 +28,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class CartActivity extends AppCompatActivity {
 
@@ -98,11 +99,16 @@ public class CartActivity extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull final Cart model) {
+
+
+//                Products products = dataSnapshot.getValue(Products.class);
                 holder.txtProductQuantity.setText("จำนวน " + model.getQuantity());
                 holder.txtProductPrice.setText("ราคา = "+ "฿" + model.getPrice());
                 holder.txtProductDescription.setText(model.getDiscount());
                 holder.txtProductName.setText(model.getPname());
-//                Picasso.get().load(model.getImage()).into(holder.imgProduct);
+                Picasso.get().load(model.getImage()).into(holder.imageViewProduct);
+
+//                Picasso.get().load(pImage).into(imageView);
 
                 int oneTypeProductPrice = Integer.valueOf(model.getPrice()) * Integer.valueOf(model.getQuantity());
                 overTotalPrice = overTotalPrice + oneTypeProductPrice;

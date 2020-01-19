@@ -27,7 +27,7 @@ import java.util.HashMap;
 public class ResetPasswordActivity extends AppCompatActivity {
 
     private String check = "";
-    private TextView pageTitle, titlteQuestions;
+    private TextView pageTitle, titlteQuestions, titlteQuestionsNewUser;
     private EditText phoneNumber, question1, question2;
     private Button verifyBTN;
 
@@ -41,6 +41,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
 
         pageTitle = (TextView) findViewById(R.id.page_title);
         titlteQuestions = (TextView) findViewById(R.id.title_question);
+        titlteQuestionsNewUser = (TextView) findViewById(R.id.title_question1);
 
         phoneNumber = (EditText) findViewById(R.id.find_phone_number);
         question1 = (EditText) findViewById(R.id.question_1);
@@ -56,9 +57,10 @@ public class ResetPasswordActivity extends AppCompatActivity {
         super.onStart();
 
         phoneNumber.setVisibility(View.GONE);
+        titlteQuestionsNewUser.setVisibility(View.GONE);
 
 
-        if (check.equals("ตั่งค่า")) {
+        if (check.equals("SetUp")) {
             pageTitle.setText("ตั้งคำถาม");
             titlteQuestions.setText("โปรดตั้งคำตอบสำหรับคำถามเพื่อความปลอดภัยต่อไปนี้?");
             verifyBTN.setText("Set");
@@ -76,6 +78,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
 
         } else if (check.equals("Login")) {
             phoneNumber.setVisibility(View.VISIBLE);
+            titlteQuestionsNewUser.setVisibility(View.VISIBLE);
 
             verifyBTN.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -161,8 +164,8 @@ public class ResetPasswordActivity extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
                         String mPhone = dataSnapshot.child("phone").getValue().toString();
-//                    if (phone.equals(mPhone))
-//                    {
+                    if (phone.equals(mPhone))
+                    {
 
                         if (dataSnapshot.hasChild("Security Questions")) {
                             String ans1 = dataSnapshot.child("Security Questions").child("answer1").getValue().toString();
@@ -183,7 +186,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
                                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        if (!newPassword.getText().toString().equals("")) {
+                                        if (!newPassword.getText().toString().equals("")&& newPassword.length() < 6) {
                                             ref.child("password").setValue(newPassword.getText().toString())
                                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                         @Override
@@ -201,8 +204,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
                                 });
                                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                                     @Override
-                                    public void onClick(DialogInterface dialogInterface, int i)
-                                    {
+                                    public void onClick(DialogInterface dialogInterface, int i) {
                                         dialogInterface.cancel();
                                     }
                                 });
@@ -210,7 +212,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
 
                             }
                         }
-//                    }
+                    }
                         else {
                             Toast.makeText(ResetPasswordActivity.this, "ยังไม่ได้ตั้งคำถามเพื่อความปลอดภัย", Toast.LENGTH_LONG).show();
                         }
@@ -225,10 +227,8 @@ public class ResetPasswordActivity extends AppCompatActivity {
 
                 }
             });
+        } else {
+            Toast.makeText(ResetPasswordActivity.this, "กรุณากรอกแบบฟอร์ม", Toast.LENGTH_LONG).show();
         }
-        else
-            {
-                Toast.makeText(ResetPasswordActivity.this, "กรุณากรอกแบบฟอร์ม", Toast.LENGTH_LONG).show();
-            }
     }
 }

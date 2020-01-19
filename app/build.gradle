@@ -46,10 +46,11 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
     testImplementation 'junit:junit:4.12'
 
-
     implementation 'io.paperdb:paperdb:2.6'
 
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    implementation 'pub.devrel:easypermissions:3.0.0'
 
     //CircleImageView
     implementation 'de.hdodenhof:circleimageview:3.0.1'
@@ -57,6 +58,7 @@ dependencies {
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
     implementation 'com.cepheuen.elegant-number-button:lib:1.0.2'
 
+    implementation 'com.github.joielechong:countrycodepicker:2.4.1'
     //PayPalConfig
     implementation 'com.paypal.sdk:paypal-android-sdk:2.16.0'
 
@@ -64,9 +66,8 @@ dependencies {
 
     implementation 'com.hbb20:ccp:2.3.4'
 
-
     //ไลเบอรี่ Firebase
-    implementation 'com.google.firebase:firebase-auth:19.1.0'
+    implementation 'com.google.firebase:firebase-auth:19.2.0'
     implementation 'com.google.firebase:firebase-database:19.2.0'
     implementation 'com.google.firebase:firebase-core:17.2.1'
     implementation 'com.google.firebase:firebase-storage:19.1.0'

@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:layout_margin="10dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorAccent"
         android:orientation="vertical">
 
         <TextView
@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:text="UserName"
             android:fontFamily="@font/sukhumvitset_text"
-            android:textColor="@color/white"
+            android:textColor="@color/primaryTextColor"
             android:textSize="14dp"
             android:textStyle="bold"
             />
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:text="เบอร์โทรศัพท์"
             android:fontFamily="@font/sukhumvitset_text"
-            android:textColor="@color/white"
+            android:textColor="@color/primaryTextColor"
             android:layout_marginTop="5dp"
             android:textSize="14dp"
 
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/sukhumvitset_text"
             android:text="วันที่, เวลา"
-            android:textColor="@color/white"
+            android:textColor="@color/primaryTextColor"
             android:textSize="18dp"
             android:textStyle="bold"
             android:layout_below="@+id/order_address"
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/sukhumvitset_text"
             android:text="ที่อยู่"
-            android:textColor="@color/white"
+            android:textColor="@color/primaryTextColor"
             android:textSize="18dp"
             android:textStyle="bold"
             android:layout_below="@+id/order_total_price"
@@ -73,7 +73,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/sukhumvitset_text"
             android:text="ราคารวม"
-            android:textColor="@color/white"
+            android:textColor="@color/primaryTextColor"
             android:textSize="18dp"
             android:textStyle="bold"
             android:layout_below="@+id/cart_product_quantity"

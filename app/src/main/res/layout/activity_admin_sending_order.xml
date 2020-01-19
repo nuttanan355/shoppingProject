@@ -54,14 +54,15 @@
 
                     <ImageView
                         android:layout_width="20dp"
-                        android:layout_height="25dp"
+                        android:layout_height="30dp"
                         android:src="@drawable/gps" />
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="25dp"
+                        android:layout_height="30dp"
                         android:paddingLeft="20dp"
                         android:text="ที่อยู่ในการจัดส่ง"
+                        android:fontFamily="@font/sukhumvitset_text"
                         android:textColor="@color/colorBlack"
                         android:textSize="20dp" />
 
@@ -72,6 +73,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="40dp"
+                    android:fontFamily="@font/sukhumvitset_text"
                     android:text="นาย สมศศักดิ์ นวงสว่าง" />
 
                 <TextView
@@ -79,6 +81,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="40dp"
+                    android:fontFamily="@font/sukhumvitset_text"
                     android:text="0986865516" />
 
                 <TextView
@@ -88,6 +91,7 @@
                     android:layout_marginBottom="5dp"
                     android:paddingLeft="40dp"
                     android:paddingRight="20dp"
+                    android:fontFamily="@font/sukhumvitset_text"
                     android:text="60/1 ม.10 ต.โมคลาน อ.ท่าศาลา จ.นครศรีธรรมราช 80160" />
 
 
@@ -107,6 +111,7 @@
                     android:paddingRight="20dp"
                     android:textAlignment="textEnd"
                     android:text="สถานะ : กำลังจัดส่ง"
+                    android:fontFamily="@font/sukhumvitset_text"
                     android:textColor="@color/colorRed"
                     android:textSize="20dp" />
 
@@ -118,14 +123,15 @@
 
                     <ImageView
                         android:layout_width="20dp"
-                        android:layout_height="25dp"
+                        android:layout_height="30dp"
                         android:src="@drawable/box" />
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="25dp"
+                        android:layout_height="30dp"
                         android:paddingLeft="20dp"
                         android:text="เลขพัสดุ"
+                        android:fontFamily="@font/sukhumvitset_text"
                         android:textColor="@color/colorBlack"
                         android:textSize="20dp" />
 
@@ -134,7 +140,8 @@
                     android:id="@+id/admin_sending_order_package"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="ใส่เลขพัสดุ"
+                    android:hint="เลขพัสดุ"
+                    android:fontFamily="@font/sukhumvitset_text"
                     android:layout_marginLeft="20dp"/>
 
 
@@ -155,28 +162,31 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="25dp"
+                    android:layout_height="wrap_content"
                     android:text="ค่าจัดส่ง"
+                    android:fontFamily="@font/sukhumvitset_text"
                     android:textColor="@color/colorBlack"
                     android:textSize="16dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="25dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="223dp"
                     android:layout_marginEnd="9dp"
                     android:layout_toStartOf="@+id/text111"
                     android:text="45"
+                    android:fontFamily="@font/sukhumvitset_text"
                     android:textColor="@color/colorBlack"
                     android:textSize="16dp" />
 
                 <TextView
                     android:id="@+id/text111"
                     android:layout_width="wrap_content"
-                    android:layout_height="25dp"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="20dp"
                     android:text="THB"
+                    android:fontFamily="@font/sukhumvitset_text"
                     android:textColor="@color/colorBlack"
                     android:textSize="16dp" />
 
@@ -190,29 +200,32 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="25dp"
+                    android:layout_height="wrap_content"
                     android:text="ราคารวม"
+                    android:fontFamily="@font/sukhumvitset_text"
                     android:textColor="@color/colorBlack"
                     android:textSize="20dp" />
 
                 <TextView
                     android:id="@+id/admin_sending_order_total"
                     android:layout_width="wrap_content"
-                    android:layout_height="25dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="223dp"
                     android:layout_marginEnd="9dp"
                     android:layout_toStartOf="@+id/text11"
                     android:text="0000"
+                    android:fontFamily="@font/sukhumvitset_text"
                     android:textColor="@color/colorBlack"
                     android:textSize="20dp" />
 
                 <TextView
                     android:id="@+id/text11"
                     android:layout_width="wrap_content"
-                    android:layout_height="25dp"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="20dp"
                     android:text="THB"
+                    android:fontFamily="@font/sukhumvitset_text"
                     android:textColor="@color/colorBlack"
                     android:textSize="20dp" />
 

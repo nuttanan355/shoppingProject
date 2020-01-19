@@ -6,25 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".Admin.AdminProductCategoryActivity">
 
-    <TextView
-        android:id="@+id/slogan_category"
+
+    <RelativeLayout
+        android:id="@+id/relative_layout_add_product"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="เพิ่มสินค้าใหม่"
-        android:fontFamily="@font/sukhumvitset_text"
-        android:textAlignment="center"
-        android:textSize="26dp"
-        android:textStyle="bold" />
+        android:background="@color/colorPrimaryDark">
+
+        <TextView
+            android:id="@+id/slogan_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="เพิ่มสินค้าใหม่"
+            android:fontFamily="@font/sukhumvitset_text"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:textSize="26dp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+
 
     <!--    linear_category_layout1  -->
     <LinearLayout
         android:id="@+id/linear_category_layout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/slogan_category"
+        android:layout_below="@+id/relative_layout_add_product"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:gravity="center"

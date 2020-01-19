@@ -27,6 +27,7 @@ public class NewOrdersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_orders);
 
         viewPager = (ViewPager) findViewById(R.id.view_pager);
+
         setupViewPager(viewPager);
 
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
