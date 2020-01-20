@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.shoppingproject.Admin.AdminHomeActivity;
 import com.example.shoppingproject.Model.Users;
 import com.example.shoppingproject.Prevalent.Prevalent;
 import com.google.firebase.database.DataSnapshot;
@@ -92,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child("Users").child(phone).exists()) {
                     Users usersData = dataSnapshot.child("Users").child(phone).getValue(Users.class);
+                    Users adminData = dataSnapshot.child("Admins").child(phone).getValue(Users.class);
 
                     if (usersData.getPhone().equals(phone) && usersData.getPassword().equals(password)) {
 
@@ -106,11 +108,23 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "รหัสผ่านไม่ถูกต้อง", Toast.LENGTH_SHORT).show();
                     }
 
-                } else {
+                }else if (dataSnapshot.child("Admins").child(phone).exists())
+                {
+                    Toast.makeText(MainActivity.this, "ยินดีต้อนรับ Admin\n คุณเข้าสู่ระบบสำเร็จแล้ว..", Toast.LENGTH_SHORT).show();
+                    loadingBar.dismiss();
+
+                    Intent intent = new Intent(MainActivity.this, AdminHomeActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    finish();
+                }
+
+
+                else {
 
                     Toast.makeText(MainActivity.this, "บัญชีนี้ " + phone + "ไม่มีหมายเลข", Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
-
+                    myThread();
                 }
             }
 

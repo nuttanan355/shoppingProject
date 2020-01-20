@@ -7,27 +7,27 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.shoppingproject.Admin.AdminHomeActivity;
 import com.example.shoppingproject.Model.Users;
 import com.example.shoppingproject.Prevalent.Prevalent;
-import com.example.shoppingproject.Admin.AdminHomeActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import io.paperdb.Paper;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText txtNumber, txtPassword;
+    private MaterialEditText txtNumber, txtPassword;
     private Button btn_login;
     private ProgressDialog loadingBar;
 
@@ -47,8 +47,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
         btn_login = (Button) findViewById(R.id.btn_login);
-        txtNumber = (EditText) findViewById(R.id.login_txt_username);
-        txtPassword = (EditText) findViewById(R.id.login_txt_password);
+        txtNumber = (MaterialEditText) findViewById(R.id.login_txt_username);
+        txtPassword = (MaterialEditText) findViewById(R.id.login_txt_password);
 
         AdminLink = (TextView) findViewById(R.id.admin_panel_link);
         NotAdminLink = (TextView) findViewById(R.id.not_admin_panel_link);

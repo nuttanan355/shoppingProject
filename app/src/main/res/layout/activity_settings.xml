@@ -75,7 +75,7 @@
                     android:src="@drawable/profile" />
 
                 <TextView
-                    android:id="@+id/btn_profile_image_change"
+                    android:id="@+id/settings_user_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/settings_profile_image"
@@ -83,19 +83,20 @@
                     android:layout_marginTop="4dp"
                     android:layout_marginRight="10dp"
                     android:fontFamily="@font/kanit_extralight"
-                    android:text="Change Profile"
+                    android:text="User Name"
                     android:textColor="@color/colorBlack"
-                    android:textSize="17dp"
+                    android:textSize="20dp"
                     android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/settings_phone_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/btn_profile_image_change"
+                    android:layout_below="@+id/settings_user_name"
                     android:layout_margin="15dp"
                     android:fontFamily="@font/sukhumvitset_text"
                     android:hint="เบอร์โทรศัพท์....."
+                    app:met_floatingLabel="normal"
                     android:inputType="phone"
                     android:maxLength="10"
                     android:padding="10dp"
@@ -108,7 +109,8 @@
                     android:layout_below="@+id/settings_phone_number"
                     android:layout_margin="15dp"
                     android:fontFamily="@font/sukhumvitset_text"
-                    android:hint="ชื่อ....."
+                    android:hint="ชื่อ ....."
+                    app:met_floatingLabel="normal"
                     android:padding="10dp"
                     android:textStyle="bold" />
 
@@ -120,6 +122,7 @@
                     android:layout_margin="15dp"
                     android:fontFamily="@font/sukhumvitset_text"
                     android:hint="ที่อยู่....."
+                    app:met_floatingLabel="normal"
                     android:padding="10dp"
                     android:textStyle="bold" />
 
@@ -131,6 +134,7 @@
                     android:layout_margin="15dp"
                     android:fontFamily="@font/sukhumvitset_text"
                     android:hint="รหัสไปรษณีย์....."
+                    app:met_floatingLabel="normal"
                     android:maxLength="5"
                     android:padding="10dp"
                     android:textStyle="bold" />

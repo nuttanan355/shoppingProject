@@ -162,7 +162,7 @@ public class ConfirmFinalOrderActivity<val> extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                String aName = dataSnapshot.child("name").getValue().toString();
+                String aName = dataSnapshot.child("name surname").getValue().toString();
                 String aPhone = dataSnapshot.child("phoneOrder").getValue().toString();
                 String aAddress = dataSnapshot.child("address").getValue().toString();
                 String aPostalCode = dataSnapshot.child("postalCode").getValue().toString();
@@ -200,8 +200,8 @@ public class ConfirmFinalOrderActivity<val> extends AppCompatActivity {
             Toast.makeText(this, "รหัสไปรษณีย์", Toast.LENGTH_SHORT).show();
         } else {
 
-//            payPalPayment();
-            ComfirmOrder();
+            payPalPayment();
+//            ComfirmOrder();
 //            omise
 //            choosePaymentMethod();
 //            payByCreditCard();

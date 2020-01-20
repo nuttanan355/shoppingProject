@@ -45,13 +45,10 @@ public class HomeActivity extends AppCompatActivity {
     private String type = "";
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-
 
 
         Intent intent = getIntent();
@@ -82,6 +79,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
         //---------END-btn cart--ล่างจอ--------------
+
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -143,10 +141,6 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     }
-
-
-                } else {
-
                 }
             }
         });
@@ -157,22 +151,22 @@ public class HomeActivity extends AppCompatActivity {
         TextView userNameTextView = headerView.findViewById(R.id.user_profile_name);
         CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
 
-        if (!type.equals("Admin")) {
-            userNameTextView.setText(Prevalent.currentOnlineUser.getName());
-            Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
-        }
+        userNameTextView.setText(Prevalent.currentOnlineUser.getName());
+        Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
+
 
         recyclerView = findViewById(R.id.recycler_menu);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
+
     }
 
     @Override
     protected void onStart() {
-
         super.onStart();
+
         FirebaseRecyclerOptions<Products> options =
                 new FirebaseRecyclerOptions.Builder<Products>()
 //                        .setQuery(ProductsRef.orderByChild("productState").equalTo("Approved"), Products.class)
@@ -183,7 +177,7 @@ public class HomeActivity extends AppCompatActivity {
                     @Override
                     protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model) {
                         holder.txtProductName.setText(model.getPname());
-                        holder.txtProductPrice.setText("ราคา = " + model.getPrice() + " ฿");
+                        holder.txtProductPrice.setText("ราคา " + model.getPrice() + " ฿");
                         holder.txtProductDescription.setText(model.getDescription());
                         Picasso.get().load(model.getImage()).into(holder.imageView);
 
@@ -218,7 +212,6 @@ public class HomeActivity extends AppCompatActivity {
         adapter.startListening();
 
     }
-
 
     @Override
     public boolean onSupportNavigateUp() {

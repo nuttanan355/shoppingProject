@@ -38,7 +38,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     private EditText fullNameEditText, userPhoneEditText, addressEditText,postalCodeEditText;
     private CircleImageView profileImageView;
-    private TextView profileChangeTextBTN, closeTextBTN, btnSecuityQuestion;
+    private TextView textUserName, closeTextBTN, btnSecuityQuestion;
     private Button updateTextBTN;
 
     private Uri imageUri;
@@ -61,14 +61,14 @@ public class SettingsActivity extends AppCompatActivity {
         userPhoneEditText = (EditText) findViewById(R.id.settings_phone_number);
         addressEditText = (EditText) findViewById(R.id.settings_address);
         postalCodeEditText = (EditText) findViewById(R.id.settings_postal_code);
+        textUserName = (TextView) findViewById(R.id.settings_user_name);
 
         btnSecuityQuestion=(TextView)findViewById(R.id.btn_security_questions);
-        profileChangeTextBTN = (TextView) findViewById(R.id.btn_profile_image_change);
         closeTextBTN = (TextView) findViewById(R.id.btn_close_settings);
 
         updateTextBTN = (Button) findViewById(R.id.btn_update_settings);
 
-        userInfoDisplay(profileImageView, fullNameEditText, userPhoneEditText, addressEditText,postalCodeEditText);
+        userInfoDisplay(profileImageView, fullNameEditText, userPhoneEditText, addressEditText,postalCodeEditText,textUserName);
 
         closeTextBTN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,7 +98,7 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        profileChangeTextBTN.setOnClickListener(new View.OnClickListener() {
+        profileImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 checker = "clicked";
@@ -225,7 +225,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
 
-    private void userInfoDisplay(final CircleImageView profileImageView, final EditText fullNameEditText, final EditText userPhoneEditText, final EditText addressEditText,final EditText postalCodeEditText) {
+    private void userInfoDisplay(final CircleImageView profileImageView, final EditText fullNameEditText, final EditText userPhoneEditText, final EditText addressEditText, final EditText postalCodeEditText, final TextView textUserName) {
 
         DatabaseReference UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(Prevalent.currentOnlineUser.getPhone());
 
@@ -236,16 +236,22 @@ public class SettingsActivity extends AppCompatActivity {
                     if (dataSnapshot.child("image").exists()) {
 
                         String image = dataSnapshot.child("image").getValue().toString();
-                        String name = dataSnapshot.child("name").getValue().toString();
+                        String name = dataSnapshot.child("name surname").getValue().toString();
+                        String username = dataSnapshot.child("name").getValue().toString();
                         String phone = dataSnapshot.child("phoneOrder").getValue().toString();
                         String address = dataSnapshot.child("address").getValue().toString();
                         String postalCode = dataSnapshot.child("postalCode").getValue().toString();
 
                         Picasso.get().load(image).into(profileImageView);
+                        textUserName.setText(username);
                         fullNameEditText.setText(name);
                         userPhoneEditText.setText(phone);
                         addressEditText.setText(address);
                         postalCodeEditText.setText(postalCode);
+
+
+
+
 
                     }
 

@@ -43,7 +43,8 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
 
     private String productRandomKay, downloadImageUrl;
     private StorageReference ProductImagesRef;
-    private DatabaseReference ProductsRef, sellersRef;
+
+    private DatabaseReference ProductsRef;
 
     private String sName, sPhone, sEmail, sAddress, sID;
 
@@ -223,16 +224,6 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         productMap.put("price", Price);
         productMap.put("pname", Pname);
 
-        //---------------Seller---------------
-//        productMap.put("sellerName", sName);
-//        productMap.put("sellerAddress", sAddress);
-//        productMap.put("sellerPhone", sPhone);
-//        productMap.put("sellerEmail", sEmail);
-//        productMap.put("sid", sID);
-//        productMap.put("productState", "Not Approved");
-        //-----------------END SELLER---------------
-
-
         ProductsRef.child(productRandomKay).updateChildren(productMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -251,6 +242,15 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
                         }
                     }
                 });
-
     }
+
+
+    //---------------Seller---------------
+//        productMap.put("sellerName", sName);
+//        productMap.put("sellerAddress", sAddress);
+//        productMap.put("sellerPhone", sPhone);
+//        productMap.put("sellerEmail", sEmail);
+//        productMap.put("sid", sID);
+//        productMap.put("productState", "Not Approved");
+    //-----------------END SELLER---------------
 }

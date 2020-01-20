@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,10 +20,11 @@ import com.example.shoppingproject.ViewHolder.ProductViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
+
+import io.paperdb.Paper;
 
 public class AdminHomeActivity extends AppCompatActivity {
 
@@ -66,14 +68,16 @@ public class AdminHomeActivity extends AppCompatActivity {
                         return true;
                     case R.id.navigation_logout:
 //                        mTextMessage.setText(R.string.title_logout);
-                        final FirebaseAuth sAuth;
-                        sAuth =FirebaseAuth.getInstance();
-                        sAuth.signOut();
-
+//                        final FirebaseAuth sAuth;
+//                        sAuth =FirebaseAuth.getInstance();
+//                        sAuth.signOut();
+                        Paper.book().destroy();
                         Intent intentMain = new Intent(AdminHomeActivity.this, MainActivity.class);
                         intentMain.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intentMain);
                         finish();
+                        Toast.makeText(AdminHomeActivity.this, "Logout", Toast.LENGTH_LONG).show();
+
 
                         return true;
 

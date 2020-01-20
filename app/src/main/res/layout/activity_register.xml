@@ -12,7 +12,7 @@
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="156dp"
+        android:layout_marginTop="140dp"
         android:src="@drawable/applogo" />
 
 
@@ -34,15 +34,28 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="0dp"
             android:backgroundTint="@color/colorPrimaryDark"
             android:drawableTint="@color/colorPrimaryDark"
-            android:hint="User Name"
+            android:hint="ชื่อผู้ใช้"
+            android:fontFamily="@font/sukhumvitset_text"
             android:inputType="text"
-            android:padding="20dp"
-            android:textColor="@color/primaryTextColor"
-            android:textColorHint="@color/primaryTextColor"
+            android:padding="15dp"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/register_txt_name_surname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/register_txt_username"
+            android:layout_alignParentEnd="true"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:drawableTint="@color/colorPrimaryDark"
+            android:hint="ชื่อ - นามสกุล"
+            android:fontFamily="@font/sukhumvitset_text"
+            android:inputType="text"
+            android:padding="15dp"
+            android:singleLine="true"
             android:textSize="20dp"
             android:textStyle="bold" />
 
@@ -50,7 +63,7 @@
             android:id="@+id/country_phone_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/register_txt_username"
+            android:layout_below="@+id/register_txt_name_surname"
             android:gravity="center_vertical">
 
             <com.hbb20.CountryCodePicker
@@ -58,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:ccp_defaultNameCode="TH"
-                android:visibility="visible"/>
+                android:visibility="gone"/>
 
             <EditText
                 android:id="@+id/register_txt_phone_number"
@@ -66,13 +79,12 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/colorPrimaryDark"
                 android:drawableTint="@color/colorPrimaryDark"
-                android:hint="Phone"
-                android:maxLength="12"
+                android:hint="เบอร์โทรศัพท์"
+                android:maxLength="10"
                 android:inputType="phone"
-                android:padding="20dp"
+                android:fontFamily="@font/sukhumvitset_text"
+                android:padding="15dp"
                 android:singleLine="true"
-                android:textColor="@color/primaryTextColor"
-                android:textColorHint="@color/primaryTextColor"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
@@ -86,11 +98,10 @@
             android:layout_below="@+id/country_phone_register"
             android:backgroundTint="@color/colorPrimaryDark"
             android:drawableTint="@color/colorPrimaryDark"
-            android:hint="Password"
+            android:hint="รหัสผ่าน"
             android:inputType="textPassword"
-            android:padding="20dp"
-            android:textColor="@color/primaryTextColor"
-            android:textColorHint="@color/primaryTextColor"
+            android:fontFamily="@font/sukhumvitset_text"
+            android:padding="15dp"
             android:textSize="20dp"
             android:textStyle="bold" />
 
@@ -133,8 +144,6 @@
         android:hint="กรอกข้อมูล OTP ที่นี่..."
         android:inputType="phone"
         android:singleLine="true"
-        android:textColor="@color/primaryTextColor"
-        android:textColorHint="@color/primaryTextColor"
         android:visibility="visible" />
 
     <Button
@@ -150,6 +159,7 @@
         android:textColor="@android:color/white"
         android:textSize="22dp"
         android:textStyle="bold" />
+
     </RelativeLayout>
 
 </RelativeLayout>
