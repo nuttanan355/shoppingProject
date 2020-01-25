@@ -36,6 +36,7 @@
             android:iconTint="@android:color/white"
             android:fontFamily="@font/sukhumvitset_text"
             android:title="Logout" />
+
     </group>
 
 </menu>

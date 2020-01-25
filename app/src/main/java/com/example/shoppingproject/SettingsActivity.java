@@ -38,7 +38,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     private EditText fullNameEditText, userPhoneEditText, addressEditText,postalCodeEditText;
     private CircleImageView profileImageView;
-    private TextView textUserName, closeTextBTN, btnSecuityQuestion;
+    private TextView textUserName, btnSecuityQuestion;
     private Button updateTextBTN;
 
     private Uri imageUri;
@@ -64,18 +64,12 @@ public class SettingsActivity extends AppCompatActivity {
         textUserName = (TextView) findViewById(R.id.settings_user_name);
 
         btnSecuityQuestion=(TextView)findViewById(R.id.btn_security_questions);
-        closeTextBTN = (TextView) findViewById(R.id.btn_close_settings);
+
 
         updateTextBTN = (Button) findViewById(R.id.btn_update_settings);
 
         userInfoDisplay(profileImageView, fullNameEditText, userPhoneEditText, addressEditText,postalCodeEditText,textUserName);
 
-        closeTextBTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
 
         btnSecuityQuestion.setOnClickListener(new View.OnClickListener() {
             @Override

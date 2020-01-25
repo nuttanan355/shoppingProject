@@ -19,10 +19,50 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/mobile_navigation" />
 
+    <TextView
+        android:id="@+id/text_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="หมวดหมู่"
+        android:paddingTop="5dp"
+        android:paddingLeft="10dp"
+        android:fontFamily="@font/sukhumvitset_text"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="17dp"
+        android:textStyle="bold" />
+
+<LinearLayout
+    android:id="@+id/line50"
+    android:layout_below="@+id/text_category"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:layout_marginHorizontal="10dp"
+    android:background="@drawable/input_design_back"
+    android:orientation="horizontal">
+
+
+        >
+    <Spinner
+        android:id="@+id/spinner_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"
+        android:entries="@array/array_name"
+        android:padding="10dp"/>
+
+
+
+
+
+</LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_menu"
+        android:layout_below="@+id/line50"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fontFamily="@font/sukhumvitset_text"
         android:scrollbars="vertical">
 
     </androidx.recyclerview.widget.RecyclerView>

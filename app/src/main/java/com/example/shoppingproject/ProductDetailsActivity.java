@@ -33,7 +33,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private ImageView productImage;
     private ElegantNumberButton numberButton;
     private TextView productPrice, productDescription, productName,titleProductName;
-    private String productID = "0", state = "Normal";
+    private String productID = "0", state = "Normal",checkLogin="";
 
 //    private DatabaseReference productsRef;
 
@@ -45,6 +45,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
 
         productID = getIntent().getStringExtra("pid");
+
+        checkLogin = getIntent().getExtras().get("checkLogin").toString();
 
         addCartBtn = (Button) findViewById(R.id.btn_add_to_cart);
         numberButton = (ElegantNumberButton) findViewById(R.id.number_btn);
@@ -63,8 +65,16 @@ public class ProductDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+               if (checkLogin.equals("LoginTrue")) {
+                   addingToCartList();
+               }else
+                   {
+                       Toast.makeText(ProductDetailsActivity.this, "เข้าสู่ระบบก่อน", Toast.LENGTH_SHORT).show();
+                       Intent intent = new Intent(ProductDetailsActivity.this, LoginActivity.class);
+                       startActivity(intent);
+                       finish();
 
-                    addingToCartList();
+               }
 
             }
         });

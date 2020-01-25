@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private TextView register_btn;
 
-    private TextView AdminLink, NotAdminLink,ForgetPasswordLink;
+    private TextView AdminLink, NotAdminLink, ForgetPasswordLink;
 
 
     @Override
@@ -45,17 +45,15 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-
         btn_login = (Button) findViewById(R.id.btn_login);
         txtNumber = (MaterialEditText) findViewById(R.id.login_txt_username);
         txtPassword = (MaterialEditText) findViewById(R.id.login_txt_password);
 
         AdminLink = (TextView) findViewById(R.id.admin_panel_link);
         NotAdminLink = (TextView) findViewById(R.id.not_admin_panel_link);
-        ForgetPasswordLink=(TextView)findViewById(R.id.forget_password_link);
+        ForgetPasswordLink = (TextView) findViewById(R.id.forget_password_link);
 
         register_btn = (TextView) findViewById(R.id.btn_account);
-
 
 
 //        chbRememberMe = (CheckBox) findViewById(R.id.remember_me_chkb);
@@ -66,8 +64,8 @@ public class LoginActivity extends AppCompatActivity {
         ForgetPasswordLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(LoginActivity.this,ResetPasswordActivity.class);
-                intent.putExtra("check","Login");
+                Intent intent = new Intent(LoginActivity.this, ResetPasswordActivity.class);
+                intent.putExtra("check", "Login");
                 startActivity(intent);
             }
         });
@@ -87,9 +85,6 @@ public class LoginActivity extends AppCompatActivity {
                 AdminLink.setVisibility(View.INVISIBLE);
                 NotAdminLink.setVisibility(View.VISIBLE);
                 parentDbName = "Admins";
-
-
-
 
 
             }
@@ -137,15 +132,15 @@ public class LoginActivity extends AppCompatActivity {
 
     private void AllowAccessToAccout(final String phone, final String password) {
 
-            Paper.book().write(Prevalent.UserPhoneKey, phone);
-            Paper.book().write(Prevalent.UserPasswordKey, password);
+        Paper.book().write(Prevalent.UserPhoneKey, phone);
+        Paper.book().write(Prevalent.UserPasswordKey, password);
 
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
 
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange( DataSnapshot dataSnapshot) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child(parentDbName).child(phone).exists()) {
 
                     Users usersData = dataSnapshot.child(parentDbName).child(phone).getValue(Users.class);
@@ -171,6 +166,7 @@ public class LoginActivity extends AppCompatActivity {
                             Prevalent.currentOnlineUser = usersData;
                             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            intent.putExtra("CheckLogin", "LoginTrue");
                             startActivity(intent);
                             finish();
                         }

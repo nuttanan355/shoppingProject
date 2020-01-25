@@ -108,27 +108,43 @@ public class ConfirmFinalOrderActivity<val> extends AppCompatActivity {
         confrimOrderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CharSequence options[] = new CharSequence[]
-                        {
-                                "ใช่",
-                                "ไม่"
-                        };
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(ConfirmFinalOrderActivity.this);
-                builder.setTitle("ลูกค้าต้องการให้จัดส่งตามที่อยู่ที่ระบุไว้ ?");
-                builder.setItems(options, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int position) {
-                        if (position == 0) {
-                            CheckAddress();
-                            finish();
+                if (TextUtils.isEmpty(nameEditText.getText().toString())) {
+                    Toast.makeText(ConfirmFinalOrderActivity.this, "กรุณาระบุชื่อเต็ม", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(phoneEditText.getText().toString())) {
+                    Toast.makeText(ConfirmFinalOrderActivity.this, "กรุณาระบุเบอร์โทรศัพท์", Toast.LENGTH_SHORT).show();
+                } else if ((phoneEditText.getText().toString()).length() < 10) {
+                    Toast.makeText(ConfirmFinalOrderActivity.this, "กรุณาระบุเบอร์โทรศัพท์", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(addressEditText.getText().toString())) {
+                    Toast.makeText(ConfirmFinalOrderActivity.this, "กรุณาระบุที่อยู่", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(cityEditText.getText().toString())) {
+                    Toast.makeText(ConfirmFinalOrderActivity.this, "รหัสไปรษณีย์", Toast.LENGTH_SHORT).show();
+                } else if ((cityEditText.getText().toString()).length() < 5) {
+                    Toast.makeText(ConfirmFinalOrderActivity.this, "รหัสไปรษณีย์", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    CharSequence options[] = new CharSequence[]
+                            {
+                                    "ใช่",
+                                    "ไม่"
+                            };
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(ConfirmFinalOrderActivity.this);
+                    builder.setTitle("ลูกค้าต้องการให้จัดส่งตามที่อยู่ที่ระบุไว้ ?");
+                    builder.setItems(options, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int position) {
+                            if (position == 0) {
+                                payPalPayment();
+                                finish();
+                            }
+                            if (position == 1) {
+                                finish();
+                            }
                         }
-                        if (position == 1) {
-                            finish();
-                        }
-                    }
-                });
-                builder.show();
+                    });
+                    builder.show();
+                }
 
             }
         });
@@ -184,31 +200,6 @@ public class ConfirmFinalOrderActivity<val> extends AppCompatActivity {
 
     }
 
-    private void CheckAddress() {
-
-        if (TextUtils.isEmpty(nameEditText.getText().toString())) {
-            Toast.makeText(this, "กรุณาระบุชื่อเต็ม", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(phoneEditText.getText().toString())) {
-            Toast.makeText(this, "กรุณาระบุเบอร์โทรศัพท์", Toast.LENGTH_SHORT).show();
-        } else if ((phoneEditText.getText().toString()).length() < 10) {
-            Toast.makeText(this, "กรุณาระบุเบอร์โทรศัพท์", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(addressEditText.getText().toString())) {
-            Toast.makeText(this, "กรุณาระบุที่อยู่", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(cityEditText.getText().toString())) {
-            Toast.makeText(this, "รหัสไปรษณีย์", Toast.LENGTH_SHORT).show();
-        } else if ((cityEditText.getText().toString()).length() < 5) {
-            Toast.makeText(this, "รหัสไปรษณีย์", Toast.LENGTH_SHORT).show();
-        } else {
-
-            payPalPayment();
-//            ComfirmOrder();
-//            omise
-//            choosePaymentMethod();
-//            payByCreditCard();
-
-//            ComfirmOrder();
-        }
-    }
 
     //----------------------------------------------------omise----------------------------------------------------
 

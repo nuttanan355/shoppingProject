@@ -7,37 +7,40 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.shoppingproject.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
-    <fragment
-        android:id="@+id/nav_cart"
-        android:name="com.example.shoppingproject.ui.home.HomeFragment"
+        android:name="com.example.shoppingproject.Fragment.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
+
+    <fragment
+        android:id="@+id/nav_cart"
+        android:name="com.example.shoppingproject.Fragment.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home"
+        />
+
     <fragment
         android:id="@+id/nav_new_order"
-        android:name="com.example.shoppingproject.ui.home.HomeFragment"
+        android:name="com.example.shoppingproject.Fragment.HomeFragment"
         tools:layout="@layout/fragment_home"
         android:label="@string/menu_home" />
 
     <fragment
         android:id="@+id/nav_search"
-        android:name="com.example.shoppingproject.ui.home.HomeFragment"
+        android:name="com.example.shoppingproject.Fragment.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_settings"
-        android:name="com.example.shoppingproject.ui.home.HomeFragment"
+        android:name="com.example.shoppingproject.Fragment.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
 
     <fragment
         android:id="@+id/nav_logout"
-        android:name="com.example.shoppingproject.ui.home.HomeFragment"
+        android:name="com.example.shoppingproject.Fragment.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 

@@ -1,6 +1,5 @@
 package com.example.shoppingproject;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -22,14 +21,11 @@ import io.paperdb.Paper;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ProgressDialog loadingBar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        loadingBar = new ProgressDialog(this);
 
         Paper.init(this);
 
@@ -40,10 +36,6 @@ public class MainActivity extends AppCompatActivity {
             if (!TextUtils.isEmpty(UserPhoneKey) && !TextUtils.isEmpty(UserPasswordKey)) {
                 AllowAccess(UserPhoneKey, UserPasswordKey);
 
-                loadingBar.setTitle("เข้าสู่ระบบแล้ว");
-                loadingBar.setMessage("โปรดรอ.....");
-                loadingBar.setCanceledOnTouchOutside(false);
-                loadingBar.show();
             }
             else
                 {
@@ -66,8 +58,9 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 try {
                     sleep(1000);
-                    Intent Intent = new Intent(getApplicationContext(), LoginActivity.class);
-                    startActivity(Intent);
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    intent.putExtra("CheckLogin","LoginFalse");
+                    startActivity(intent);
                     finish();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -76,12 +69,6 @@ public class MainActivity extends AppCompatActivity {
         };
         myThread.start();
 
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        MainActivity.this.finish();
     }
 
     private void AllowAccess(final String phone, final String password) {
@@ -93,25 +80,24 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child("Users").child(phone).exists()) {
                     Users usersData = dataSnapshot.child("Users").child(phone).getValue(Users.class);
-                    Users adminData = dataSnapshot.child("Admins").child(phone).getValue(Users.class);
+//                    Users adminData = dataSnapshot.child("Admins").child(phone).getValue(Users.class);
 
                     if (usersData.getPhone().equals(phone) && usersData.getPassword().equals(password)) {
 
                         Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        intent.putExtra("CheckLogin","LoginTrue");
                         Prevalent.currentOnlineUser = usersData;
                         startActivity(intent);
 
                     } else {
 
-                        loadingBar.dismiss();
                         Toast.makeText(MainActivity.this, "รหัสผ่านไม่ถูกต้อง", Toast.LENGTH_SHORT).show();
                     }
 
                 }else if (dataSnapshot.child("Admins").child(phone).exists())
                 {
                     Toast.makeText(MainActivity.this, "ยินดีต้อนรับ Admin\n คุณเข้าสู่ระบบสำเร็จแล้ว..", Toast.LENGTH_SHORT).show();
-                    loadingBar.dismiss();
 
                     Intent intent = new Intent(MainActivity.this, AdminHomeActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -123,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
                 else {
 
                     Toast.makeText(MainActivity.this, "บัญชีนี้ " + phone + "ไม่มีหมายเลข", Toast.LENGTH_SHORT).show();
-                    loadingBar.dismiss();
                     myThread();
                 }
             }

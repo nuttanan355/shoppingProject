@@ -22,24 +22,13 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/btn_close_settings"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:fontFamily="@font/kanit_extralight"
-                    android:text="Close"
-                    android:textColor="@color/white"
-                    android:textSize="17dp"
-                    android:textStyle="bold" />
-
-                <TextView
                     android:id="@+id/btn_security_questions"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_marginRight="10dp"
                     android:fontFamily="@font/kanit_extralight"
-                    android:text="ตั้งคำถามเพื่อปลอดภัย"
+                    android:text="เปลี่ยนรหัสผ่าน"
                     android:textColor="@color/white"
                     android:textSize="17dp"
                     android:textStyle="bold" />
