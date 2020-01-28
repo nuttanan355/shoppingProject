@@ -36,15 +36,16 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    private EditText fullNameEditText, userPhoneEditText, addressEditText,postalCodeEditText;
+    private EditText fullNameEditText, userPhoneEditText, addressEditText, postalCodeEditText;
     private CircleImageView profileImageView;
     private TextView textUserName, btnSecuityQuestion;
-    private Button updateTextBTN;
+
+    private Button btnUpdateText;
 
     private Uri imageUri;
     private String myUri = "", checker = "";
     private StorageTask uploadTask;
-    private StorageReference storageProfilePrictureRef;
+    private StorageReference storageProfilePunctureRef;
 //    private String c
 
 
@@ -53,7 +54,7 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        storageProfilePrictureRef= FirebaseStorage.getInstance().getReference().child("Profile Pictures");
+        storageProfilePunctureRef = FirebaseStorage.getInstance().getReference().child("Profile Pictures");
 
         profileImageView = (CircleImageView) findViewById(R.id.settings_profile_image);
 
@@ -63,25 +64,23 @@ public class SettingsActivity extends AppCompatActivity {
         postalCodeEditText = (EditText) findViewById(R.id.settings_postal_code);
         textUserName = (TextView) findViewById(R.id.settings_user_name);
 
-        btnSecuityQuestion=(TextView)findViewById(R.id.btn_security_questions);
+        btnSecuityQuestion = (TextView) findViewById(R.id.btn_security_questions);
 
 
-        updateTextBTN = (Button) findViewById(R.id.btn_update_settings);
-
-        userInfoDisplay(profileImageView, fullNameEditText, userPhoneEditText, addressEditText,postalCodeEditText,textUserName);
+        btnUpdateText = (Button) findViewById(R.id.btn_update_settings);
 
 
         btnSecuityQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(SettingsActivity.this,ResetPasswordActivity.class);
-                intent.putExtra("check","settings");
+                Intent intent = new Intent(SettingsActivity.this, ResetPasswordActivity.class);
+                intent.putExtra("check", "settings");
                 startActivity(intent);
 
             }
         });
 
-        updateTextBTN.setOnClickListener(new View.OnClickListener() {
+        btnUpdateText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (checker.equals("clicked")) {
@@ -104,19 +103,47 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void updateOnlyUserInfo() {
-        DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("Users");
-        HashMap<String,Object> userMap=new HashMap<>();
 
-        userMap.put("name",fullNameEditText.getText().toString());
-        userMap.put("address",addressEditText.getText().toString());
-        userMap.put("phoneOrder",userPhoneEditText.getText().toString());
-        userMap.put("postalCode",postalCodeEditText.getText().toString());
-        ref.child(Prevalent.currentOnlineUser.getPhone()).updateChildren(userMap);
+        if (TextUtils.isEmpty(fullNameEditText.getText().toString())) {
+            Toast.makeText(this, "ต้องระบุชื่อ", Toast.LENGTH_SHORT).show();
 
-        startActivity(new Intent(SettingsActivity.this,HomeActivity.class));
-        Toast.makeText(SettingsActivity.this,"อัปเดตข้อมูลสำเร็จแล้ว",Toast.LENGTH_SHORT).show();
-        finish();
+        } else if (TextUtils.isEmpty(userPhoneEditText.getText().toString())) {
+            Toast.makeText(this, "ต้องระบุเบอร์โทรศัพท์", Toast.LENGTH_SHORT).show();
 
+        } else if ((userPhoneEditText.getText().toString()).length() < 10) {
+            Toast.makeText(this, "ต้องระบุเบอร์โทรศัพท์", Toast.LENGTH_SHORT).show();
+
+        } else if (TextUtils.isEmpty(addressEditText.getText().toString())) {
+            Toast.makeText(this, "ต้องระบุที่อยู่", Toast.LENGTH_SHORT).show();
+
+        } else if (TextUtils.isEmpty(postalCodeEditText.getText().toString())) {
+            Toast.makeText(this, "รหัสไปรษณีย์", Toast.LENGTH_SHORT).show();
+
+        } else if ((postalCodeEditText.getText().toString()).length() < 5) {
+            Toast.makeText(this, "รหัสไปรษณีย์", Toast.LENGTH_SHORT).show();
+
+        } else {
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+
+            progressDialog.setTitle("อัปเดตข้อมูล");
+            progressDialog.setMessage("โปรดรอสักครู่ขณะที่กำลังอัปเดตข้อมูลบัญชีของคุณ");
+            progressDialog.setCanceledOnTouchOutside(false);
+            progressDialog.show();
+
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users");
+            HashMap<String, Object> userMap = new HashMap<>();
+
+            userMap.put("name surname", fullNameEditText.getText().toString());
+            userMap.put("address", addressEditText.getText().toString());
+            userMap.put("phoneOrder", userPhoneEditText.getText().toString());
+            userMap.put("postalCode", postalCodeEditText.getText().toString());
+            ref.child(Prevalent.currentOnlineUser.getPhone()).updateChildren(userMap);
+
+            progressDialog.dismiss();
+            startActivity(new Intent(SettingsActivity.this, HomeActivity.class).putExtra("CheckLogin", "LoginTrue"));
+            Toast.makeText(SettingsActivity.this, "อัปเดตข้อมูลสำเร็จแล้ว", Toast.LENGTH_SHORT).show();
+            finish();
+        }
     }
 
     @Override
@@ -138,88 +165,90 @@ public class SettingsActivity extends AppCompatActivity {
         if (TextUtils.isEmpty(fullNameEditText.getText().toString())) {
             Toast.makeText(this, "ต้องระบุชื่อ", Toast.LENGTH_SHORT).show();
 
-        }
-        else if (TextUtils.isEmpty(userPhoneEditText.getText().toString())) {
+        } else if (TextUtils.isEmpty(userPhoneEditText.getText().toString())) {
             Toast.makeText(this, "ต้องระบุเบอร์โทรศัพท์", Toast.LENGTH_SHORT).show();
 
-        } else if ((userPhoneEditText.getText().toString()).length()<10) {
+        } else if ((userPhoneEditText.getText().toString()).length() < 10) {
             Toast.makeText(this, "ต้องระบุเบอร์โทรศัพท์", Toast.LENGTH_SHORT).show();
 
-        }
-        else if (TextUtils.isEmpty(addressEditText.getText().toString())) {
+        } else if (TextUtils.isEmpty(addressEditText.getText().toString())) {
             Toast.makeText(this, "ต้องระบุที่อยู่", Toast.LENGTH_SHORT).show();
 
-        }
-        else if (TextUtils.isEmpty(postalCodeEditText.getText().toString())) {
+        } else if (TextUtils.isEmpty(postalCodeEditText.getText().toString())) {
             Toast.makeText(this, "รหัสไปรษณีย์", Toast.LENGTH_SHORT).show();
 
-        }    else if ((postalCodeEditText.getText().toString()).length()<5) {
+        } else if ((postalCodeEditText.getText().toString()).length() < 5) {
             Toast.makeText(this, "รหัสไปรษณีย์", Toast.LENGTH_SHORT).show();
 
-        }
-        else if (checker.equals("clicked")) {
+        } else if (checker.equals("clicked")) {
             uploadImage();
         }
 
     }
 
     private void uploadImage() {
+
         final ProgressDialog progressDialog = new ProgressDialog(this);
+
         progressDialog.setTitle("Update Profile");
         progressDialog.setMessage("โปรดรอสักครู่ขณะที่กำลังอัปเดตข้อมูลบัญชีของคุณ");
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
 
         if (imageUri != null) {
-            final StorageReference fileRef =storageProfilePrictureRef
-                    .child(Prevalent.currentOnlineUser.getPhone()+".jpg");
+            final StorageReference fileRef = storageProfilePunctureRef
+                    .child(Prevalent.currentOnlineUser.getPhone() + ".jpg");
 
-            uploadTask=fileRef.putFile(imageUri);
+            uploadTask = fileRef.putFile(imageUri);
             uploadTask.continueWithTask(new Continuation() {
                 @Override
                 public Object then(@NonNull Task task) throws Exception {
-                    if (!task.isSuccessful()){
+                    if (!task.isSuccessful()) {
                         throw task.getException();
                     }
 
                     return fileRef.getDownloadUrl();
                 }
             })
-                    .addOnCompleteListener(new OnCompleteListener<Uri>() {
+ .addOnCompleteListener(new OnCompleteListener<Uri>() {
                         @Override
                         public void onComplete(@NonNull Task<Uri> task) {
-                            if (task.isSuccessful()){
+                            if (task.isSuccessful()) {
+
                                 Uri downloadUri = task.getResult();
-                                myUri=downloadUri.toString();
-                                DatabaseReference ref= FirebaseDatabase.getInstance().getReference().child("Users");
-                                HashMap<String,Object> userMap=new HashMap<>();
+                                myUri = downloadUri.toString();
 
-                                userMap.put("name",fullNameEditText.getText().toString());
-                                userMap.put("address",addressEditText.getText().toString());
-                                userMap.put("phoneOrder",userPhoneEditText.getText().toString());
-                                userMap.put("image",myUri);
-                                ref.child(Prevalent.currentOnlineUser.getPhone()).updateChildren(userMap);
+                                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users")
+                                        .child(Prevalent.currentOnlineUser.getPhone());
+
+
+                                HashMap<String, Object> userMap = new HashMap<>();
+
+                                userMap.put("name surname", fullNameEditText.getText().toString());
+                                userMap.put("address", addressEditText.getText().toString());
+                                userMap.put("phoneOrder", userPhoneEditText.getText().toString());
+                                userMap.put("image", myUri);
+
+                                ref.updateChildren(userMap);
 
                                 progressDialog.dismiss();
-                                startActivity(new Intent(SettingsActivity.this,HomeActivity.class));
-                                Toast.makeText(SettingsActivity.this,"อัปเดตข้อมูลสำเร็จ",Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(SettingsActivity.this, HomeActivity.class).putExtra("CheckLogin", "LoginTrue"));
+                                Toast.makeText(SettingsActivity.this, "อัปเดตข้อมูลสำเร็จ", Toast.LENGTH_SHORT).show();
                                 finish();
-                            }
-                            else {
+                            } else {
                                 progressDialog.dismiss();
-                                Toast.makeText(SettingsActivity.this,"Error",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SettingsActivity.this, "Error", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
-        }
-        else {
-            Toast.makeText(this,"ไม่ได้เลือกรูปภาพ",Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "ไม่ได้เลือกรูปภาพ", Toast.LENGTH_SHORT).show();
         }
 
     }
 
 
-    private void userInfoDisplay(final CircleImageView profileImageView, final EditText fullNameEditText, final EditText userPhoneEditText, final EditText addressEditText, final EditText postalCodeEditText, final TextView textUserName) {
+    private void userInfoDisplay() {
 
         DatabaseReference UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(Prevalent.currentOnlineUser.getPhone());
 
@@ -227,25 +256,25 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
+
+                    String fullname = dataSnapshot.child("name surname").getValue().toString();
+                    String username = dataSnapshot.child("name").getValue().toString();
+                    String phone = dataSnapshot.child("phoneOrder").getValue().toString();
+                    String address = dataSnapshot.child("address").getValue().toString();
+                    String postalCode = dataSnapshot.child("postalCode").getValue().toString();
+
+                    textUserName.setText(username);
+                    fullNameEditText.setText(fullname);
+                    userPhoneEditText.setText(phone);
+                    addressEditText.setText(address);
+                    postalCodeEditText.setText(postalCode);
+
+
                     if (dataSnapshot.child("image").exists()) {
 
                         String image = dataSnapshot.child("image").getValue().toString();
-                        String name = dataSnapshot.child("name surname").getValue().toString();
-                        String username = dataSnapshot.child("name").getValue().toString();
-                        String phone = dataSnapshot.child("phoneOrder").getValue().toString();
-                        String address = dataSnapshot.child("address").getValue().toString();
-                        String postalCode = dataSnapshot.child("postalCode").getValue().toString();
 
                         Picasso.get().load(image).into(profileImageView);
-                        textUserName.setText(username);
-                        fullNameEditText.setText(name);
-                        userPhoneEditText.setText(phone);
-                        addressEditText.setText(address);
-                        postalCodeEditText.setText(postalCode);
-
-
-
-
 
                     }
 
@@ -258,5 +287,12 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        userInfoDisplay();
     }
 }

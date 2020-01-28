@@ -133,7 +133,6 @@ public class HomeActivity extends AppCompatActivity {
                     if (!checkLogin.equals("LoginFalse")) {
                         Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
                         startActivity(intent);
-                        finish();
                     }
                 }
                 if (destination.getId() == R.id.nav_logout) {

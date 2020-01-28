@@ -177,7 +177,7 @@ public class AdminHomeActivity extends AppCompatActivity {
                     @Override
                     protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model) {
                         holder.txtProductName.setText(model.getPname());
-                        holder.txtProductPrice.setText("ราคา = " + model.getPrice() + " ฿");
+                        holder.txtProductPrice.setText("ราคา " + model.getPrice() + " ฿");
                         holder.txtProductDescription.setText(model.getDescription());
                         Picasso.get().load(model.getImage()).into(holder.imageView);
 

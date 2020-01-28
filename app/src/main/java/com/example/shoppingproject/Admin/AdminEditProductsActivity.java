@@ -1,5 +1,6 @@
 package com.example.shoppingproject.Admin;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shoppingproject.R;
@@ -81,16 +83,38 @@ public class AdminEditProductsActivity extends AppCompatActivity {
     }
 
     private void deleteProduct() {
-        productsRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                Intent intent = new Intent(AdminEditProductsActivity.this, AdminHomeActivity.class);
-                startActivity(intent);
-                finish();
 
-                Toast.makeText(AdminEditProductsActivity.this, "ลบสินค้าสำเร็จแล้ว", Toast.LENGTH_SHORT).show();
+        CharSequence options[] = new CharSequence[]
+                {
+                        "ใช่",
+                        "ไม่"
+                };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(AdminEditProductsActivity.this);
+        builder.setTitle("ต้องการลบสินค้านี้ใช่ไหม ?");
+        builder.setItems(options, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int position) {
+                if (position == 0) {
+                    productsRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            Intent intent = new Intent(AdminEditProductsActivity.this, AdminHomeActivity.class);
+                            startActivity(intent);
+                            finish();
+
+                            Toast.makeText(AdminEditProductsActivity.this, "ลบสินค้าสำเร็จแล้ว", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    finish();
+                }
+                if (position == 1) {
+                    finish();
+                }
             }
         });
+        builder.show();
+
     }
 
 //    private void OpenGallery() {
