@@ -63,14 +63,12 @@
         android:orientation="horizontal"
         android:text="ต่อไป"
         android:textColor="@color/white"
-        android:textSize="20dp">
+        android:textSize="20dp"
+        android:paddingBottom="5dp">
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="0dp"
-            android:layout_weight="1"
-            android:layout_marginLeft="10dp"
             android:orientation="vertical">
 
             <TextView
@@ -89,6 +87,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:layout_marginLeft="3dp"
                 android:fontFamily="@font/sukhumvitset_text"
                 android:text="ยอดรวม : "
                 android:textAlignment="textEnd"
@@ -98,7 +97,7 @@
 
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_weight="2"

@@ -101,7 +101,7 @@ public class AdminSendingOrderActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull Cart model) {
                 holder.txtProductQuantity.setText("จำนวน " + model.getQuantity());
-                holder.txtProductPrice.setText("ราคา = " + model.getPrice() + " ฿");
+                holder.txtProductPrice.setText("ราคา " + model.getPrice() + " ฿");
                 holder.txtProductDescription.setText(model.getDiscount());
                 holder.txtProductName.setText(model.getPname());
                 Picasso.get().load(model.getImage()).into(holder.imageViewProduct);

@@ -75,9 +75,9 @@ public class ConfirmFinalOrderActivity<val> extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_final_order);
 
-//        Intent intent = new Intent(this, PayPalService.class);
-//        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, payPalConfiguration);
-//        startService(intent);
+        Intent intent = new Intent(this, PayPalService.class);
+        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, payPalConfiguration);
+        startService(intent);
 
         confrimOrderBtn = (Button) findViewById(R.id.btn_confirm_final_order);
 
@@ -160,7 +160,7 @@ public class ConfirmFinalOrderActivity<val> extends AppCompatActivity {
 
             @Override
             public void onRequestFailed(@NotNull Throwable throwable) {
-//                Toast.makeText(this, "capitalize", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ConfirmFinalOrderActivity.this, "capitalize", Toast.LENGTH_SHORT).show();
                 snackbar.setText(StringsKt.capitalize(throwable.getMessage())).show();
             }
         });
@@ -303,6 +303,7 @@ public class ConfirmFinalOrderActivity<val> extends AppCompatActivity {
         if (requestCode == PAYPAL_REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK) {
                 PaymentConfirmation paymentConfirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
+//
                 if (paymentConfirmation != null) {
                     ComfirmOrder();
 
