@@ -33,7 +33,7 @@ import java.util.concurrent.TimeUnit;
 public class RegisterActivity extends AppCompatActivity {
 
     private Button CreateAccount_btn, Oto_btn;
-    private EditText txtUaername, txtPhonenumber, txtPassword, txtNameSurname;
+    private EditText txtUaername, txtPhonenumber, txtPassword, txtNameSurname,txtAddress,txtPostalCode;
     private ProgressDialog loadingBar;
 
     private CountryCodePicker countryCodePicker;
@@ -61,6 +61,8 @@ public class RegisterActivity extends AppCompatActivity {
         txtPhonenumber = (EditText) findViewById(R.id.register_txt_phone_number);
         txtPassword = (EditText) findViewById(R.id.register_txt_password);
         txtNameSurname = (EditText) findViewById(R.id.register_txt_name_surname);
+        txtAddress = (EditText) findViewById(R.id.register_txt_address);
+        txtPostalCode = (EditText) findViewById(R.id.register_txt_postal_code);
 
         codeOtpText = (EditText) findViewById(R.id.code_otp_text);
         RrLayoutInputPhone = (RelativeLayout) findViewById(R.id.phoneAuth);
@@ -143,11 +145,19 @@ public class RegisterActivity extends AppCompatActivity {
         String txtnameSurname = txtNameSurname.getText().toString();
         final String txtphone = txtPhonenumber.getText().toString();
         String txtpassword = txtPassword.getText().toString();
+        String txtaddress = txtAddress.getText().toString();
+        String txtpostalCode = txtPostalCode.getText().toString();
 
         if (TextUtils.isEmpty(txtname)) {
             Toast.makeText(this, "กรุณากรอกชื่อ.....", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(txtnameSurname)) {
             Toast.makeText(this, "กรุณากรอกชื่อ - นามสกุล.....", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(txtaddress)) {
+            Toast.makeText(this, "กรุณากรอกที่อยู่.....", Toast.LENGTH_SHORT).show();
+        } else if (TextUtils.isEmpty(txtpostalCode)) {
+            Toast.makeText(this, "กรุณากรอกรหัสไปรษณีย์.....", Toast.LENGTH_SHORT).show();
+        } else if (txtpostalCode.length() < 5) {
+            Toast.makeText(this, "รหัสไปรษณีย์ไม่ถูกต้อง.....", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(txtphone)) {
             Toast.makeText(this, "กรุณากรอกเบอร์โทรศัพท์.....", Toast.LENGTH_SHORT).show();
         } else if (txtphone.length() < 10) {
@@ -207,6 +217,8 @@ public class RegisterActivity extends AppCompatActivity {
         String txtnameSurname = txtNameSurname.getText().toString();
         String txtpassword = txtPassword.getText().toString();
         final String txtphone = txtPhonenumber.getText().toString();
+        String txtaddress = txtAddress.getText().toString();
+        String txtpostalCode = txtPostalCode.getText().toString();
 
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
@@ -216,9 +228,12 @@ public class RegisterActivity extends AppCompatActivity {
         userdataMap.put("name surname", txtnameSurname);
         userdataMap.put("password", txtpassword);
         userdataMap.put("name", txtname);
+        //เบอร์โทรศัพท์
         userdataMap.put("phoneOrder", txtphone);
-        userdataMap.put("address", "");
-        userdataMap.put("postalCode", "");
+        //ที่อยู่
+        userdataMap.put("address", txtaddress);
+        //รหัสไปรษณีย์
+        userdataMap.put("postalCode", txtpostalCode);
 
 
 

@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/input_design_back"
+        android:orientation="horizontal"
         android:padding="10dp">
 
 
@@ -23,13 +24,13 @@
             android:cropToPadding="true"
             android:src="@drawable/select_product_image" />
 
-<!--        <ImageView-->
-<!--            android:id="@+id/imageViewChild"-->
-<!--            android:layout_width="100dp"-->
-<!--            android:layout_height="100dp"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            tools:srcCompat="@tools:sample/avatars" />-->
+        <!--        <ImageView-->
+        <!--            android:id="@+id/imageViewChild"-->
+        <!--            android:layout_width="100dp"-->
+        <!--            android:layout_height="100dp"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"-->
+        <!--            tools:srcCompat="@tools:sample/avatars" />-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,18 +44,19 @@
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="ชื่อสินค้า"
                 android:fontFamily="@font/sukhumvitset_text"
+                android:text="ชื่อสินค้า"
                 android:textColor="@color/colorGrey"
                 android:textSize="17dp"
                 android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/cart_product_description"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="รายละเอียดสินค้า"
                 android:fontFamily="@font/sukhumvitset_text"
+                android:text="รายละเอียดสินค้า"
                 android:textColor="@color/colorGrey"
                 android:textSize="14dp"
                 android:textStyle="bold" />
@@ -65,11 +67,11 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="5dp"
-                android:text="จำนวนสินค้า"
                 android:fontFamily="@font/sukhumvitset_text"
+                android:text="จำนวนสินค้า"
                 android:textColor="@color/colorGrey"
                 android:textSize="16dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/cart_product_price"
@@ -77,13 +79,42 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/cart_product_quantity"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/sukhumvitset_text"
                 android:gravity="center"
                 android:text="ราคาสินค้า"
-                android:fontFamily="@font/sukhumvitset_text"
                 android:textColor="@color/colorRed"
                 android:textSize="20dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/layout_cart_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+                    android:id="@+id/btn_edit_quantity"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    app:backGroundColor="@color/colorAccent"
+                    app:textSize="10dp" />
+
+                <ImageView
+                    android:id="@+id/btn_delete_product_cart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/colorRed"
+                    android:cropToPadding="true"
+                    android:padding="6dp"
+                    android:src="@drawable/delete" />
+
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>
+
 </androidx.cardview.widget.CardView>

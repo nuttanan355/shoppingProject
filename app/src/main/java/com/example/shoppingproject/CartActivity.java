@@ -1,6 +1,5 @@
 package com.example.shoppingproject;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,11 +10,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.example.shoppingproject.Model.Cart;
 import com.example.shoppingproject.Prevalent.Prevalent;
 import com.example.shoppingproject.ViewHolder.CartViewHolder;
@@ -98,11 +97,13 @@ public class CartActivity extends AppCompatActivity {
 
 
             @Override
-            protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull final Cart model) {
+            protected void onBindViewHolder(@NonNull final CartViewHolder holder, int position, @NonNull final Cart model) {
 
 
 //                Products products = dataSnapshot.getValue(Products.class);
-                holder.txtProductQuantity.setText("จำนวน " + model.getQuantity());
+                holder.btnEditQuantity.setNumber(model.getQuantity());
+
+
                 holder.txtProductPrice.setText("ราคา "+ "฿" + model.getPrice());
                 holder.txtProductDescription.setText(model.getDiscount());
                 holder.txtProductName.setText(model.getPname());
@@ -119,50 +120,91 @@ public class CartActivity extends AppCompatActivity {
                 txtTotalDeliver.setText("฿" + String.valueOf(45));
                 txtTotalAmount.setText("฿" + String.valueOf(overTotalPrice+45));
 
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
+
+                holder.layoutCartEdit.setVisibility(View.VISIBLE);
+
+                holder.btnDeleteProducts.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        CharSequence options[] = new CharSequence[]{
 
-                                "แก้ไขจำนวน",
-                                "ลบออก"
-                        };
-                        AlertDialog.Builder builder = new AlertDialog.Builder(CartActivity.this);
-                        builder.setTitle("ตัวเลือกรถเข็น :");
-                        builder.setItems(options, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                if (i == 0) {
-                                    Intent intent = new Intent(CartActivity.this, ProductDetailsActivity.class);
-                                    intent.putExtra("pid", model.getPid());
-                                    startActivity(intent);
-                                }
-                                if (i == 1) {
-                                    cartListRef
-                                            .child(Prevalent.currentOnlineUser.getPhone())
-                                            .child("Products")
-                                            .child(model.getPid())
-                                            .removeValue()
-                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
+                        cartListRef.child(Prevalent.currentOnlineUser.getPhone()).child("Products")
+                                .child(model.getPid()).removeValue()
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
 
-                                                    if (task.isSuccessful()) {
-                                                        Toast.makeText(CartActivity.this, "ลบสินค้าสำเร็จแล้ว", Toast.LENGTH_SHORT).show();
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(CartActivity.this, "ลบสินค้าสำเร็จแล้ว", Toast.LENGTH_SHORT).show();
+//                                                        Intent intent = new Intent(CartActivity.this, HomeActivity.class);
+//
+//                                                        startActivity(intent);
+                                            return;
+                                        }
+                                    }
+                                });
 
-                                                        Intent intent = new Intent(CartActivity.this, HomeActivity.class);
-                                                        startActivity(intent);
-                                                    }
-                                                }
-                                            });
-                                }
 
-                            }
-                        });
-                        builder.show();
                     }
                 });
 
+                holder.btnEditQuantity.setRange(1, 50);
+                holder.btnEditQuantity.setOnClickListener(new ElegantNumberButton.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        String number = holder.btnEditQuantity.getNumber();
+
+                        cartListRef.child(Prevalent.currentOnlineUser.getPhone()).child("Products")
+                                .child(model.getPid()).child("quantity").setValue(number);
+
+                    }
+                });
+
+
+
+//                holder.itemView.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        CharSequence options[] = new CharSequence[]{
+//
+//                                "แก้ไขจำนวน",
+//                                "ลบออก"
+//                        };
+//                        AlertDialog.Builder builder = new AlertDialog.Builder(CartActivity.this);
+//                        builder.setTitle("ตัวเลือกรถเข็น :");
+//                        builder.setItems(options, new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//                                if (i == 0) {
+//                                    Intent intent = new Intent(CartActivity.this, ProductDetailsActivity.class);
+//                                    intent.putExtra("CheckLogin", "LoginTrue");
+//                                    intent.putExtra("pid", model.getPid());
+//                                    startActivity(intent);
+//                                }
+//                                if (i == 1) {
+////                                    cartListRef
+////                                            .child(Prevalent.currentOnlineUser.getPhone())
+////                                            .child("Products")
+////                                            .child(model.getPid())
+////                                            .removeValue()
+////                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+////                                                @Override
+////                                                public void onComplete(@NonNull Task<Void> task) {
+////
+////                                                    if (task.isSuccessful()) {
+////                                                        Toast.makeText(CartActivity.this, "ลบสินค้าสำเร็จแล้ว", Toast.LENGTH_SHORT).show();
+//////                                                        Intent intent = new Intent(CartActivity.this, HomeActivity.class);
+//////                                                        startActivity(intent);
+////                                                    }
+////                                                }
+////                                            });
+//                                }
+//
+//                            }
+//                        });
+//                        builder.show();
+//                    }
+//                });
             }
 
             @NonNull
@@ -219,9 +261,4 @@ public class CartActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-
-    }
 }

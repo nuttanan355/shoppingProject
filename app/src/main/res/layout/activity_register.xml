@@ -7,159 +7,205 @@
     android:background="@color/white"
     tools:context=".RegisterActivity">
 
-    <ImageView
-        android:id="@+id/register_applogo"
-        android:layout_width="300dp"
-        android:layout_height="100dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="140dp"
-        android:src="@drawable/applogo" />
-
-
-    <RelativeLayout
-        android:id="@+id/phoneAuth"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/register_applogo"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="15dp"
-        android:visibility="visible"
-        android:padding="0dp">
-
-
-        <EditText
-            android:id="@+id/register_txt_username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:backgroundTint="@color/colorPrimaryDark"
-            android:drawableTint="@color/colorPrimaryDark"
-            android:hint="ชื่อผู้ใช้"
-            android:fontFamily="@font/sukhumvitset_text"
-            android:inputType="text"
-            android:padding="15dp"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/register_txt_name_surname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/register_txt_username"
-            android:layout_alignParentEnd="true"
-            android:backgroundTint="@color/colorPrimaryDark"
-            android:drawableTint="@color/colorPrimaryDark"
-            android:hint="ชื่อ - นามสกุล"
-            android:fontFamily="@font/sukhumvitset_text"
-            android:inputType="text"
-            android:padding="15dp"
-            android:singleLine="true"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/country_phone_register"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/register_txt_name_surname"
-            android:gravity="center_vertical">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <com.hbb20.CountryCodePicker
-                android:id="@+id/ccp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:ccp_defaultNameCode="TH"
-                android:visibility="gone"/>
-
-            <EditText
-                android:id="@+id/register_txt_phone_number"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/colorPrimaryDark"
-                android:drawableTint="@color/colorPrimaryDark"
-                android:hint="เบอร์โทรศัพท์"
-                android:maxLength="10"
-                android:inputType="phone"
-                android:fontFamily="@font/sukhumvitset_text"
-                android:padding="15dp"
-                android:singleLine="true"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:layout_height="match_parent">
 
+                <ImageView
+                    android:id="@+id/register_applogo"
+                    android:layout_width="300dp"
+                    android:layout_height="100dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="20dp"
+                    android:src="@drawable/applogo" />
+
+
+                <RelativeLayout
+                    android:id="@+id/phoneAuth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/register_applogo"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="15dp"
+                    android:padding="0dp"
+                    android:visibility="visible">
+
+
+                    <EditText
+                        android:id="@+id/register_txt_username"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:drawableTint="@color/colorPrimaryDark"
+                        android:fontFamily="@font/sukhumvitset_text"
+                        android:hint="ชื่อผู้ใช้"
+                        android:inputType="text"
+                        android:padding="15dp"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/register_txt_name_surname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/register_txt_username"
+                        android:layout_alignParentEnd="true"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:drawableTint="@color/colorPrimaryDark"
+                        android:fontFamily="@font/sukhumvitset_text"
+                        android:hint="ชื่อ - นามสกุล"
+                        android:inputType="text"
+                        android:padding="15dp"
+                        android:singleLine="true"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/register_txt_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/register_txt_name_surname"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:drawableTint="@color/colorPrimaryDark"
+                        android:fontFamily="@font/sukhumvitset_text"
+                        android:hint="ที่อยู่....."
+                        android:padding="15dp"
+                        android:singleLine="true"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/register_txt_postal_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/register_txt_address"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:drawableTint="@color/colorPrimaryDark"
+                        android:fontFamily="@font/sukhumvitset_text"
+                        android:hint="รหัสไปรษณีย์....."
+                        android:inputType="number"
+                        android:maxLength="5"
+                        android:padding="15dp"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/country_phone_register"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/register_txt_postal_code"
+                        android:gravity="center_vertical">
+
+                        <com.hbb20.CountryCodePicker
+                            android:id="@+id/ccp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            app:ccp_defaultNameCode="TH" />
+
+                        <EditText
+                            android:id="@+id/register_txt_phone_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/colorPrimaryDark"
+                            android:drawableTint="@color/colorPrimaryDark"
+                            android:fontFamily="@font/sukhumvitset_text"
+                            android:hint="เบอร์โทรศัพท์"
+                            android:inputType="phone"
+                            android:maxLength="10"
+                            android:padding="15dp"
+                            android:singleLine="true"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+
+                    <EditText
+                        android:id="@+id/register_txt_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/country_phone_register"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:drawableTint="@color/colorPrimaryDark"
+                        android:fontFamily="@font/sukhumvitset_text"
+                        android:hint="รหัสผ่าน"
+                        android:inputType="textPassword"
+                        android:padding="15dp"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btn_register"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/register_txt_password"
+                        android:layout_margin="17dp"
+                        android:background="@drawable/buttons"
+                        android:padding="19dp"
+                        android:text="Create Account"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        android:textSize="22dp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/OtpAuth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/register_applogo"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="15dp"
+                    android:padding="0dp"
+                    android:visibility="gone">
+
+
+                    <EditText
+                        android:id="@+id/code_otp_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_margin="25dp"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:drawableLeft="@drawable/password"
+                        android:drawableTint="@color/colorPrimaryDark"
+                        android:hint="กรอกข้อมูล OTP ที่นี่..."
+                        android:inputType="phone"
+                        android:singleLine="true"
+                        android:visibility="visible" />
+
+                    <Button
+                        android:id="@+id/btn_otp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/code_otp_text"
+                        android:layout_margin="17dp"
+                        android:background="@drawable/buttons"
+                        android:padding="19dp"
+                        android:text="Code Sent"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        android:textSize="22dp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
         </LinearLayout>
-
-
-        <EditText
-            android:id="@+id/register_txt_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/country_phone_register"
-            android:backgroundTint="@color/colorPrimaryDark"
-            android:drawableTint="@color/colorPrimaryDark"
-            android:hint="รหัสผ่าน"
-            android:inputType="textPassword"
-            android:fontFamily="@font/sukhumvitset_text"
-            android:padding="15dp"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/btn_register"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/register_txt_password"
-            android:layout_margin="17dp"
-            android:background="@drawable/buttons"
-            android:padding="19dp"
-            android:text="Create Account"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="22dp"
-            android:textStyle="bold" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/OtpAuth"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/register_applogo"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="15dp"
-        android:visibility="gone"
-        android:padding="0dp">
-
-
-    <EditText
-        android:id="@+id/code_otp_text"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_margin="25dp"
-        android:backgroundTint="@color/colorPrimaryDark"
-        android:drawableLeft="@drawable/password"
-        android:drawableTint="@color/colorPrimaryDark"
-        android:hint="กรอกข้อมูล OTP ที่นี่..."
-        android:inputType="phone"
-        android:singleLine="true"
-        android:visibility="visible" />
-
-    <Button
-        android:id="@+id/btn_otp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/code_otp_text"
-        android:layout_margin="17dp"
-        android:background="@drawable/buttons"
-        android:padding="19dp"
-        android:text="Code Sent"
-        android:textAllCaps="false"
-        android:textColor="@android:color/white"
-        android:textSize="22dp"
-        android:textStyle="bold" />
-
-    </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>

@@ -16,6 +16,7 @@ public class HomeFragment extends Fragment {
     public void onStop() {
         super.onStop();
 
+//isRemoving();
 
     }
 }

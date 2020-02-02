@@ -141,6 +141,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
                             Toast.makeText(ProductDetailsActivity.this, "เพิ่มในรถเข็นแล้ว", Toast.LENGTH_SHORT).show();
 
                             Intent intent = new Intent(ProductDetailsActivity.this, HomeActivity.class);
+                            intent.putExtra("CheckLogin", "LoginTrue");
                             startActivity(intent);
                             finish();
                         }

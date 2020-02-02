@@ -14,22 +14,50 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OrdersHistoryActivity"></activity>
-        <activity android:name=".SendingOrdersActivity" />
-        <activity android:name=".Admin.AdminOrdersHistoryActivity" />
-        <activity android:name=".ViewOrderProductActivity" />
-        <activity android:name=".Admin.AdminSendingOrderActivity" />
-        <activity android:name=".Admin.AdminNewOrdersActivity" />
+        <activity
+            android:name=".OrdersHistoryActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".SendingOrdersActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Admin.AdminOrdersHistoryActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ViewOrderProductActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Admin.AdminSendingOrderActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Admin.AdminNewOrdersActivity"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".NewOrdersActivity"
             android:label="@string/title_activity_new_orders"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-<!--        <activity android:name=".NewOrders2Activity" />-->
-        <activity android:name=".Admin.AdminCheckNewProductsActivity" />
-        <activity android:name=".Admin.TestAdminHomeActivity" />
+        <!--        <activity android:name=".NewOrders2Activity" />-->
+        <activity
+            android:name=".Admin.AdminCheckNewProductsActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Admin.TestAdminHomeActivity"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".Admin.AdminHomeActivity"
-            android:label="@string/title_activity_seller_home" /> <!-- Omise -->
+            android:label="@string/title_activity_seller_home"
+            android:screenOrientation="portrait" />
+
+        <!-- Omise -->
         <activity
             android:name="co.omise.android.ui.CreditCardActivity"
             android:theme="@style/OmiseTheme" />
@@ -38,27 +66,62 @@
             android:theme="@style/OmiseTheme" />
         <activity
             android:name="co.omise.android.ui.AuthorizingPaymentActivity"
-            android:theme="@style/OmiseTheme" /> <!-- END Omise -->
-        <activity android:name=".Sellers.SellerLoginActivity" />
-        <activity android:name=".Sellers.SellerRegistrationActivity" />
-        <activity android:name=".ResetPasswordActivity" />
-        <activity android:name=".Admin.AdminEditProductsActivity" />
-        <activity android:name=".SearchProductsActivity" />
-        <activity android:name=".Admin.AdminViewOrdersProductActivity" />
-        <activity android:name=".Admin.TestAdminNewOrdersActivity" />
-        <activity android:name=".ConfirmFinalOrderActivity" />
-        <activity android:name=".CartActivity" />
-        <activity android:name=".ProductDetailsActivity" />
-        <activity android:name=".SettingsActivity" />
+            android:theme="@style/OmiseTheme" />
+        <!-- END Omise -->
+
+        <activity
+            android:name=".Sellers.SellerLoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Sellers.SellerRegistrationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ResetPasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Admin.AdminEditProductsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SearchProductsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Admin.AdminViewOrdersProductActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Admin.TestAdminNewOrdersActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ConfirmFinalOrderActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CartActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ProductDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SettingsActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Admin.AdminProductCategoryActivity" />
-        <activity android:name=".Admin.AdminAddNewProductActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".Admin.AdminProductCategoryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Admin.AdminAddNewProductActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -67,6 +130,7 @@
         </activity>
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Base.Theme.AppCompat" />
     </application>
 

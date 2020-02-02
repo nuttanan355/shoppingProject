@@ -48,6 +48,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private Spinner spinnerCategory;
 
+//    private static final String TAG_HOME_FRAGMENT = "fragment_test_blank";
 
 
     @Override
@@ -113,6 +114,17 @@ public class HomeActivity extends AppCompatActivity {
                     if (!checkLogin.equals("LoginFalse")) {
                         Intent intent = new Intent(HomeActivity.this, CartActivity.class);
                         startActivity(intent);
+
+//                        Fragment fragment = getFragmentManager();
+//                        if (fragment != null) {
+//                            getSupportFragmentManager()
+//                                    .beginTransaction()
+//                                    .remove(fragment)
+//                                    .commit();
+//                        }
+
+
+
                     }
                 }
                 if (destination.getId() == R.id.nav_search) {

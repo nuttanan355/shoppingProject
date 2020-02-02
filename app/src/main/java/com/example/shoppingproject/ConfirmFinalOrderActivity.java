@@ -20,7 +20,6 @@ import com.example.shoppingproject.Model.PayPalConfig;
 import com.example.shoppingproject.Prevalent.Prevalent;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,18 +31,10 @@ import com.paypal.android.sdk.payments.PayPalService;
 import com.paypal.android.sdk.payments.PaymentActivity;
 import com.paypal.android.sdk.payments.PaymentConfirmation;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
-
-import co.omise.android.api.Client;
-import co.omise.android.api.Request;
-import co.omise.android.api.RequestListener;
-import co.omise.android.models.Capability;
-import kotlin.text.StringsKt;
 
 
 public class ConfirmFinalOrderActivity<val> extends AppCompatActivity {
@@ -55,19 +46,20 @@ public class ConfirmFinalOrderActivity<val> extends AppCompatActivity {
 
 
     //--------OMIES--------
-    private static String PUBLIC_KEY = "pkey_test_5idvjypsdpvqytorxfs";
-//    private static String PUBLIC_KEY = "skey_test_5ialne0wqo6lfd82gg0";
-
-    private int AUTHORIZING_PAYMENT_REQUEST_CODE = 0x3D5;
-    private int PAYMENT_CREATOR_REQUEST_CODE = 0x3D6;
-    private int CREDIT_CARD_REQUEST_CODE = 0x3D7;
-    private Snackbar snackbar;
-    private Capability capability;
+//    private static String PUBLIC_KEY = "pkey_test_5idvjypsdpvqytorxfs";
+////    private static String PUBLIC_KEY = "skey_test_5ialne0wqo6lfd82gg0";
+//
+//    private int AUTHORIZING_PAYMENT_REQUEST_CODE = 0x3D5;
+//    private int PAYMENT_CREATOR_REQUEST_CODE = 0x3D6;
+//    private int CREDIT_CARD_REQUEST_CODE = 0x3D7;
+//    private Snackbar snackbar;
+//    private Capability capability;
 //-----------END-----------
 
-    //    PAYPAL
+
+    //--------PAYPAL--------
     private int PAYPAL_REQUEST_CODE = 0x3D5;
-//    END
+//-----------END-----------
 
 
     @Override
@@ -93,7 +85,7 @@ public class ConfirmFinalOrderActivity<val> extends AppCompatActivity {
         currencyEdit = (TextView) findViewById(R.id.currencyEdit);
 
 
-        snackbar = Snackbar.make(findViewById(R.id.content), "", Snackbar.LENGTH_SHORT);
+//        snackbar = Snackbar.make(findViewById(R.id.content), "", Snackbar.LENGTH_SHORT);
         totalPrice.setText(totalAmount);
 
         DatabaseReference addressRef1 = FirebaseDatabase.getInstance()
@@ -135,7 +127,8 @@ public class ConfirmFinalOrderActivity<val> extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int position) {
                             if (position == 0) {
-                                payPalPayment();
+//                                payPalPayment();
+                                ComfirmOrder();
                                 finish();
                             }
                             if (position == 1) {
@@ -150,20 +143,20 @@ public class ConfirmFinalOrderActivity<val> extends AppCompatActivity {
         });
 
 
-        Client client = new Client(PUBLIC_KEY);
-        Request<Capability> request = new Capability.GetCapabilitiesRequestBuilder().build();
-        client.send(request, new RequestListener<Capability>() {
-            @Override
-            public void onRequestSucceed(@NotNull Capability model) {
-                capability = model;
-            }
-
-            @Override
-            public void onRequestFailed(@NotNull Throwable throwable) {
-                Toast.makeText(ConfirmFinalOrderActivity.this, "capitalize", Toast.LENGTH_SHORT).show();
-                snackbar.setText(StringsKt.capitalize(throwable.getMessage())).show();
-            }
-        });
+//        Client client = new Client(PUBLIC_KEY);
+//        Request<Capability> request = new Capability.GetCapabilitiesRequestBuilder().build();
+//        client.send(request, new RequestListener<Capability>() {
+//            @Override
+//            public void onRequestSucceed(@NotNull Capability model) {
+//                capability = model;
+//            }
+//
+//            @Override
+//            public void onRequestFailed(@NotNull Throwable throwable) {
+//                Toast.makeText(ConfirmFinalOrderActivity.this, "capitalize", Toast.LENGTH_SHORT).show();
+//                snackbar.setText(StringsKt.capitalize(throwable.getMessage())).show();
+//            }
+//        });
 
 
     }
@@ -393,6 +386,7 @@ public class ConfirmFinalOrderActivity<val> extends AppCompatActivity {
 
 
                                         Intent intent = new Intent(ConfirmFinalOrderActivity.this, HomeActivity.class);
+                                        intent.putExtra("CheckLogin","LoginTrue");
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
                                         finish();
