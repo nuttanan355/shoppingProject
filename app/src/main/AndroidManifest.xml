@@ -14,50 +14,40 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Admin.AdminContactActivity"></activity>
         <activity
             android:name=".OrdersHistoryActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".SendingOrdersActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".Admin.AdminOrdersHistoryActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".ViewOrderProductActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".Admin.AdminSendingOrderActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".Admin.AdminNewOrdersActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".NewOrdersActivity"
             android:label="@string/title_activity_new_orders"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <!--        <activity android:name=".NewOrders2Activity" />-->
+            android:theme="@style/AppTheme.NoActionBar" /> <!-- <activity android:name=".NewOrders2Activity" /> -->
         <activity
             android:name=".Admin.AdminCheckNewProductsActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".Admin.TestAdminHomeActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".Admin.AdminHomeActivity"
             android:label="@string/title_activity_seller_home"
-            android:screenOrientation="portrait" />
-
-        <!-- Omise -->
+            android:screenOrientation="portrait" /> <!-- Omise -->
         <activity
             android:name="co.omise.android.ui.CreditCardActivity"
             android:theme="@style/OmiseTheme" />
@@ -66,9 +56,7 @@
             android:theme="@style/OmiseTheme" />
         <activity
             android:name="co.omise.android.ui.AuthorizingPaymentActivity"
-            android:theme="@style/OmiseTheme" />
-        <!-- END Omise -->
-
+            android:theme="@style/OmiseTheme" /> <!-- END Omise -->
         <activity
             android:name=".Sellers.SellerLoginActivity"
             android:screenOrientation="portrait" />

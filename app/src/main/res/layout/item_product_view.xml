@@ -21,9 +21,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="ชื่อสินค้า"
+            android:maxLength="20"
             android:fontFamily="@font/sukhumvitset_text"
             android:textAlignment="center"
-
             android:textSize="20dp"
             android:textStyle="bold"
             android:textColor="@color/colorPrimaryDark" />
@@ -59,6 +59,7 @@
             android:text="รายละเอียดสินค้า"
             android:layout_marginTop="2dp"
             android:textAlignment="center"
+            android:maxLength="25"
             android:textSize="17dp"
             android:textColor="@color/colorPrimaryDark"
             android:textStyle="bold"

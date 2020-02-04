@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,14 +34,22 @@ public class AdminHomeActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
 
-    private DatabaseReference unverifiedProductsRef;
+    private DatabaseReference adminProductsRef;
 
-
+    private Spinner adminSpinnerCategory;
+    private String checkNumber = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_home);
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if (bundle != null) {
+            checkNumber = getIntent().getExtras().get("NumberAdmin").toString();
+        }
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -66,6 +76,13 @@ public class AdminHomeActivity extends AppCompatActivity {
                         startActivity(intentOrder);
 
                         return true;
+                    case R.id.navigation_contact:
+//                        mTextMessage.setText(R.string.title_add);
+                        Intent intentContact = new Intent(AdminHomeActivity.this, AdminContactActivity.class);
+                        intentContact.putExtra("NumberAdmin", checkNumber);
+                        startActivity(intentContact);
+
+                        return true;
                     case R.id.navigation_logout:
 //                        mTextMessage.setText(R.string.title_logout);
 //                        final FirebaseAuth sAuth;
@@ -86,7 +103,7 @@ public class AdminHomeActivity extends AppCompatActivity {
             }
         });
 
-        unverifiedProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
+        adminProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
 
         recyclerView=findViewById(R.id.seller_home_recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -108,70 +125,168 @@ public class AdminHomeActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-//        FirebaseRecyclerOptions<Products> options=
-//                new FirebaseRecyclerOptions.Builder<Products>()
-//                        .setQuery(unverifiedProductsRef.orderByChild("sid")
-//                                .equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid()),Products.class).build();
-//
-//        FirebaseRecyclerAdapter<Products, ItemViewHolder> adapter=
-//                new FirebaseRecyclerAdapter<Products, ItemViewHolder>(options) {
-//                    @Override
-//                    protected void onBindViewHolder(@NonNull ItemViewHolder holder, int position, @NonNull final Products model)
-//                    {
-//                        holder.txtProductName.setText(model.getPname());
-//                        holder.txtProductState.setText("State :"+model.getProductState());
-//                        holder.txtProductPrice.setText("Price = " + model.getPrice() + " ฿");
-//                        holder.txtProductDescription.setText(model.getDescription());
-//                        Picasso.get().load(model.getImage()).into(holder.imageView);
-//
-//                        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View v) {
-//
-//                                final String productID = model.getPid();
-//
-//                                CharSequence options[] = new CharSequence[]
-//                                        {
-//                                                "Yes",
-//                                                "No"
-//                                        };
-//
-//                                AlertDialog.Builder builder = new AlertDialog.Builder(AdminHomeActivity.this);
-//                                builder.setTitle("ต้องการลบสินค้านี้หรือไม่ แน่ใจไหม ?");
-//                                builder.setItems(options, new DialogInterface.OnClickListener() {
-//                                    @Override
-//                                    public void onClick(DialogInterface dialogInterface, int position) {
-//                                        if (position == 0) {
-//                                            DeleteProductState(productID);
-//                                        }
-//                                        if (position == 1) {
-//                                        }
-//                                    }
-//                                });
-//                                builder.show();
-//                            }
-//
-//
-//                        });
-//                    }
-//
-//                    @NonNull
-//                    @Override
-//                    public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
-//                    {
-//                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.order_history_view, parent, false);
-//                        ItemViewHolder holder = new ItemViewHolder(view);
-//                        return holder;
-//                    }
-//                };
-//        recyclerView.setAdapter(adapter);
-//        adapter.startListening();
+        adminSpinnerCategory = (Spinner) findViewById(R.id.admin_spinner_category);
 
-        FirebaseRecyclerOptions<Products> options =
-                new FirebaseRecyclerOptions.Builder<Products>()
-//                        .setQuery(unverifiedProductsRef.orderByChild("productState").equalTo("Approved"), Products.class)
-                        .setQuery(unverifiedProductsRef.orderByChild("productState"), Products.class)
-                        .build();
+        adminSpinnerCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position==0)
+                {
+                    FirebaseRecyclerOptions<Products> options =
+                            new FirebaseRecyclerOptions.Builder<Products>()
+//                            .setQuery(ProductsRef.orderByChild("category").equalTo("Female Dresses"), Products.class)
+                                    .setQuery(adminProductsRef, Products.class)
+                                    .build();
+
+                    showProduct(options);
+                }
+                if (position==1)
+                {
+                    FirebaseRecyclerOptions<Products> options =
+                            new FirebaseRecyclerOptions.Builder<Products>()
+                                    .setQuery(adminProductsRef.orderByChild("category").equalTo("tShires"), Products.class)
+//                    .setQuery(ProductsRef, Products.class)
+                                    .build();
+
+                    showProduct(options);
+                }
+                if (position==2)
+                {
+                    FirebaseRecyclerOptions<Products> options =
+                            new FirebaseRecyclerOptions.Builder<Products>()
+                                    .setQuery(adminProductsRef.orderByChild("category").equalTo("Sports tShirts"), Products.class)
+//                    .setQuery(ProductsRef, Products.class)
+                                    .build();
+
+                    showProduct(options);
+                }
+                if (position==3)
+                {
+                    FirebaseRecyclerOptions<Products> options =
+                            new FirebaseRecyclerOptions.Builder<Products>()
+                                    .setQuery(adminProductsRef.orderByChild("category").equalTo("Female Dresses"), Products.class)
+//                    .setQuery(ProductsRef, Products.class)
+                                    .build();
+
+                    showProduct(options);
+                }
+                if (position==4)
+                {
+                    FirebaseRecyclerOptions<Products> options =
+                            new FirebaseRecyclerOptions.Builder<Products>()
+                                    .setQuery(adminProductsRef.orderByChild("category").equalTo("Sweather"), Products.class)
+//                    .setQuery(ProductsRef, Products.class)
+                                    .build();
+
+                    showProduct(options);
+                }
+                if (position==5)
+                {
+                    FirebaseRecyclerOptions<Products> options =
+                            new FirebaseRecyclerOptions.Builder<Products>()
+                                    .setQuery(adminProductsRef.orderByChild("category").equalTo("Glasses"), Products.class)
+//                    .setQuery(ProductsRef, Products.class)
+                                    .build();
+
+                    showProduct(options);
+                }
+                if (position==6)
+                {
+                    FirebaseRecyclerOptions<Products> options =
+                            new FirebaseRecyclerOptions.Builder<Products>()
+                                    .setQuery(adminProductsRef.orderByChild("category").equalTo("Purses Bags"), Products.class)
+//                    .setQuery(ProductsRef, Products.class)
+                                    .build();
+
+                    showProduct(options);
+                }
+                if (position==7)
+                {
+                    FirebaseRecyclerOptions<Products> options =
+                            new FirebaseRecyclerOptions.Builder<Products>()
+                                    .setQuery(adminProductsRef.orderByChild("category").equalTo("Hats"), Products.class)
+//                    .setQuery(ProductsRef, Products.class)
+                                    .build();
+
+                    showProduct(options);
+                }
+                if (position==8)
+                {
+                    FirebaseRecyclerOptions<Products> options =
+                            new FirebaseRecyclerOptions.Builder<Products>()
+                                    .setQuery(adminProductsRef.orderByChild("category").equalTo("Shoess"), Products.class)
+//                    .setQuery(ProductsRef, Products.class)
+                                    .build();
+
+                    showProduct(options);
+                }
+                if (position==9)
+                {
+                    FirebaseRecyclerOptions<Products> options =
+                            new FirebaseRecyclerOptions.Builder<Products>()
+                                    .setQuery(adminProductsRef.orderByChild("category").equalTo("Head Phone"), Products.class)
+//                    .setQuery(ProductsRef, Products.class)
+                                    .build();
+
+                    showProduct(options);
+                }
+                if (position==10)
+                {
+                    FirebaseRecyclerOptions<Products> options =
+                            new FirebaseRecyclerOptions.Builder<Products>()
+                                    .setQuery(adminProductsRef.orderByChild("category").equalTo("Laptops"), Products.class)
+//                    .setQuery(ProductsRef, Products.class)
+                                    .build();
+
+                    showProduct(options);
+                }
+                if (position==11)
+                {
+                    FirebaseRecyclerOptions<Products> options =
+                            new FirebaseRecyclerOptions.Builder<Products>()
+                                    .setQuery(adminProductsRef.orderByChild("category").equalTo("Watches"), Products.class)
+//                    .setQuery(ProductsRef, Products.class)
+                                    .build();
+
+                    showProduct(options);
+                }
+                if (position==12)
+                {
+                    FirebaseRecyclerOptions<Products> options =
+                            new FirebaseRecyclerOptions.Builder<Products>()
+                                    .setQuery(adminProductsRef.orderByChild("category").equalTo("Mobiles"), Products.class)
+//                    .setQuery(ProductsRef, Products.class)
+                                    .build();
+
+                    showProduct(options);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                FirebaseRecyclerOptions<Products> options =
+                        new FirebaseRecyclerOptions.Builder<Products>()
+//                                .setQuery(ProductsRef.orderByChild("category").equalTo("Mobiles"), Products.class)
+                                .setQuery(adminProductsRef, Products.class)
+                                .build();
+
+                showProduct(options);
+            }
+        });
+
+
+
+    }
+
+
+
+    private void showProduct(FirebaseRecyclerOptions<Products> options) {
+
+//        FirebaseRecyclerOptions<Products> options =
+////                new FirebaseRecyclerOptions.Builder<Products>()
+//////                        .setQuery(unverifiedProductsRef.orderByChild("productState").equalTo("Approved"), Products.class)
+////                        .setQuery(adminProductsRef.orderByChild("productState"), Products.class)
+////                        .build();
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
                 new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
                     @Override
@@ -187,9 +302,9 @@ public class AdminHomeActivity extends AppCompatActivity {
                             public void onClick(View v) {
 
 
-                                    Intent intent = new Intent(AdminHomeActivity.this, AdminEditProductsActivity.class);
-                                    intent.putExtra("pid", model.getPid());
-                                    startActivity(intent);
+                                Intent intent = new Intent(AdminHomeActivity.this, AdminEditProductsActivity.class);
+                                intent.putExtra("pid", model.getPid());
+                                startActivity(intent);
 
 
                             }
@@ -211,43 +326,7 @@ public class AdminHomeActivity extends AppCompatActivity {
 
     }
 
-//    private void DeleteProductState(String productID)
-//    {
-//        unverifiedProductsRef.child(productID)
-//                .removeValue()
-//                .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<Void> task)
-//                    {
-//                        Toast.makeText(AdminHomeActivity.this,"ลบสำเร็จแล้ว",Toast.LENGTH_SHORT).show();
-//
-//                    }
-//                });
-//    }
+
+
 }
 
-
-
-//        BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener=new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//
-//
-//
-//
-//                return false;
-//            }
-//        };
-
-
-
-//        // Passing each menu ID as a set of Ids because each
-//        // menu should be considered as top level destinations.
-//        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-//                R.id.navigation_home,
-//                R.id.navigation_dashboard,
-//                R.id.navigation_notifications)
-//                .build();
-//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-//        NavigationUI.setupWithNavController(navView, navController);

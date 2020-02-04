@@ -31,13 +31,48 @@
 
     </RelativeLayout>
 
+    <TextView
+        android:id="@+id/text_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/r44"
+        android:text="หมวดหมู่"
+        android:paddingTop="5dp"
+        android:paddingLeft="10dp"
+        android:fontFamily="@font/sukhumvitset_text"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="17dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/line50"
+        android:layout_below="@+id/text_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/input_design_back"
+        android:orientation="horizontal">
+
+
+        >
+        <Spinner
+            android:id="@+id/admin_spinner_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"
+            android:entries="@array/array_name"
+            android:padding="10dp"/>
+
+    </LinearLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/seller_home_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/nav_view"
-        android:layout_below="@+id/r44"
+        android:layout_below="@+id/line50"
         />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

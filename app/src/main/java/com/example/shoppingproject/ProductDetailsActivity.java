@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,9 +32,10 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
     private Button addCartBtn;
     private ImageView productImage;
+    private LinearLayout layoutProductDetails;
     private ElegantNumberButton numberButton;
     private TextView productPrice, productDescription, productName,titleProductName;
-    private String productID = "0", state = "Normal",checkLogin="";
+    private String productID = "0", inCart = "",checkLogin="";
 
 //    private DatabaseReference productsRef;
 
@@ -48,6 +50,12 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
         checkLogin = getIntent().getExtras().get("checkLogin").toString();
 
+        inCart = getIntent().getExtras().get("checkCart").toString();
+
+
+
+layoutProductDetails=(LinearLayout)findViewById(R.id.layout_product_details);
+
         addCartBtn = (Button) findViewById(R.id.btn_add_to_cart);
         numberButton = (ElegantNumberButton) findViewById(R.id.number_btn);
 
@@ -58,6 +66,10 @@ public class ProductDetailsActivity extends AppCompatActivity {
         productName = (TextView) findViewById(R.id.product_name_details);
         productDescription = (TextView) findViewById(R.id.product_description_details);
         productPrice = (TextView) findViewById(R.id.product_price_details);
+
+
+
+
 
         getProductDetails();
 
@@ -84,6 +96,15 @@ public class ProductDetailsActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
+        if (inCart.equals("trueInCart"))
+        {
+            addCartBtn.setVisibility(View.GONE);
+            layoutProductDetails.setVisibility(View.GONE);
+
+
+        }
+
 
 //        CheckOrderSate();
     }
@@ -131,13 +152,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-//                            cartListRef.child("Admin View").child(Prevalent.currentOnlineUser.getPhone())
-//                                    .child("Products").child(productID)
-//                                    .updateChildren(cartMap)
-//                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                        @Override
-//                                        public void onComplete(@NonNull Task<Void> task) {
-//                                            if (task.isSuccessful()) {
+
                             Toast.makeText(ProductDetailsActivity.this, "เพิ่มในรถเข็นแล้ว", Toast.LENGTH_SHORT).show();
 
                             Intent intent = new Intent(ProductDetailsActivity.this, HomeActivity.class);
@@ -145,9 +160,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
                             startActivity(intent);
                             finish();
                         }
-//                                        }
-//                                    });
-//                        }
                     }
                 });
 
@@ -189,31 +201,31 @@ public class ProductDetailsActivity extends AppCompatActivity {
         });
     }
 
-    private void CheckOrderSate() {
-        DatabaseReference orderRef;
-        orderRef = FirebaseDatabase.getInstance().getReference()
-                .child("Orders")
-                .child(Prevalent.currentOnlineUser.getPhone());
-        orderRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    String shippingstate = dataSnapshot.child("state").getValue().toString();
-//                    String userName = dataSnapshot.child("name").getValue().toString();
-
-                    if (shippingstate.equals("shipped")) {
-                        state = "Order Shipped";
-                    } else if (shippingstate.equals("not shipped")) {
-                        state = "Order Placed";
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-    }
+//    private void CheckOrderSate() {
+//        DatabaseReference orderRef;
+//        orderRef = FirebaseDatabase.getInstance().getReference()
+//                .child("Orders")
+//                .child(Prevalent.currentOnlineUser.getPhone());
+//        orderRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                if (dataSnapshot.exists()) {
+//                    String shippingstate = dataSnapshot.child("state").getValue().toString();
+////                    String userName = dataSnapshot.child("name").getValue().toString();
+//
+//                    if (shippingstate.equals("shipped")) {
+//                        state = "Order Shipped";
+//                    } else if (shippingstate.equals("not shipped")) {
+//                        state = "Order Placed";
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+//
+//    }
 }

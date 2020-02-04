@@ -74,6 +74,7 @@
                 <EditText
                     android:id="@+id/txt_edit_product_price"
                     android:layout_width="wrap_content"
+                    android:layout_weight="2"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:background="@color/white"
@@ -89,6 +90,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:fontFamily="@font/sukhumvitset_text"
                     android:padding="12dp"
                     android:text="THB"
@@ -109,7 +111,6 @@
                 android:background="@drawable/input_design_back"
                 android:fontFamily="@font/sukhumvitset_text"
                 android:hint="รายละเอียดสินค้า"
-                android:maxLength="500"
                 android:padding="12dp"
                 android:textAlignment="textStart"
                 android:textColor="@color/primaryTextColor"

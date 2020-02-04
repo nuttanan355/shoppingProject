@@ -34,7 +34,7 @@ public class CartActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private Button NextProductBtn;
-    private TextView txtTotalAmount, txtMsg1,txtTotalDeliver;
+    private TextView txtTotalAmount, txtMsg1, txtTotalDeliver;
 
     private int overTotalPrice = 0;
 //    private int overTotalDeliver = 45;
@@ -53,12 +53,10 @@ public class CartActivity extends AppCompatActivity {
 
         NextProductBtn = (Button) findViewById(R.id.btn_next_product);
         txtTotalAmount = (TextView) findViewById(R.id.text_total_price);
-        txtTotalDeliver=(TextView) findViewById(R.id.text_total_deliver);
-
+        txtTotalDeliver = (TextView) findViewById(R.id.text_total_deliver);
 
 
         txtMsg1 = (TextView) findViewById(R.id.msg1);
-
 
 
         NextProductBtn.setOnClickListener(new View.OnClickListener() {
@@ -68,9 +66,9 @@ public class CartActivity extends AppCompatActivity {
 //                txtTotalAmount.setText("Total Price = " + String.valueOf(overTotalPrice) + " ฿");
 
                 Intent intent = new Intent(CartActivity.this, ConfirmFinalOrderActivity.class);
-                intent.putExtra("Total Price", String.valueOf(overTotalPrice+45));
+                intent.putExtra("Total Price", String.valueOf(overTotalPrice + 45));
                 startActivity(intent);
-                overTotalPrice=0;
+                overTotalPrice = 0;
                 finish();
             }
 
@@ -81,7 +79,6 @@ public class CartActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
 
 
 //        CheckOrderSate();
@@ -100,25 +97,24 @@ public class CartActivity extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull final CartViewHolder holder, int position, @NonNull final Cart model) {
 
 
+                int oneTypeProductPrice = Integer.valueOf(model.getPrice()) * Integer.valueOf(model.getQuantity());
+                overTotalPrice = overTotalPrice + oneTypeProductPrice;
+
+                NextProductBtn.setVisibility(View.VISIBLE);
+                txtTotalDeliver.setText("฿" + String.valueOf(45));
+                txtTotalAmount.setText("฿" + String.valueOf(overTotalPrice + 45));
+
+
 //                Products products = dataSnapshot.getValue(Products.class);
                 holder.btnEditQuantity.setNumber(model.getQuantity());
 
 
-                holder.txtProductPrice.setText("ราคา "+ "฿" + model.getPrice());
+                holder.txtProductPrice.setText("ราคา " + "฿" + model.getPrice());
                 holder.txtProductDescription.setText(model.getDiscount());
                 holder.txtProductName.setText(model.getPname());
                 Picasso.get().load(model.getImage()).into(holder.imageViewProduct);
 
 //                Picasso.get().load(pImage).into(imageView);
-
-                int oneTypeProductPrice = Integer.valueOf(model.getPrice()) * Integer.valueOf(model.getQuantity());
-                overTotalPrice = overTotalPrice + oneTypeProductPrice;
-
-
-                NextProductBtn.setVisibility(View.VISIBLE);
-
-                txtTotalDeliver.setText("฿" + String.valueOf(45));
-                txtTotalAmount.setText("฿" + String.valueOf(overTotalPrice+45));
 
 
                 holder.layoutCartEdit.setVisibility(View.VISIBLE);
@@ -135,9 +131,13 @@ public class CartActivity extends AppCompatActivity {
 
                                         if (task.isSuccessful()) {
                                             Toast.makeText(CartActivity.this, "ลบสินค้าสำเร็จแล้ว", Toast.LENGTH_SHORT).show();
-//                                                        Intent intent = new Intent(CartActivity.this, HomeActivity.class);
-//
-//                                                        startActivity(intent);
+
+
+                                            Intent intent = getIntent();
+                                            finish();
+                                            startActivity(intent);
+
+
                                             return;
                                         }
                                     }
@@ -152,59 +152,39 @@ public class CartActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
 
-                        String number = holder.btnEditQuantity.getNumber();
 
-                        cartListRef.child(Prevalent.currentOnlineUser.getPhone()).child("Products")
-                                .child(model.getPid()).child("quantity").setValue(number);
+                        if (!holder.btnEditQuantity.getNumber().equals(model.getQuantity())) {
+
+                            String number = holder.btnEditQuantity.getNumber();
+
+                            cartListRef.child(Prevalent.currentOnlineUser.getPhone()).child("Products")
+                                    .child(model.getPid()).child("quantity").setValue(number);
+
+                            Intent intent = getIntent();
+                            finish();
+                            startActivity(intent);
+                        }
+                    }
+                });
+
+//                checkCart trueInCart
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent intent = new Intent(CartActivity.this, ProductDetailsActivity.class);
+                        intent.putExtra("pid", model.getPid());
+                        intent.putExtra("checkLogin","LoginTrue");
+                        intent.putExtra("checkCart","trueInCart");
+                        finish();
+                        startActivity(intent);
 
                     }
                 });
 
 
 
-//                holder.itemView.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        CharSequence options[] = new CharSequence[]{
-//
-//                                "แก้ไขจำนวน",
-//                                "ลบออก"
-//                        };
-//                        AlertDialog.Builder builder = new AlertDialog.Builder(CartActivity.this);
-//                        builder.setTitle("ตัวเลือกรถเข็น :");
-//                        builder.setItems(options, new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialogInterface, int i) {
-//                                if (i == 0) {
-//                                    Intent intent = new Intent(CartActivity.this, ProductDetailsActivity.class);
-//                                    intent.putExtra("CheckLogin", "LoginTrue");
-//                                    intent.putExtra("pid", model.getPid());
-//                                    startActivity(intent);
-//                                }
-//                                if (i == 1) {
-////                                    cartListRef
-////                                            .child(Prevalent.currentOnlineUser.getPhone())
-////                                            .child("Products")
-////                                            .child(model.getPid())
-////                                            .removeValue()
-////                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-////                                                @Override
-////                                                public void onComplete(@NonNull Task<Void> task) {
-////
-////                                                    if (task.isSuccessful()) {
-////                                                        Toast.makeText(CartActivity.this, "ลบสินค้าสำเร็จแล้ว", Toast.LENGTH_SHORT).show();
-//////                                                        Intent intent = new Intent(CartActivity.this, HomeActivity.class);
-//////                                                        startActivity(intent);
-////                                                    }
-////                                                }
-////                                            });
-//                                }
-//
-//                            }
-//                        });
-//                        builder.show();
-//                    }
-//                });
+
             }
 
             @NonNull
@@ -216,9 +196,11 @@ public class CartActivity extends AppCompatActivity {
             }
         };
 
+
         recyclerView.setAdapter(adapter);
         adapter.startListening();
     }
+
 
     private void CheckOrderSate() {
         DatabaseReference orderRef;

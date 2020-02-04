@@ -44,30 +44,4 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
-
-<!--        android:id="@+id/nav_cart"-->
-<!--        android:icon="@drawable/nav_cart"-->
-<!--        android:iconTint="@android:color/white"-->
-<!--        android:title="Cart" />-->
-<!--        <item-->
-<!--            android:id="@+id/nav_orders"-->
-<!--            android:icon="@drawable/orders"-->
-<!--            android:iconTint="@android:color/white"-->
-<!--            android:title="Orders" />-->
-<!--        <item-->
-<!--            android:id="@+id/nav_categories3"-->
-<!--            android:icon="@drawable/category"-->
-<!--            android:iconTint="@android:color/white"-->
-<!--            android:title="Categories" />-->
-<!--        <item-->
-<!--            android:id="@+id/nav_settings2"-->
-<!--            android:icon="@drawable/ic_menu_manage"-->
-<!--            android:iconTint="@android:color/white"-->
-<!--            android:title="Settings" />-->
-<!--        <item-->
-<!--            android:id="@+id/nav_logout1"-->
-<!--            android:icon="@drawable/logout"-->
-<!--            android:iconTint="@android:color/white"-->
-<!--            android:title="Logout" />-->
-
 </navigation>

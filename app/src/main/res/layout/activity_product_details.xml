@@ -140,11 +140,12 @@
     </ScrollView>
 
     <LinearLayout
+        android:id="@+id/layout_product_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/btn_add_to_cart"
         android:layout_marginTop="20dp"
-        android:background="@color/white"
+        android:background="@color/colorAccent"
         android:orientation="horizontal">
 
         <TextView
@@ -164,7 +165,7 @@
             android:id="@+id/number_btn"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_marginVertical="5dp"
+            android:layout_marginVertical="8dp"
             android:layout_marginEnd="15dp"
             android:elevation="6dp"
             app:finalNumber="10"
@@ -185,6 +186,7 @@
         android:background="@color/colorPrimaryDark"
         android:fontFamily="@font/sukhumvitset_text"
         android:text="เพิ่มลงตะกร้า"
+        android:padding="10dp"
         android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold"

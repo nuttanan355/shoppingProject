@@ -1,8 +1,12 @@
 package com.example.shoppingproject;
 
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -30,8 +34,11 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -48,6 +55,8 @@ public class HomeActivity extends AppCompatActivity {
 
     private Spinner spinnerCategory;
 
+    private DatabaseReference AdminRef;
+
 //    private static final String TAG_HOME_FRAGMENT = "fragment_test_blank";
 
 
@@ -63,6 +72,7 @@ public class HomeActivity extends AppCompatActivity {
             checkLogin = getIntent().getExtras().get("CheckLogin").toString();
         }
 
+        AdminRef = FirebaseDatabase.getInstance().getReference().child("Admins").child("0873887533");
 
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
 
@@ -108,23 +118,12 @@ public class HomeActivity extends AppCompatActivity {
 
         navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override
-            public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
-
+            public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments)
+            {
                 if (destination.getId() == R.id.nav_cart) {
                     if (!checkLogin.equals("LoginFalse")) {
                         Intent intent = new Intent(HomeActivity.this, CartActivity.class);
                         startActivity(intent);
-
-//                        Fragment fragment = getFragmentManager();
-//                        if (fragment != null) {
-//                            getSupportFragmentManager()
-//                                    .beginTransaction()
-//                                    .remove(fragment)
-//                                    .commit();
-//                        }
-
-
-
                     }
                 }
                 if (destination.getId() == R.id.nav_search) {
@@ -159,10 +158,6 @@ public class HomeActivity extends AppCompatActivity {
                         finish();
                     }
                 }
-
-
-
-
 
             }
         });
@@ -202,6 +197,121 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+
+
+
+    private void showProduct(FirebaseRecyclerOptions<Products> options) {
+
+        FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
+                new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
+                    @Override
+                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model) {
+                        holder.txtProductName.setText(model.getPname());
+                        holder.txtProductPrice.setText("ราคา " + model.getPrice() + " ฿");
+                        holder.txtProductDescription.setText(model.getDescription());
+                        Picasso.get().load(model.getImage()).into(holder.imageView);
+
+
+                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                Intent intent = new Intent(HomeActivity.this, ProductDetailsActivity.class);
+                                intent.putExtra("pid", model.getPid());
+                                intent.putExtra("checkLogin",checkLogin);
+                                intent.putExtra("checkCart","noInCart");
+                                startActivity(intent);
+
+                            }
+                        });
+
+                    }
+
+                    @NonNull
+                    @Override
+                    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_product_view, parent, false);
+                        ProductViewHolder holder = new ProductViewHolder(view);
+                        return holder;
+                    }
+                };
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
+
+
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration) || super.onSupportNavigateUp();
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.home, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == R.id.nav_contact) {
+            showDataAdmin();
+        }
+        return false;
+
+    }
+
+    private void showDataAdmin() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
+        LayoutInflater inflater = getLayoutInflater();
+
+
+        builder.setTitle("ติดต่อเรา");
+        View view = inflater.inflate(R.layout.layout_contact, null);
+        builder.setView(view);
+
+        final TextView txtUrlFacebook = (TextView) view.findViewById(R.id.btn_facebook);
+        final TextView txtIdLine = (TextView) view.findViewById(R.id.btn_line);
+        final TextView txtEmail = (TextView) view.findViewById(R.id.btn_mail);
+//        final ImageButton btn_spain = (ImageButton) view.findViewById(R.id.btn_spain);
+
+
+        AdminRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                final String urlFacebook = dataSnapshot.child("contact facebook").getValue().toString();
+                String idLine = dataSnapshot.child("contact line").getValue().toString();
+                String eMail = dataSnapshot.child("contact mail").getValue().toString();
+
+//                txtUrlFacebook.setText(urlFacebook);
+                txtIdLine.setText("   "+"ID : "+idLine);
+                txtEmail.setText("   : "+eMail);
+
+                txtUrlFacebook.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlFacebook));
+                        startActivity(intent);
+                    }
+                });
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        builder.show();
+
+    }
 
     @Override
     protected void onStart() {
@@ -361,51 +471,6 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    private void showProduct(FirebaseRecyclerOptions<Products> options) {
 
-        FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
-                new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
-                    @Override
-                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model) {
-                        holder.txtProductName.setText(model.getPname());
-                        holder.txtProductPrice.setText("ราคา " + model.getPrice() + " ฿");
-                        holder.txtProductDescription.setText(model.getDescription());
-                        Picasso.get().load(model.getImage()).into(holder.imageView);
-
-
-                        holder.itemView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-
-                                Intent intent = new Intent(HomeActivity.this, ProductDetailsActivity.class);
-                                intent.putExtra("pid", model.getPid());
-                                intent.putExtra("checkLogin",checkLogin);
-                                startActivity(intent);
-
-                            }
-                        });
-
-                    }
-
-                    @NonNull
-                    @Override
-                    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_product_view, parent, false);
-                        ProductViewHolder holder = new ProductViewHolder(view);
-                        return holder;
-                    }
-                };
-        recyclerView.setAdapter(adapter);
-        adapter.startListening();
-
-
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration) || super.onSupportNavigateUp();
-
-    }
 
 }

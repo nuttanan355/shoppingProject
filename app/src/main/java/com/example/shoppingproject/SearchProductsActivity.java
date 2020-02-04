@@ -76,6 +76,8 @@ public class SearchProductsActivity extends AppCompatActivity {
 
                         Intent intent = new Intent(SearchProductsActivity.this, ProductDetailsActivity.class);
                         intent.putExtra("pid",model.getPid());
+                        intent.putExtra("checkLogin","LoginTrue");
+                        intent.putExtra("checkCart","noInCart");
                         startActivity(intent);
                     }
                 });

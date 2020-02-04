@@ -57,6 +57,7 @@
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/sukhumvitset_text"
                 android:text="รายละเอียดสินค้า"
+                android:maxLength="50"
                 android:textColor="@color/colorGrey"
                 android:textSize="14dp"
                 android:textStyle="bold" />
