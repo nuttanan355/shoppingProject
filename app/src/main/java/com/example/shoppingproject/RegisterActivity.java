@@ -276,6 +276,7 @@ public class RegisterActivity extends AppCompatActivity {
                             loadingBar.show();
                             String e = task.getException().toString();
                             Toast.makeText(RegisterActivity.this, "Error :" + e, Toast.LENGTH_SHORT).show();
+                            loadingBar.dismiss();
 
                         }
                     }
