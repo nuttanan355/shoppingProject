@@ -53,6 +53,7 @@ public class AdminProductCategoryActivity extends AppCompatActivity {
                 Intent intent =new Intent(AdminProductCategoryActivity.this, AdminAddNewProductActivity.class);
                 intent.putExtra("category","tShires");
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -62,6 +63,7 @@ public class AdminProductCategoryActivity extends AppCompatActivity {
                 Intent intent =new Intent(AdminProductCategoryActivity.this, AdminAddNewProductActivity.class);
                 intent.putExtra("category","Sports tShirts");
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -71,6 +73,7 @@ public class AdminProductCategoryActivity extends AppCompatActivity {
                 Intent intent =new Intent(AdminProductCategoryActivity.this, AdminAddNewProductActivity.class);
                 intent.putExtra("category","Female Dresses");
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -80,6 +83,7 @@ public class AdminProductCategoryActivity extends AppCompatActivity {
                 Intent intent =new Intent(AdminProductCategoryActivity.this, AdminAddNewProductActivity.class);
                 intent.putExtra("category","Sweather");
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -93,6 +97,7 @@ public class AdminProductCategoryActivity extends AppCompatActivity {
                 Intent intent =new Intent(AdminProductCategoryActivity.this, AdminAddNewProductActivity.class);
                 intent.putExtra("category","Glasses");
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -102,6 +107,7 @@ public class AdminProductCategoryActivity extends AppCompatActivity {
                 Intent intent =new Intent(AdminProductCategoryActivity.this, AdminAddNewProductActivity.class);
                 intent.putExtra("category","Purses Bags");
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -111,6 +117,7 @@ public class AdminProductCategoryActivity extends AppCompatActivity {
                 Intent intent =new Intent(AdminProductCategoryActivity.this, AdminAddNewProductActivity.class);
                 intent.putExtra("category","Hats");
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -120,6 +127,7 @@ public class AdminProductCategoryActivity extends AppCompatActivity {
                 Intent intent =new Intent(AdminProductCategoryActivity.this, AdminAddNewProductActivity.class);
                 intent.putExtra("category","Shoess");
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -133,6 +141,7 @@ public class AdminProductCategoryActivity extends AppCompatActivity {
                 Intent intent =new Intent(AdminProductCategoryActivity.this, AdminAddNewProductActivity.class);
                 intent.putExtra("category","Head Phone");
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -142,6 +151,7 @@ public class AdminProductCategoryActivity extends AppCompatActivity {
                 Intent intent =new Intent(AdminProductCategoryActivity.this, AdminAddNewProductActivity.class);
                 intent.putExtra("category","Laptops");
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -151,6 +161,7 @@ public class AdminProductCategoryActivity extends AppCompatActivity {
                 Intent intent =new Intent(AdminProductCategoryActivity.this, AdminAddNewProductActivity.class);
                 intent.putExtra("category","Watches");
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -160,6 +171,7 @@ public class AdminProductCategoryActivity extends AppCompatActivity {
                 Intent intent =new Intent(AdminProductCategoryActivity.this, AdminAddNewProductActivity.class);
                 intent.putExtra("category","Mobiles");
                 startActivity(intent);
+                finish();
             }
         });
 
