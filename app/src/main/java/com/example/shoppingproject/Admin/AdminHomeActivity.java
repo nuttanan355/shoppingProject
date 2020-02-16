@@ -144,7 +144,7 @@ public class AdminHomeActivity extends AppCompatActivity {
                 {
                     FirebaseRecyclerOptions<Products> options =
                             new FirebaseRecyclerOptions.Builder<Products>()
-                                    .setQuery(adminProductsRef.orderByChild("category").equalTo("tShires"), Products.class)
+                                    .setQuery(adminProductsRef.orderByChild("ProductCategory").equalTo("tShires"), Products.class)
 //                    .setQuery(ProductsRef, Products.class)
                                     .build();
 
@@ -154,7 +154,7 @@ public class AdminHomeActivity extends AppCompatActivity {
                 {
                     FirebaseRecyclerOptions<Products> options =
                             new FirebaseRecyclerOptions.Builder<Products>()
-                                    .setQuery(adminProductsRef.orderByChild("category").equalTo("Sports tShirts"), Products.class)
+                                    .setQuery(adminProductsRef.orderByChild("ProductCategory").equalTo("Sports tShirts"), Products.class)
 //                    .setQuery(ProductsRef, Products.class)
                                     .build();
 
@@ -164,7 +164,7 @@ public class AdminHomeActivity extends AppCompatActivity {
                 {
                     FirebaseRecyclerOptions<Products> options =
                             new FirebaseRecyclerOptions.Builder<Products>()
-                                    .setQuery(adminProductsRef.orderByChild("category").equalTo("Female Dresses"), Products.class)
+                                    .setQuery(adminProductsRef.orderByChild("ProductCategory").equalTo("Female Dresses"), Products.class)
 //                    .setQuery(ProductsRef, Products.class)
                                     .build();
 
@@ -174,7 +174,7 @@ public class AdminHomeActivity extends AppCompatActivity {
                 {
                     FirebaseRecyclerOptions<Products> options =
                             new FirebaseRecyclerOptions.Builder<Products>()
-                                    .setQuery(adminProductsRef.orderByChild("category").equalTo("Sweather"), Products.class)
+                                    .setQuery(adminProductsRef.orderByChild("ProductCategory").equalTo("Sweather"), Products.class)
 //                    .setQuery(ProductsRef, Products.class)
                                     .build();
 
@@ -184,7 +184,7 @@ public class AdminHomeActivity extends AppCompatActivity {
                 {
                     FirebaseRecyclerOptions<Products> options =
                             new FirebaseRecyclerOptions.Builder<Products>()
-                                    .setQuery(adminProductsRef.orderByChild("category").equalTo("Glasses"), Products.class)
+                                    .setQuery(adminProductsRef.orderByChild("ProductCategory").equalTo("Glasses"), Products.class)
 //                    .setQuery(ProductsRef, Products.class)
                                     .build();
 
@@ -194,7 +194,7 @@ public class AdminHomeActivity extends AppCompatActivity {
                 {
                     FirebaseRecyclerOptions<Products> options =
                             new FirebaseRecyclerOptions.Builder<Products>()
-                                    .setQuery(adminProductsRef.orderByChild("category").equalTo("Purses Bags"), Products.class)
+                                    .setQuery(adminProductsRef.orderByChild("ProductCategory").equalTo("Purses Bags"), Products.class)
 //                    .setQuery(ProductsRef, Products.class)
                                     .build();
 
@@ -204,7 +204,7 @@ public class AdminHomeActivity extends AppCompatActivity {
                 {
                     FirebaseRecyclerOptions<Products> options =
                             new FirebaseRecyclerOptions.Builder<Products>()
-                                    .setQuery(adminProductsRef.orderByChild("category").equalTo("Hats"), Products.class)
+                                    .setQuery(adminProductsRef.orderByChild("ProductCategory").equalTo("Hats"), Products.class)
 //                    .setQuery(ProductsRef, Products.class)
                                     .build();
 
@@ -214,7 +214,7 @@ public class AdminHomeActivity extends AppCompatActivity {
                 {
                     FirebaseRecyclerOptions<Products> options =
                             new FirebaseRecyclerOptions.Builder<Products>()
-                                    .setQuery(adminProductsRef.orderByChild("category").equalTo("Shoess"), Products.class)
+                                    .setQuery(adminProductsRef.orderByChild("ProductCategory").equalTo("Shoess"), Products.class)
 //                    .setQuery(ProductsRef, Products.class)
                                     .build();
 
@@ -224,7 +224,7 @@ public class AdminHomeActivity extends AppCompatActivity {
                 {
                     FirebaseRecyclerOptions<Products> options =
                             new FirebaseRecyclerOptions.Builder<Products>()
-                                    .setQuery(adminProductsRef.orderByChild("category").equalTo("Head Phone"), Products.class)
+                                    .setQuery(adminProductsRef.orderByChild("ProductCategory").equalTo("Head Phone"), Products.class)
 //                    .setQuery(ProductsRef, Products.class)
                                     .build();
 
@@ -234,7 +234,7 @@ public class AdminHomeActivity extends AppCompatActivity {
                 {
                     FirebaseRecyclerOptions<Products> options =
                             new FirebaseRecyclerOptions.Builder<Products>()
-                                    .setQuery(adminProductsRef.orderByChild("category").equalTo("Laptops"), Products.class)
+                                    .setQuery(adminProductsRef.orderByChild("ProductCategory").equalTo("Laptops"), Products.class)
 //                    .setQuery(ProductsRef, Products.class)
                                     .build();
 
@@ -244,7 +244,7 @@ public class AdminHomeActivity extends AppCompatActivity {
                 {
                     FirebaseRecyclerOptions<Products> options =
                             new FirebaseRecyclerOptions.Builder<Products>()
-                                    .setQuery(adminProductsRef.orderByChild("category").equalTo("Watches"), Products.class)
+                                    .setQuery(adminProductsRef.orderByChild("ProductCategory").equalTo("Watches"), Products.class)
 //                    .setQuery(ProductsRef, Products.class)
                                     .build();
 
@@ -254,7 +254,7 @@ public class AdminHomeActivity extends AppCompatActivity {
                 {
                     FirebaseRecyclerOptions<Products> options =
                             new FirebaseRecyclerOptions.Builder<Products>()
-                                    .setQuery(adminProductsRef.orderByChild("category").equalTo("Mobiles"), Products.class)
+                                    .setQuery(adminProductsRef.orderByChild("ProductCategory").equalTo("Mobiles"), Products.class)
 //                    .setQuery(ProductsRef, Products.class)
                                     .build();
 
@@ -291,10 +291,10 @@ public class AdminHomeActivity extends AppCompatActivity {
                 new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model) {
-                        holder.txtProductName.setText(model.getPname());
-                        holder.txtProductPrice.setText("ราคา " + model.getPrice() + " ฿");
-                        holder.txtProductDescription.setText(model.getDescription());
-                        Picasso.get().load(model.getImage()).into(holder.imageView);
+                        holder.txtProductName.setText(model.getProductName());
+                        holder.txtProductPrice.setText("ราคา " + model.getProductPrice() + " ฿");
+                        holder.txtProductDescription.setText(model.getProductDescription());
+                        Picasso.get().load(model.getProductImage()).into(holder.imageView);
 
 
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -303,7 +303,7 @@ public class AdminHomeActivity extends AppCompatActivity {
 
 
                                 Intent intent = new Intent(AdminHomeActivity.this, AdminEditProductsActivity.class);
-                                intent.putExtra("pid", model.getPid());
+                                intent.putExtra("pid", model.getProductID());
                                 startActivity(intent);
 
 

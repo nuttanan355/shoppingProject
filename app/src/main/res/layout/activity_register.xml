@@ -141,7 +141,7 @@
                         android:backgroundTint="@color/colorPrimaryDark"
                         android:drawableTint="@color/colorPrimaryDark"
                         android:fontFamily="@font/sukhumvitset_text"
-                        android:hint="รหัสผ่าน"
+                        android:hint="รหัสผ่าน อย่างน้อย 6 ตัว"
                         android:inputType="textPassword"
                         android:padding="15dp"
                         android:textSize="18dp"

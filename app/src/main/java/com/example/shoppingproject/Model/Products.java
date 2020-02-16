@@ -2,7 +2,8 @@ package com.example.shoppingproject.Model;
 
 public class Products
 {
-    private String pname,description,price,image,category,pid,date,time,productState;
+
+    private String ProductID,ProductName,ProductCategory,ProductDescription,ProductPrice,ProductImage,ProductDate,ProductTime;
 
     public Products()
     {
@@ -10,87 +11,78 @@ public class Products
 
     }
 
-    public Products(String pname, String description, String price, String image, String category, String pid, String date, String time, String productState) {
-        this.pname = pname;
-        this.description = description;
-        this.price = price;
-        this.image = image;
-        this.category = category;
-        this.pid = pid;
-        this.date = date;
-        this.time = time;
-        this.productState = productState;
+    public Products(String productID, String productName, String productCategory, String productDescription, String productPrice, String productImage, String productDate, String productTime) {
+        ProductID = productID;
+        ProductName = productName;
+        ProductCategory = productCategory;
+        ProductDescription = productDescription;
+        ProductPrice = productPrice;
+        ProductImage = productImage;
+        ProductDate = productDate;
+        ProductTime = productTime;
     }
 
-    public String getPname() {
-        return pname;
+    public String getProductID() {
+        return ProductID;
     }
 
-    public void setPname(String pname) {
-        this.pname = pname;
+    public void setProductID(String productID) {
+        ProductID = productID;
     }
 
-    public String getDescription() {
-        return description;
+    public String getProductName() {
+        return ProductName;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setProductName(String productName) {
+        ProductName = productName;
     }
 
-    public String getPrice() {
-        return price;
+    public String getProductCategory() {
+        return ProductCategory;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setProductCategory(String productCategory) {
+        ProductCategory = productCategory;
     }
 
-    public String getImage() {
-        return image;
+    public String getProductDescription() {
+        return ProductDescription;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setProductDescription(String productDescription) {
+        ProductDescription = productDescription;
     }
 
-    public String getCategory() {
-        return category;
+    public String getProductPrice() {
+        return ProductPrice;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setProductPrice(String productPrice) {
+        ProductPrice = productPrice;
     }
 
-    public String getPid() {
-        return pid;
+    public String getProductImage() {
+        return ProductImage;
     }
 
-    public void setPid(String pid) {
-        this.pid = pid;
+    public void setProductImage(String productImage) {
+        ProductImage = productImage;
     }
 
-    public String getDate() {
-        return date;
+    public String getProductDate() {
+        return ProductDate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setProductDate(String productDate) {
+        ProductDate = productDate;
     }
 
-    public String getTime() {
-        return time;
+    public String getProductTime() {
+        return ProductTime;
     }
 
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public String getProductState() {
-        return productState;
-    }
-
-    public void setProductState(String productState) {
-        this.productState = productState;
+    public void setProductTime(String productTime) {
+        ProductTime = productTime;
     }
 }

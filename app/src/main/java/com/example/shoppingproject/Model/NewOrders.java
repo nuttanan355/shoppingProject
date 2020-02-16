@@ -1,38 +1,32 @@
 package com.example.shoppingproject.Model;
 
 public class NewOrders {
-    private String name, phone, address, city, state, date, time, totalAmount, oid,userName;
+
+    private String OrderID,phone, fullName, phoneRecipient, address, OrderTotalAmount, OrderPayment, OrderStateShipped, OrderPackage,OrderDate,OrderTime;
 
     public NewOrders() {
     }
 
-    public NewOrders(String name, String phone, String address, String city, String state, String date, String time, String totalAmount, String oid, String userName) {
-        this.name = name;
+    public NewOrders(String orderID, String phone, String fullName, String phoneRecipient, String address, String orderTotalAmount, String orderPayment, String orderStateShipped, String orderPackage, String orderDate, String orderTime) {
+        OrderID = orderID;
         this.phone = phone;
+        this.fullName = fullName;
+        this.phoneRecipient = phoneRecipient;
         this.address = address;
-        this.city = city;
-        this.state = state;
-        this.date = date;
-        this.time = time;
-        this.totalAmount = totalAmount;
-        this.oid = oid;
-        this.userName = userName;
+        OrderTotalAmount = orderTotalAmount;
+        OrderPayment = orderPayment;
+        OrderStateShipped = orderStateShipped;
+        OrderPackage = orderPackage;
+        OrderDate = orderDate;
+        OrderTime = orderTime;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getOrderID() {
+        return OrderID;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setOrderID(String orderID) {
+        OrderID = orderID;
     }
 
     public String getPhone() {
@@ -43,6 +37,22 @@ public class NewOrders {
         this.phone = phone;
     }
 
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getPhoneRecipient() {
+        return phoneRecipient;
+    }
+
+    public void setPhoneRecipient(String phoneRecipient) {
+        this.phoneRecipient = phoneRecipient;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -51,52 +61,52 @@ public class NewOrders {
         this.address = address;
     }
 
-    public String getCity() {
-        return city;
+    public String getOrderTotalAmount() {
+        return OrderTotalAmount;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setOrderTotalAmount(String orderTotalAmount) {
+        OrderTotalAmount = orderTotalAmount;
     }
 
-    public String getState() {
-        return state;
+    public String getOrderPayment() {
+        return OrderPayment;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setOrderPayment(String orderPayment) {
+        OrderPayment = orderPayment;
     }
 
-    public String getDate() {
-        return date;
+    public String getOrderStateShipped() {
+        return OrderStateShipped;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setOrderStateShipped(String orderStateShipped) {
+        OrderStateShipped = orderStateShipped;
     }
 
-    public String getTime() {
-        return time;
+    public String getOrderPackage() {
+        return OrderPackage;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setOrderPackage(String orderPackage) {
+        OrderPackage = orderPackage;
     }
 
-    public String getTotalAmount() {
-        return totalAmount;
+    public String getOrderDate() {
+        return OrderDate;
     }
 
-    public void setTotalAmount(String totalAmount) {
-        this.totalAmount = totalAmount;
+    public void setOrderDate(String orderDate) {
+        OrderDate = orderDate;
     }
 
-    public String getOid() {
-        return oid;
+    public String getOrderTime() {
+        return OrderTime;
     }
 
-    public void setOid(String oid) {
-        this.oid = oid;
+    public void setOrderTime(String orderTime) {
+        OrderTime = orderTime;
     }
 }
 

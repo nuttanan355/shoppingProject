@@ -155,10 +155,10 @@ public class AdminEditProductsActivity extends AppCompatActivity {
             Toast.makeText(this, "กรุณาใส่รายละเอียดสินค้า", Toast.LENGTH_SHORT).show();
         } else {
             HashMap<String, Object> productMap = new HashMap<>();
-            productMap.put("pid", productID);
-            productMap.put("description", pDescription);
-            productMap.put("price", pPrice);
-            productMap.put("pname", pName);
+            productMap.put("ProductID", productID);
+            productMap.put("ProductDescription", pDescription);
+            productMap.put("ProductPrice", pPrice);
+            productMap.put("ProductName", pName);
 
             productsRef.updateChildren(productMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
@@ -180,10 +180,10 @@ public class AdminEditProductsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    String pName = dataSnapshot.child("pname").getValue().toString();
-                    String pPrice = dataSnapshot.child("price").getValue().toString();
-                    String pDescription = dataSnapshot.child("description").getValue().toString();
-                    String pImage = dataSnapshot.child("image").getValue().toString();
+                    String pName = dataSnapshot.child("ProductName").getValue().toString();
+                    String pPrice = dataSnapshot.child("ProductPrice").getValue().toString();
+                    String pDescription = dataSnapshot.child("ProductDescription").getValue().toString();
+                    String pImage = dataSnapshot.child("ProductImage").getValue().toString();
 
 
                     name.setText(pName);

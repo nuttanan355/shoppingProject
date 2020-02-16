@@ -85,7 +85,7 @@ public class OrdersHistoryFragment extends Fragment {
 
         FirebaseRecyclerOptions<NewOrders>
                 options = new FirebaseRecyclerOptions.Builder<NewOrders>()
-                .setQuery(ordersRef.orderByChild("userName")
+                .setQuery(ordersRef.orderByChild("phone")
                         .equalTo(Prevalent.currentOnlineUser.getPhone()+"twohis"), NewOrders.class).build();
 
         FirebaseRecyclerAdapter<NewOrders, AdminOrdersViewHolder>
@@ -96,10 +96,10 @@ public class OrdersHistoryFragment extends Fragment {
 
             @Override
             protected void onBindViewHolder(@NonNull AdminOrdersViewHolder holder, final int position, @NonNull final NewOrders model) {
-                holder.userName.setText("ชื่อผู้สั่งซื้อ : " + model.getName());
-                holder.userPhoneNumber.setText("เบอร์โทร : " + model.getPhone());
-                holder.userTotalPrice.setText("ราคารวม : " + model.getTotalAmount() + "THB");
-                holder.userDateTime.setText("วันที่ : " + model.getDate() + " เวลา :" + model.getTime());
+                holder.userName.setText("ชื่อผู้สั่งซื้อ : " + model.getFullName());
+                holder.userPhoneNumber.setText("เบอร์โทร : " + model.getPhoneRecipient());
+                holder.userTotalPrice.setText("ราคารวม : " + model.getOrderTotalAmount() + "THB");
+                holder.userDateTime.setText("วันที่ : " + model.getOrderDate() + " เวลา :" + model.getOrderTime());
                 holder.userShippingAddress.setText("ที่อยู่ : " + model.getAddress());
 
 
@@ -108,7 +108,7 @@ public class OrdersHistoryFragment extends Fragment {
                     public void onClick(View v) {
 
                         Intent intent = new Intent(getActivity(), OrdersHistoryActivity.class);
-                        intent.putExtra("oid", model.getOid());
+                        intent.putExtra("oid", model.getOrderID());
                         startActivity(intent);
                     }
                 });

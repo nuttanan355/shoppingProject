@@ -69,16 +69,16 @@ public class AdminOrdersOneFragment extends Fragment {
 
         FirebaseRecyclerOptions<NewOrders>
                 options = new FirebaseRecyclerOptions.Builder<NewOrders>()
-                .setQuery(ordersRef.orderByChild("package").equalTo(""), NewOrders.class).build();
+                .setQuery(ordersRef.orderByChild("OrderPackage").equalTo(""), NewOrders.class).build();
 
         FirebaseRecyclerAdapter<NewOrders, AdminOrdersViewHolder>
                 adapter = new FirebaseRecyclerAdapter<NewOrders, AdminOrdersViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull AdminOrdersViewHolder holder, final int position, @NonNull final NewOrders model) {
-                holder.userName.setText("ชื่อผู้สั่งซื้อ : " + model.getName());
-                holder.userPhoneNumber.setText("เบอร์โทร : " + model.getPhone());
-                holder.userTotalPrice.setText("ราคารวม : " + model.getTotalAmount() + " THB");
-                holder.userDateTime.setText("วันที่ : " + model.getDate() + " เวลา :" + model.getTime());
+                holder.userName.setText("ชื่อผู้สั่งซื้อ : " + model.getFullName());
+                holder.userPhoneNumber.setText("เบอร์โทร : " + model.getPhoneRecipient());
+                holder.userTotalPrice.setText("ราคารวม : " + model.getOrderTotalAmount() + " THB");
+                holder.userDateTime.setText("วันที่ : " + model.getOrderDate() + " เวลา :" + model.getOrderTime());
                 holder.userShippingAddress.setText("ที่อยู่ : " + model.getAddress());
 
 
@@ -88,8 +88,8 @@ public class AdminOrdersOneFragment extends Fragment {
 
 
                         Intent intent = new Intent(getActivity(), AdminViewOrdersProductActivity.class);
-                        intent.putExtra("oid", model.getOid());
-                        intent.putExtra("uid", model.getUserName());
+                        intent.putExtra("oid", model.getOrderID());
+                        intent.putExtra("uid", model.getPhone());
                         startActivity(intent);
                     }
                 });

@@ -225,11 +225,11 @@ public class RegisterActivity extends AppCompatActivity {
 
         final HashMap<String, Object> userdataMap = new HashMap<>();
         userdataMap.put("phone", txtphone);
-        userdataMap.put("name surname", txtnameSurname);
+        userdataMap.put("nameSurname", txtnameSurname);
         userdataMap.put("password", txtpassword);
         userdataMap.put("name", txtname);
         //เบอร์โทรศัพท์
-        userdataMap.put("phoneOrder", txtphone);
+        userdataMap.put("phoneRecipient", txtphone);
         //ที่อยู่
         userdataMap.put("address", txtaddress);
         //รหัสไปรษณีย์

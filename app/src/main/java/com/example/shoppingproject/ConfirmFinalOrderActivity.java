@@ -171,7 +171,7 @@ public class ConfirmFinalOrderActivity<val> extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                String aName = dataSnapshot.child("name surname").getValue().toString();
+                String aName = dataSnapshot.child("fullName").getValue().toString();
                 String aPhone = dataSnapshot.child("phoneOrder").getValue().toString();
                 String aAddress = dataSnapshot.child("address").getValue().toString();
                 String aPostalCode = dataSnapshot.child("postalCode").getValue().toString();
@@ -351,25 +351,22 @@ public class ConfirmFinalOrderActivity<val> extends AppCompatActivity {
 
         final HashMap<String, Object> orderMap = new HashMap<>();
 
-
-        orderMap.put("oid", OrdersRandomKay);
-        orderMap.put("userName", Prevalent.currentOnlineUser.getPhone());
-        orderMap.put("totalAmount", totalAmount);
-        orderMap.put("name", nameEditText.getText().toString());
-        orderMap.put("phone", phoneEditText.getText().toString());
+        orderMap.put("OrderID", OrdersRandomKay);
+        orderMap.put("phone", Prevalent.currentOnlineUser.getPhone());
+        orderMap.put("nameSurname", nameEditText.getText().toString());
+        orderMap.put("phoneRecipient", phoneEditText.getText().toString());
         orderMap.put("address", address);
-//        orderMap.put("city", cityEditText.getText().toString());
-        orderMap.put("date", saveCurrentDate);
-        orderMap.put("time", saveCurrentTime);
-//        orderMap.put("state approve", "not approve");
-        orderMap.put("state shipped", "");
-        orderMap.put("payment", "ชำระเงินสำเร็จ");
-        orderMap.put("package", "");
+        orderMap.put("OrderTotalAmount", totalAmount);
+        orderMap.put("OrderDate", saveCurrentDate);
+        orderMap.put("OrderTime", saveCurrentTime);
+        orderMap.put("OrderStateShipped", "");
+        orderMap.put("OrderPayment", "ชำระเงินสำเร็จ");
+        orderMap.put("OrderPackage", "");
 
         Orderlist.child("Products").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                orderRef.child("orderList").setValue(dataSnapshot.getValue());
+                orderRef.child("OrderList").setValue(dataSnapshot.getValue());
 
                 orderRef.updateChildren(orderMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

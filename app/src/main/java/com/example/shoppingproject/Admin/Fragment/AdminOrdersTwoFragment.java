@@ -73,16 +73,16 @@ public class AdminOrdersTwoFragment extends Fragment {
 
             FirebaseRecyclerOptions<NewOrders>
                     options = new FirebaseRecyclerOptions.Builder<NewOrders>()
-                    .setQuery(ordersRef.orderByChild("state shipped").equalTo("not shipped"), NewOrders.class).build();
+                    .setQuery(ordersRef.orderByChild("OrderStateShipped").equalTo("not shipped"), NewOrders.class).build();
 
             FirebaseRecyclerAdapter<NewOrders, AdminOrdersViewHolder>
                     adapter = new FirebaseRecyclerAdapter<NewOrders, AdminOrdersViewHolder>(options) {
                 @Override
                 protected void onBindViewHolder(@NonNull AdminOrdersViewHolder holder, final int position, @NonNull final NewOrders model) {
-                    holder.userName.setText("ชื่อผู้สั่งซื้อ : " + model.getName());
-                    holder.userPhoneNumber.setText("เบอร์โทร : " + model.getPhone());
-                    holder.userTotalPrice.setText("ราคารวม : " + model.getTotalAmount() + "THB");
-                    holder.userDateTime.setText("วันที่ : " + model.getDate() + " เวลา :" + model.getTime());
+                    holder.userName.setText("ชื่อผู้สั่งซื้อ : " + model.getFullName());
+                    holder.userPhoneNumber.setText("เบอร์โทร : " + model.getPhoneRecipient());
+                    holder.userTotalPrice.setText("ราคารวม : " + model.getOrderTotalAmount() + " THB");
+                    holder.userDateTime.setText("วันที่ : " + model.getOrderDate() + " เวลา :" + model.getOrderTime());
                     holder.userShippingAddress.setText("ที่อยู่ : " + model.getAddress());
 //                holder.userShippingCity.setText("จังหวัด : " + model.getCity());
 
@@ -92,7 +92,7 @@ public class AdminOrdersTwoFragment extends Fragment {
 //                            String uID = getRef(position).getKey();
                             Intent intent = new Intent(getActivity(), AdminSendingOrderActivity.class);
 //                            intent.putExtra("uid", uID);
-                            intent.putExtra("oid", model.getOid());
+                            intent.putExtra("oid", model.getOrderID());
                             startActivity(intent);
                         }
                     });

@@ -80,10 +80,6 @@ public class CartActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-
-//        CheckOrderSate();
-
-
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
         FirebaseRecyclerOptions<Cart> options = new FirebaseRecyclerOptions.Builder<Cart>()
                 .setQuery(cartListRef
@@ -97,7 +93,7 @@ public class CartActivity extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull final CartViewHolder holder, int position, @NonNull final Cart model) {
 
 
-                int oneTypeProductPrice = Integer.valueOf(model.getPrice()) * Integer.valueOf(model.getQuantity());
+                int oneTypeProductPrice = Integer.valueOf(model.getProductPrice()) * Integer.valueOf(model.getQuantity());
                 overTotalPrice = overTotalPrice + oneTypeProductPrice;
 
                 NextProductBtn.setVisibility(View.VISIBLE);
@@ -109,10 +105,10 @@ public class CartActivity extends AppCompatActivity {
                 holder.btnEditQuantity.setNumber(model.getQuantity());
 
 
-                holder.txtProductPrice.setText("ราคา " + "฿" + model.getPrice());
-                holder.txtProductDescription.setText(model.getDiscount());
-                holder.txtProductName.setText(model.getPname());
-                Picasso.get().load(model.getImage()).into(holder.imageViewProduct);
+                holder.txtProductPrice.setText("ราคา " + "฿" + model.getProductPrice());
+                holder.txtProductDescription.setText(model.getProductDescription());
+                holder.txtProductName.setText(model.getProductName());
+                Picasso.get().load(model.getProductImage()).into(holder.imageViewProduct);
 
 //                Picasso.get().load(pImage).into(imageView);
 
@@ -124,7 +120,7 @@ public class CartActivity extends AppCompatActivity {
                     public void onClick(View v) {
 
                         cartListRef.child(Prevalent.currentOnlineUser.getPhone()).child("Products")
-                                .child(model.getPid()).removeValue()
+                                .child(model.getProductID()).removeValue()
                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
@@ -132,11 +128,9 @@ public class CartActivity extends AppCompatActivity {
                                         if (task.isSuccessful()) {
                                             Toast.makeText(CartActivity.this, "ลบสินค้าสำเร็จแล้ว", Toast.LENGTH_SHORT).show();
 
-
                                             Intent intent = getIntent();
                                             finish();
                                             startActivity(intent);
-
 
                                             return;
                                         }
@@ -158,7 +152,7 @@ public class CartActivity extends AppCompatActivity {
                             String number = holder.btnEditQuantity.getNumber();
 
                             cartListRef.child(Prevalent.currentOnlineUser.getPhone()).child("Products")
-                                    .child(model.getPid()).child("quantity").setValue(number);
+                                    .child(model.getProductID()).child("quantity").setValue(number);
 
                             Intent intent = getIntent();
                             finish();
@@ -173,7 +167,7 @@ public class CartActivity extends AppCompatActivity {
                     public void onClick(View v) {
 
                         Intent intent = new Intent(CartActivity.this, ProductDetailsActivity.class);
-                        intent.putExtra("pid", model.getPid());
+                        intent.putExtra("pid", model.getProductID());
                         intent.putExtra("checkLogin","LoginTrue");
                         intent.putExtra("checkCart","trueInCart");
                         finish();
@@ -201,46 +195,8 @@ public class CartActivity extends AppCompatActivity {
         adapter.startListening();
     }
 
-
-    private void CheckOrderSate() {
-        DatabaseReference orderRef;
-        orderRef = FirebaseDatabase.getInstance().getReference()
-                .child("Orders")
-                .child(Prevalent.currentOnlineUser.getPhone());
-        orderRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    String shippingstate = dataSnapshot.child("state").getValue().toString();
-                    String userName = dataSnapshot.child("name").getValue().toString();
-
-                    if (shippingstate.equals("shipped")) {
-                        txtTotalAmount.setText("คำสั่งซื้อ" + userName + "\n จัดส่งเรียบร้อยแล้ว");
-                        recyclerView.setVisibility(View.GONE);
-
-                        txtMsg1.setVisibility(View.VISIBLE);
-                        txtMsg1.setText("ขอแสดงความยินดีการสั่งซื้อขั้นสุดท้ายของคุณได้รับการจัดส่งเรียบร้อยแล้ว");
-                        NextProductBtn.setVisibility(View.GONE);
-
-                        Toast.makeText(CartActivity.this, "สามารถซื้อสินค้าเพิ่มเติมได้, เมื่อได้รับคำสั่งซื้อครั้งสุดท้าย", Toast.LENGTH_SHORT).show();
-                    } else if (shippingstate.equals("not shipped")) {
-                        txtTotalAmount.setText("สถานะการจัดส่ง = ไม่ได้จัดส่ง");
-                        recyclerView.setVisibility(View.GONE);
-
-                        txtMsg1.setVisibility(View.VISIBLE);
-                        NextProductBtn.setVisibility(View.GONE);
-
-                        Toast.makeText(CartActivity.this, "สามารถซื้อสินค้าเพิ่มเติมได้, เมื่อได้รับคำสั่งซื้อครั้งสุดท้าย", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-    }
-
 }
+
+
+
+

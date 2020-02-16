@@ -2,51 +2,45 @@ package com.example.shoppingproject.Model;
 
 public class Cart {
 
-    private String pid,pname,price,quantity,discount,image;
+//    private String pid,pname,price,quantity,discount,image;
+    private String ProductID,ProductName,ProductPrice,quantity,ProductDescription,ProductImage;
 
     public Cart() {
     }
 
-
-    public Cart(String pid, String pname, String price, String quantity, String discount,String image) {
-        this.pid = pid;
-        this.pname = pname;
-        this.price = price;
+    public Cart(String productID, String productName, String productPrice, String quantity, String productDescription, String productImage) {
+        ProductID = productID;
+        ProductName = productName;
+        ProductPrice = productPrice;
         this.quantity = quantity;
-        this.discount = discount;
-        this.image = image;
+        ProductDescription = productDescription;
+        ProductImage = productImage;
     }
 
-    public String getPid() {
-        return pid;
+
+
+    public String getProductID() {
+        return ProductID;
     }
 
-    public String getImage() {
-        return image;
+    public void setProductID(String productID) {
+        ProductID = productID;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public String getProductName() {
+        return ProductName;
     }
 
-    public void setPid(String pid) {
-        this.pid = pid;
+    public void setProductName(String productName) {
+        ProductName = productName;
     }
 
-    public String getPname() {
-        return pname;
+    public String getProductPrice() {
+        return ProductPrice;
     }
 
-    public void setPname(String pname) {
-        this.pname = pname;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
+    public void setProductPrice(String productPrice) {
+        ProductPrice = productPrice;
     }
 
     public String getQuantity() {
@@ -57,11 +51,19 @@ public class Cart {
         this.quantity = quantity;
     }
 
-    public String getDiscount() {
-        return discount;
+    public String getProductDescription() {
+        return ProductDescription;
     }
 
-    public void setDiscount(String discount) {
-        this.discount = discount;
+    public void setProductDescription(String productDescription) {
+        ProductDescription = productDescription;
+    }
+
+    public String getProductImage() {
+        return ProductImage;
+    }
+
+    public void setProductImage(String productImage) {
+        ProductImage = productImage;
     }
 }

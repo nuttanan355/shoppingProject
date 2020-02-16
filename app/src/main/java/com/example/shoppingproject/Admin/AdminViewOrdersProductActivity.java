@@ -135,11 +135,11 @@ public class AdminViewOrdersProductActivity extends AppCompatActivity {
         }else
             {
 
-                ordersRef.child("state shipped").setValue("not shipped");
-                ordersRef.child("userName").setValue(userID+"two");
+                ordersRef.child("OrderStateShipped").setValue("not shipped");
+                ordersRef.child("phone").setValue(userID+"two");
 //        orderMap.put("state shipped", "not shipped");
 
-                ordersRef.child("package").setValue(txtPackage);
+                ordersRef.child("OrderPackage").setValue(txtPackage);
                 finish();
 
             }
@@ -152,12 +152,12 @@ public class AdminViewOrdersProductActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                String oName = dataSnapshot.child("name").getValue().toString();
-                String oPhone = dataSnapshot.child("phone").getValue().toString();
+                String oName = dataSnapshot.child("fullName").getValue().toString();
+                String oPhone = dataSnapshot.child("phoneRecipient").getValue().toString();
                 String oAddress = dataSnapshot.child("address").getValue().toString();
-                String oTotal = dataSnapshot.child("totalAmount").getValue().toString();
+                String oTotal = dataSnapshot.child("OrderTotalAmount").getValue().toString();
 
-                String oPackage = dataSnapshot.child("package").getValue().toString();
+                String oPackage = dataSnapshot.child("OrderPackage").getValue().toString();
 
 
                 txtOrederName.setText(oName);
@@ -181,16 +181,16 @@ public class AdminViewOrdersProductActivity extends AppCompatActivity {
     private void showOrderList() {
         FirebaseRecyclerOptions<Cart> options =
                 new FirebaseRecyclerOptions.Builder<Cart>()
-                        .setQuery(ordersRef.child("orderList"), Cart.class).build();
+                        .setQuery(ordersRef.child("OrderList"), Cart.class).build();
 
         FirebaseRecyclerAdapter<Cart, CartViewHolder> adapter = new FirebaseRecyclerAdapter<Cart, CartViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull Cart model) {
                 holder.txtProductQuantity.setText("จำนวน " + model.getQuantity());
-                holder.txtProductPrice.setText("ราคา " + model.getPrice() + " ฿");
-                holder.txtProductDescription.setText(model.getDiscount());
-                holder.txtProductName.setText(model.getPname());
-                Picasso.get().load(model.getImage()).into(holder.imageViewProduct);
+                holder.txtProductPrice.setText("ราคา " + model.getProductPrice() + " ฿");
+                holder.txtProductDescription.setText(model.getProductDescription());
+                holder.txtProductName.setText(model.getProductName());
+                Picasso.get().load(model.getProductImage()).into(holder.imageViewProduct);
             }
 
             @NonNull

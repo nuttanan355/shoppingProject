@@ -59,12 +59,12 @@ public class TestAdminNewOrdersActivity extends AppCompatActivity {
                 adapter = new FirebaseRecyclerAdapter<NewOrders, AdminOrdersViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull AdminOrdersViewHolder holder, final int position, @NonNull final NewOrders model) {
-                holder.userName.setText("ชื่อผู้สั่งซื้อ : " + model.getName());
-                holder.userPhoneNumber.setText("เบอร์โทร : " + model.getPhone());
-                holder.userTotalPrice.setText("ราคารวม : " + model.getTotalAmount());
-                holder.userDateTime.setText("วันที่ : " + model.getDate() + " เวลา :" + model.getTime());
+                holder.userName.setText("ชื่อผู้สั่งซื้อ : " + model.getFullName());
+                holder.userPhoneNumber.setText("เบอร์โทร : " + model.getPhoneRecipient());
+                holder.userTotalPrice.setText("ราคารวม : " + model.getOrderTotalAmount() + " THB");
+                holder.userDateTime.setText("วันที่ : " + model.getOrderDate() + " เวลา :" + model.getOrderTime());
                 holder.userShippingAddress.setText("ที่อยู่ : " + model.getAddress());
-                holder.userShippingCity.setText("จังหวัด : " + model.getCity());
+//                holder.userShippingCity.setText("จังหวัด : " + model.getCity());
 
 //                holder.btnShowOrder.setOnClickListener(new View.OnClickListener() {
 //                    @Override

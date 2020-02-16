@@ -58,24 +58,24 @@ public class SearchProductsActivity extends AppCompatActivity {
         DatabaseReference reference= FirebaseDatabase.getInstance().getReference().child("Products");
         FirebaseRecyclerOptions<Products>options=
                 new FirebaseRecyclerOptions.Builder<Products>()
-                        .setQuery(reference.orderByChild("pname").startAt(SearchInput),Products.class)
+                        .setQuery(reference.orderByChild("ProductName").startAt(SearchInput),Products.class)
                 .build();
 
         FirebaseRecyclerAdapter<Products, ProductViewHolder>adapter=
                 new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model) {
-                holder.txtProductName.setText(model.getPname());
-                holder.txtProductPrice.setText("ราคา " + model.getPrice() + " บาท");
-                holder.txtProductDescription.setText(model.getDescription());
-                Picasso.get().load(model.getImage()).into(holder.imageView);
+                holder.txtProductName.setText(model.getProductName());
+                holder.txtProductPrice.setText("ราคา " + model.getProductPrice() + " บาท");
+                holder.txtProductDescription.setText(model.getProductDescription());
+                Picasso.get().load(model.getProductImage()).into(holder.imageView);
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
                         Intent intent = new Intent(SearchProductsActivity.this, ProductDetailsActivity.class);
-                        intent.putExtra("pid",model.getPid());
+                        intent.putExtra("pid",model.getProductID());
                         intent.putExtra("checkLogin","LoginTrue");
                         intent.putExtra("checkCart","noInCart");
                         startActivity(intent);

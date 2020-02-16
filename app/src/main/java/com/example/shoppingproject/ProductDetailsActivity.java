@@ -116,7 +116,7 @@ layoutProductDetails=(LinearLayout)findViewById(R.id.layout_product_details);
 
         final DatabaseReference productImageRef = FirebaseDatabase.getInstance()
                 .getReference().child("Products")
-                .child(productID).child("image");
+                .child(productID).child("ProductImage");
 
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance()
                 .getReference().child("Cart List")
@@ -133,20 +133,20 @@ layoutProductDetails=(LinearLayout)findViewById(R.id.layout_product_details);
         ListRandomKay = saveCurrentDate + "," + saveCurrentTime;
 
         final HashMap<String, Object> cartMap = new HashMap<>();
-        cartMap.put("pid", productID);
-        cartMap.put("pname", productName.getText().toString());
-        cartMap.put("price", productPrice.getText().toString());
+        cartMap.put("ProductID", productID);
+        cartMap.put("ProductName", productName.getText().toString());
+        cartMap.put("ProductPrice", productPrice.getText().toString());
 //        cartMap.put("image","");
-        cartMap.put("date", saveCurrentDate);
-        cartMap.put("time", saveCurrentTime);
+//        cartMap.put("date", saveCurrentDate);
+//        cartMap.put("time", saveCurrentTime);
         cartMap.put("quantity", numberButton.getNumber());
-        cartMap.put("discount", productDescription.getText().toString());
+        cartMap.put("ProductDescription", productDescription.getText().toString());
 
 
         productImageRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                cartListRef.child("image").setValue(dataSnapshot.getValue());
+                cartListRef.child("ProductImage").setValue(dataSnapshot.getValue());
 
                 cartListRef.updateChildren(cartMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -182,11 +182,11 @@ layoutProductDetails=(LinearLayout)findViewById(R.id.layout_product_details);
                 if (dataSnapshot.exists()) {
 
                     Products products = dataSnapshot.getValue(Products.class);
-                    titleProductName.setText(products.getPname());
-                    productName.setText(products.getPname());
-                    productPrice.setText(products.getPrice());
-                    productDescription.setText(products.getDescription());
-                    Picasso.get().load(products.getImage()).into(productImage);
+                    titleProductName.setText(products.getProductName());
+                    productName.setText(products.getProductName());
+                    productPrice.setText(products.getProductPrice());
+                    productDescription.setText(products.getProductDescription());
+                    Picasso.get().load(products.getProductImage()).into(productImage);
 
                 }
             }
@@ -211,7 +211,7 @@ layoutProductDetails=(LinearLayout)findViewById(R.id.layout_product_details);
 //            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 //                if (dataSnapshot.exists()) {
 //                    String shippingstate = dataSnapshot.child("state").getValue().toString();
-////                    String userName = dataSnapshot.child("name").getValue().toString();
+////                    String userName = dataSnapshot.child("userName").getValue().toString();
 //
 //                    if (shippingstate.equals("shipped")) {
 //                        state = "Order Shipped";

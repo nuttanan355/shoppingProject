@@ -68,7 +68,7 @@ public class AdminSendingOrderActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                String oName = dataSnapshot.child("name").getValue().toString();
+                String oName = dataSnapshot.child("userName").getValue().toString();
                 String oPhone = dataSnapshot.child("phone").getValue().toString();
                 String oAddress = dataSnapshot.child("address").getValue().toString();
                 String oTotal = dataSnapshot.child("totalAmount").getValue().toString();
@@ -95,16 +95,16 @@ public class AdminSendingOrderActivity extends AppCompatActivity {
     private void showOrderList() {
         FirebaseRecyclerOptions<Cart> options =
                 new FirebaseRecyclerOptions.Builder<Cart>()
-                        .setQuery(ordersRef.child("orderList"), Cart.class).build();
+                        .setQuery(ordersRef.child("OrderList"), Cart.class).build();
 
         FirebaseRecyclerAdapter<Cart, CartViewHolder> adapter = new FirebaseRecyclerAdapter<Cart, CartViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull Cart model) {
                 holder.txtProductQuantity.setText("จำนวน " + model.getQuantity());
-                holder.txtProductPrice.setText("ราคา " + model.getPrice() + " ฿");
-                holder.txtProductDescription.setText(model.getDiscount());
-                holder.txtProductName.setText(model.getPname());
-                Picasso.get().load(model.getImage()).into(holder.imageViewProduct);
+                holder.txtProductPrice.setText("ราคา " + model.getProductPrice() + " ฿");
+                holder.txtProductDescription.setText(model.getProductDescription());
+                holder.txtProductName.setText(model.getProductName());
+                Picasso.get().load(model.getProductImage()).into(holder.imageViewProduct);
             }
 
             @NonNull

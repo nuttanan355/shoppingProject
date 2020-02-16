@@ -133,9 +133,9 @@ public class SettingsActivity extends AppCompatActivity {
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users");
             HashMap<String, Object> userMap = new HashMap<>();
 
-            userMap.put("name surname", fullNameEditText.getText().toString());
+            userMap.put("nameSurname", fullNameEditText.getText().toString());
             userMap.put("address", addressEditText.getText().toString());
-            userMap.put("phoneOrder", userPhoneEditText.getText().toString());
+            userMap.put("phoneRecipient", userPhoneEditText.getText().toString());
             userMap.put("postalCode", postalCodeEditText.getText().toString());
             ref.child(Prevalent.currentOnlineUser.getPhone()).updateChildren(userMap);
 
@@ -224,9 +224,9 @@ public class SettingsActivity extends AppCompatActivity {
 
                                 HashMap<String, Object> userMap = new HashMap<>();
 
-                                userMap.put("name surname", fullNameEditText.getText().toString());
+                                userMap.put("fullName", fullNameEditText.getText().toString());
                                 userMap.put("address", addressEditText.getText().toString());
-                                userMap.put("phoneOrder", userPhoneEditText.getText().toString());
+                                userMap.put("phoneRecipient", userPhoneEditText.getText().toString());
                                 userMap.put("image", myUri);
 
                                 ref.updateChildren(userMap);
@@ -257,9 +257,9 @@ public class SettingsActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
 
-                    String fullname = dataSnapshot.child("name surname").getValue().toString();
-                    String username = dataSnapshot.child("name").getValue().toString();
-                    String phone = dataSnapshot.child("phoneOrder").getValue().toString();
+                    String fullname = dataSnapshot.child("fullName").getValue().toString();
+                    String username = dataSnapshot.child("userName").getValue().toString();
+                    String phone = dataSnapshot.child("phoneRecipient").getValue().toString();
                     String address = dataSnapshot.child("address").getValue().toString();
                     String postalCode = dataSnapshot.child("postalCode").getValue().toString();
 

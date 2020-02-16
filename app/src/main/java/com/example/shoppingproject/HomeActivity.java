@@ -170,7 +170,7 @@ public class HomeActivity extends AppCompatActivity {
 
         if (checkLogin.equals("LoginTrue")) {
 
-            userNameTextView.setText(Prevalent.currentOnlineUser.getName());
+            userNameTextView.setText(Prevalent.currentOnlineUser.getUserName());
             Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
         }else
             {
@@ -206,10 +206,10 @@ public class HomeActivity extends AppCompatActivity {
                 new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model) {
-                        holder.txtProductName.setText(model.getPname());
-                        holder.txtProductPrice.setText("ราคา " + model.getPrice() + " ฿");
-                        holder.txtProductDescription.setText(model.getDescription());
-                        Picasso.get().load(model.getImage()).into(holder.imageView);
+                        holder.txtProductName.setText(model.getProductName());
+                        holder.txtProductPrice.setText("ราคา " + model.getProductPrice() + " ฿");
+                        holder.txtProductDescription.setText(model.getProductDescription());
+                        Picasso.get().load(model.getProductImage()).into(holder.imageView);
 
 
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -217,7 +217,7 @@ public class HomeActivity extends AppCompatActivity {
                             public void onClick(View v) {
 
                                 Intent intent = new Intent(HomeActivity.this, ProductDetailsActivity.class);
-                                intent.putExtra("pid", model.getPid());
+                                intent.putExtra("pid", model.getProductID());
                                 intent.putExtra("checkLogin",checkLogin);
                                 intent.putExtra("checkCart","noInCart");
                                 startActivity(intent);
@@ -336,7 +336,7 @@ public class HomeActivity extends AppCompatActivity {
                 {
                     FirebaseRecyclerOptions<Products> options =
                             new FirebaseRecyclerOptions.Builder<Products>()
-                                    .setQuery(ProductsRef.orderByChild("category").equalTo("tShires"), Products.class)
+                                    .setQuery(ProductsRef.orderByChild("ProductCategory").equalTo("tShires"), Products.class)
 //                    .setQuery(ProductsRef, Products.class)
                                     .build();
 
@@ -346,7 +346,7 @@ public class HomeActivity extends AppCompatActivity {
                 {
                     FirebaseRecyclerOptions<Products> options =
                             new FirebaseRecyclerOptions.Builder<Products>()
-                                    .setQuery(ProductsRef.orderByChild("category").equalTo("Sports tShirts"), Products.class)
+                                    .setQuery(ProductsRef.orderByChild("ProductCategory").equalTo("Sports tShirts"), Products.class)
 //                    .setQuery(ProductsRef, Products.class)
                                     .build();
 
@@ -356,7 +356,7 @@ public class HomeActivity extends AppCompatActivity {
                 {
                     FirebaseRecyclerOptions<Products> options =
                             new FirebaseRecyclerOptions.Builder<Products>()
-                                    .setQuery(ProductsRef.orderByChild("category").equalTo("Female Dresses"), Products.class)
+                                    .setQuery(ProductsRef.orderByChild("ProductCategory").equalTo("Female Dresses"), Products.class)
 //                    .setQuery(ProductsRef, Products.class)
                                     .build();
 
@@ -366,7 +366,7 @@ public class HomeActivity extends AppCompatActivity {
                 {
                     FirebaseRecyclerOptions<Products> options =
                             new FirebaseRecyclerOptions.Builder<Products>()
-                                    .setQuery(ProductsRef.orderByChild("category").equalTo("Sweather"), Products.class)
+                                    .setQuery(ProductsRef.orderByChild("ProductCategory").equalTo("Sweather"), Products.class)
 //                    .setQuery(ProductsRef, Products.class)
                                     .build();
 
@@ -376,7 +376,7 @@ public class HomeActivity extends AppCompatActivity {
                 {
                     FirebaseRecyclerOptions<Products> options =
                             new FirebaseRecyclerOptions.Builder<Products>()
-                                    .setQuery(ProductsRef.orderByChild("category").equalTo("Glasses"), Products.class)
+                                    .setQuery(ProductsRef.orderByChild("ProductCategory").equalTo("Glasses"), Products.class)
 //                    .setQuery(ProductsRef, Products.class)
                                     .build();
 
@@ -386,7 +386,7 @@ public class HomeActivity extends AppCompatActivity {
                 {
                     FirebaseRecyclerOptions<Products> options =
                             new FirebaseRecyclerOptions.Builder<Products>()
-                                    .setQuery(ProductsRef.orderByChild("category").equalTo("Purses Bags"), Products.class)
+                                    .setQuery(ProductsRef.orderByChild("ProductCategory").equalTo("Purses Bags"), Products.class)
 //                    .setQuery(ProductsRef, Products.class)
                                     .build();
 
@@ -396,7 +396,7 @@ public class HomeActivity extends AppCompatActivity {
                 {
                     FirebaseRecyclerOptions<Products> options =
                             new FirebaseRecyclerOptions.Builder<Products>()
-                                    .setQuery(ProductsRef.orderByChild("category").equalTo("Hats"), Products.class)
+                                    .setQuery(ProductsRef.orderByChild("ProductCategory").equalTo("Hats"), Products.class)
 //                    .setQuery(ProductsRef, Products.class)
                                     .build();
 
@@ -406,7 +406,7 @@ public class HomeActivity extends AppCompatActivity {
                 {
                     FirebaseRecyclerOptions<Products> options =
                             new FirebaseRecyclerOptions.Builder<Products>()
-                                    .setQuery(ProductsRef.orderByChild("category").equalTo("Shoess"), Products.class)
+                                    .setQuery(ProductsRef.orderByChild("ProductCategory").equalTo("Shoess"), Products.class)
 //                    .setQuery(ProductsRef, Products.class)
                                     .build();
 
@@ -416,7 +416,7 @@ public class HomeActivity extends AppCompatActivity {
                 {
                     FirebaseRecyclerOptions<Products> options =
                             new FirebaseRecyclerOptions.Builder<Products>()
-                                    .setQuery(ProductsRef.orderByChild("category").equalTo("Head Phone"), Products.class)
+                                    .setQuery(ProductsRef.orderByChild("ProductCategory").equalTo("Head Phone"), Products.class)
 //                    .setQuery(ProductsRef, Products.class)
                                     .build();
 
@@ -426,7 +426,7 @@ public class HomeActivity extends AppCompatActivity {
                 {
                     FirebaseRecyclerOptions<Products> options =
                             new FirebaseRecyclerOptions.Builder<Products>()
-                                    .setQuery(ProductsRef.orderByChild("category").equalTo("Laptops"), Products.class)
+                                    .setQuery(ProductsRef.orderByChild("ProductCategory").equalTo("Laptops"), Products.class)
 //                    .setQuery(ProductsRef, Products.class)
                                     .build();
 
@@ -436,7 +436,7 @@ public class HomeActivity extends AppCompatActivity {
                 {
                     FirebaseRecyclerOptions<Products> options =
                             new FirebaseRecyclerOptions.Builder<Products>()
-                                    .setQuery(ProductsRef.orderByChild("category").equalTo("Watches"), Products.class)
+                                    .setQuery(ProductsRef.orderByChild("ProductCategory").equalTo("Watches"), Products.class)
 //                    .setQuery(ProductsRef, Products.class)
                                     .build();
 
@@ -446,7 +446,7 @@ public class HomeActivity extends AppCompatActivity {
                 {
                     FirebaseRecyclerOptions<Products> options =
                             new FirebaseRecyclerOptions.Builder<Products>()
-                                    .setQuery(ProductsRef.orderByChild("category").equalTo("Mobiles"), Products.class)
+                                    .setQuery(ProductsRef.orderByChild("ProductCategory").equalTo("Mobiles"), Products.class)
 //                    .setQuery(ProductsRef, Products.class)
                                     .build();
 

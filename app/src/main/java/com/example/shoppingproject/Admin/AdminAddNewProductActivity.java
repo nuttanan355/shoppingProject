@@ -94,7 +94,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
 //                    @Override
 //                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 //
-//                        sName = dataSnapshot.child("name").getValue().toString();
+//                        sName = dataSnapshot.child("userName").getValue().toString();
 //                        sPhone = dataSnapshot.child("phone").getValue().toString();
 //                        sEmail = dataSnapshot.child("email").getValue().toString();
 //                        sAddress = dataSnapshot.child("address").getValue().toString();
@@ -215,14 +215,14 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
 
     private void SaveProductInfoToDatabase() {
         HashMap<String, Object> productMap = new HashMap<>();
-        productMap.put("pid", productRandomKay);
-        productMap.put("date", saveCurrentDate);
-        productMap.put("time", saveCurrentTime);
-        productMap.put("description", Description);
-        productMap.put("image", downloadImageUrl);
-        productMap.put("category", CategoryName);
-        productMap.put("price", Price);
-        productMap.put("pname", Pname);
+        productMap.put("ProductID", productRandomKay);
+        productMap.put("ProductDate", saveCurrentDate);
+        productMap.put("ProductTime", saveCurrentTime);
+        productMap.put("ProductDescription", Description);
+        productMap.put("ProductImage", downloadImageUrl);
+        productMap.put("ProductCategory", CategoryName);
+        productMap.put("ProductPrice", Price);
+        productMap.put("ProductName", Pname);
 
         ProductsRef.child(productRandomKay).updateChildren(productMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
