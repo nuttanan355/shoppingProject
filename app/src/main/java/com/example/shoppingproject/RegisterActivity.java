@@ -225,7 +225,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         final HashMap<String, Object> userdataMap = new HashMap<>();
         userdataMap.put("phone", txtphone);
-        userdataMap.put("nameSurname", txtnameSurname);
+        userdataMap.put("fullName", txtnameSurname);
         userdataMap.put("password", txtpassword);
         userdataMap.put("name", txtname);
         //เบอร์โทรศัพท์
