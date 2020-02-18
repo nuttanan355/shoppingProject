@@ -84,51 +84,51 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                <EditText
+                <com.rengwuxian.materialedittext.MaterialEditText
                     android:id="@+id/settings_full_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:fontFamily="@font/sukhumvitset_text"
-                    android:hint="ชื่อ ....."
+                    android:hint="ชื่อ - นามสกุล"
                     app:met_floatingLabel="normal"
-                    android:padding="10dp"
+                    android:padding="0dp"
                     android:textStyle="bold" />
 
-                    <EditText
+                    <com.rengwuxian.materialedittext.MaterialEditText
                         android:id="@+id/settings_phone_number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:fontFamily="@font/sukhumvitset_text"
-                        android:hint="เบอร์โทรศัพท์....."
+                        android:hint="เบอร์โทรศัพท์(ผู้รับสินค้า)"
                         app:met_floatingLabel="normal"
                         android:inputType="phone"
                         android:maxLength="10"
-                        android:padding="10dp"
+                        android:padding="0dp"
                         android:textStyle="bold" />
 
-                <EditText
+                <com.rengwuxian.materialedittext.MaterialEditText
                     android:id="@+id/settings_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:fontFamily="@font/sukhumvitset_text"
-                    android:hint="ที่อยู่....."
+                    android:hint="ที่อยู่"
                     app:met_floatingLabel="normal"
-                    android:padding="10dp"
+                    android:padding="0dp"
                     android:textStyle="bold" />
 
-                <EditText
+                <com.rengwuxian.materialedittext.MaterialEditText
                     android:id="@+id/settings_postal_code"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:fontFamily="@font/sukhumvitset_text"
-                    android:hint="รหัสไปรษณีย์....."
+                    android:hint="รหัสไปรษณีย์"
                     app:met_floatingLabel="normal"
                     android:maxLength="5"
-                    android:padding="10dp"
+                    android:padding="0dp"
                     android:textStyle="bold" />
 
                 </LinearLayout>

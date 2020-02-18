@@ -58,7 +58,7 @@ public class ConfirmFinalOrderActivity<val> extends AppCompatActivity {
 
 
     //--------PAYPAL--------
-    private int PAYPAL_REQUEST_CODE = 0x3D5;
+    private int PAYPAL_REQUEST_CODE = 1;
 //-----------END-----------
 
 
@@ -172,7 +172,7 @@ public class ConfirmFinalOrderActivity<val> extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 String aName = dataSnapshot.child("fullName").getValue().toString();
-                String aPhone = dataSnapshot.child("phoneOrder").getValue().toString();
+                String aPhone = dataSnapshot.child("phoneRecipient").getValue().toString();
                 String aAddress = dataSnapshot.child("address").getValue().toString();
                 String aPostalCode = dataSnapshot.child("postalCode").getValue().toString();
 
@@ -286,13 +286,15 @@ public class ConfirmFinalOrderActivity<val> extends AppCompatActivity {
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, payPalConfiguration);
         intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payPalPaymenta);
 
-        startActivityForResult(intent, PAYPAL_REQUEST_CODE);
+        startActivityForResult(intent,PAYPAL_REQUEST_CODE);
+//        ComfirmOrder();
 
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         if (requestCode == PAYPAL_REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK) {
                 PaymentConfirmation paymentConfirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
@@ -301,23 +303,13 @@ public class ConfirmFinalOrderActivity<val> extends AppCompatActivity {
                     ComfirmOrder();
 
                 }
-
-
             } else {
-
-
                 Toast.makeText(getApplicationContext(), "การชำระเงินไม่สำเร็จ", Toast.LENGTH_LONG).show();
             }
         }
+
+
     }
-
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        stopService(new Intent(ConfirmFinalOrderActivity.this, PayPalService.class));
-    }
-
 
     private void ComfirmOrder() {
 
@@ -406,6 +398,14 @@ public class ConfirmFinalOrderActivity<val> extends AppCompatActivity {
 
 
     }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        stopService(new Intent(ConfirmFinalOrderActivity.this, PayPalService.class));
+    }
+
 
 
 }

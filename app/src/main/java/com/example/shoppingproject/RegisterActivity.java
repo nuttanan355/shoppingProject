@@ -227,7 +227,7 @@ public class RegisterActivity extends AppCompatActivity {
         userdataMap.put("phone", txtphone);
         userdataMap.put("fullName", txtnameSurname);
         userdataMap.put("password", txtpassword);
-        userdataMap.put("name", txtname);
+        userdataMap.put("userName", txtname);
         //เบอร์โทรศัพท์
         userdataMap.put("phoneRecipient", txtphone);
         //ที่อยู่

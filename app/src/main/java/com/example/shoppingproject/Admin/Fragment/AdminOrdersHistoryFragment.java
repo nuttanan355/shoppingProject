@@ -81,7 +81,7 @@ public class AdminOrdersHistoryFragment extends Fragment {
                 holder.userName.setText("ชื่อผู้สั่งซื้อ : " + model.getFullName());
                 holder.userPhoneNumber.setText("เบอร์โทร : " + model.getPhoneRecipient());
                 holder.userTotalPrice.setText("ราคารวม : " + model.getOrderTotalAmount() + "THB");
-                holder.userDateTime.setText("วันที่ : " + model.getOrderDate() + " เวลา " + model.getOrderTime());
+                holder.userDateTime.setText("วันที่ : " + model.getOrderDate() + "\nเวลา : " + model.getOrderTime());
                 holder.userShippingAddress.setText("ที่อยู่ : " + model.getAddress());
 //                holder.userShippingCity.setText("จังหวัด : " + model.getCity());
 

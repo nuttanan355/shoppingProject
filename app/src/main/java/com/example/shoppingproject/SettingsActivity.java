@@ -27,6 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
+import com.rengwuxian.materialedittext.MaterialEditText;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
@@ -36,7 +37,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    private EditText fullNameEditText, userPhoneEditText, addressEditText, postalCodeEditText;
+    private MaterialEditText fullNameEditText, userPhoneEditText, addressEditText, postalCodeEditText;
     private CircleImageView profileImageView;
     private TextView textUserName, btnSecuityQuestion;
 
@@ -58,10 +59,10 @@ public class SettingsActivity extends AppCompatActivity {
 
         profileImageView = (CircleImageView) findViewById(R.id.settings_profile_image);
 
-        fullNameEditText = (EditText) findViewById(R.id.settings_full_name);
-        userPhoneEditText = (EditText) findViewById(R.id.settings_phone_number);
-        addressEditText = (EditText) findViewById(R.id.settings_address);
-        postalCodeEditText = (EditText) findViewById(R.id.settings_postal_code);
+        fullNameEditText = (MaterialEditText) findViewById(R.id.settings_full_name);
+        userPhoneEditText = (MaterialEditText) findViewById(R.id.settings_phone_number);
+        addressEditText = (MaterialEditText) findViewById(R.id.settings_address);
+        postalCodeEditText = (MaterialEditText) findViewById(R.id.settings_postal_code);
         textUserName = (TextView) findViewById(R.id.settings_user_name);
 
         btnSecuityQuestion = (TextView) findViewById(R.id.btn_security_questions);

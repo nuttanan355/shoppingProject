@@ -47,6 +47,16 @@
                 android:layout_marginTop="2dp"
                 android:src="@drawable/ic_menu_camera" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/sukhumvitset_text"
+                android:layout_marginLeft="5dp"
+                android:text="ชื่อสินค้า"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="14dp"
+                android:textStyle="bold" />
             <EditText
                 android:id="@+id/txt_edit_product_name"
                 android:layout_width="match_parent"
@@ -59,7 +69,18 @@
                 android:padding="12dp"
                 android:textAlignment="textStart"
                 android:textColor="@color/primaryTextColor"
-                android:textSize="18dp"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/sukhumvitset_text"
+                android:layout_marginLeft="5dp"
+                android:text="ราคาสินค้า"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="14dp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -100,6 +121,17 @@
 
             </LinearLayout>
 
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/sukhumvitset_text"
+                android:layout_marginLeft="5dp"
+                android:text="รายละเอียดสินค้า"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="14dp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/txt_edit_product_description"

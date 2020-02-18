@@ -91,6 +91,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/product_name_details"
                     android:layout_marginTop="5dp"
+                    android:background="@drawable/input_design_back"
                     android:fontFamily="@font/sukhumvitset_text"
                     android:gravity="left"
                     android:padding="5dp"
@@ -145,6 +146,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/btn_add_to_cart"
         android:background="@color/colorAccent"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
