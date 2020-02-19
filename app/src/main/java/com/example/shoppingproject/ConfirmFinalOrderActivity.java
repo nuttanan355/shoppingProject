@@ -345,7 +345,7 @@ public class ConfirmFinalOrderActivity<val> extends AppCompatActivity {
 
         orderMap.put("OrderID", OrdersRandomKay);
         orderMap.put("phone", Prevalent.currentOnlineUser.getPhone());
-        orderMap.put("nameSurname", nameEditText.getText().toString());
+        orderMap.put("fullName", nameEditText.getText().toString());
         orderMap.put("phoneRecipient", phoneEditText.getText().toString());
         orderMap.put("address", address);
         orderMap.put("OrderTotalAmount", totalAmount);

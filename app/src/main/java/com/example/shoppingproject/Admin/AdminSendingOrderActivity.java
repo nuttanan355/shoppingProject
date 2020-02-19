@@ -68,11 +68,12 @@ public class AdminSendingOrderActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                String oName = dataSnapshot.child("userName").getValue().toString();
-                String oPhone = dataSnapshot.child("phone").getValue().toString();
+                String oName = dataSnapshot.child("fullName").getValue().toString();
+                String oPhone = dataSnapshot.child("phoneRecipient").getValue().toString();
                 String oAddress = dataSnapshot.child("address").getValue().toString();
-                String oTotal = dataSnapshot.child("totalAmount").getValue().toString();
-                String oPackage = dataSnapshot.child("package").getValue().toString();
+                String oTotal = dataSnapshot.child("OrderTotalAmount").getValue().toString();
+
+                String oPackage = dataSnapshot.child("OrderPackage").getValue().toString();
 
 
                 txtOrederName.setText(oName);

@@ -135,7 +135,7 @@ public class AdminViewOrdersProductActivity extends AppCompatActivity {
         }else
             {
 
-                ordersRef.child("OrderStateShipped").setValue("not shipped");
+//                ordersRef.child("OrderStateShipped").setValue("not shipped");
                 ordersRef.child("phone").setValue(userID+"two");
 //        orderMap.put("state shipped", "not shipped");
 
